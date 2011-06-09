@@ -8,7 +8,8 @@ Stable tag: 0.1-bleeding
 Simplified unit testing for WordPress plugins.
 
 == Description ==
-Perhaps I'll fill this some day.
+The Pragmatic Programmer, Tip 49:
+  "Test your software, or your users will."
 
 == Installation ==
 Uninstallable.
