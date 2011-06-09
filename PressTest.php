@@ -34,9 +34,8 @@
  * @package PressTest
  */
 
-/**
- * Start your engines!
- */
+/** The core plugin class */
 require "pt-core.php";
 
-new PT_Core();
+/** Start your engines! */
+PT_Core::init();
