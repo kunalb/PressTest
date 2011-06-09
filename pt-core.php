@@ -3,7 +3,17 @@
 /**
  * The core PressTest class. Responsible
  * for initializing and using the plugin.
+ * @package PressTest
  */
+
+/**#@+ 
+ * Define universal constants. 
+ */
+/** Plugin Directory */
+define( 'PT_DIR', WP_PLUGIN_DIR . '/presstest' );
+/** Plugin URL */
+define( 'PT_URL', plugins_url( 'presstest' ) );
+/**#@-*/
 
 /**
  * Defines the constants and initializes the code.
@@ -31,13 +41,6 @@ class PT_Core {
 
 	/** Initialize the plugin. */
 	private function __construct() {
-		/**#@+ Define universal constants. */
-		/** Plugin Directory */
-		define( 'PT_DIR', WP_PLUGIN_DIR . '/presstest' );
-		/** Plugin URL */
-		define( 'PT_URL', plugins_url( 'presstest' ) );
-		/**#@-*/
-
 		/** Add the admin menu page */
 		add_action( ( is_multisite() )? 'network_admin_menu' : 'admin_menu', Array( $this, 'admin_page_menu' ) );
 	}
