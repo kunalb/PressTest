@@ -6,32 +6,20 @@
  * @package PressTest
  */
 
-/**#@+ 
- * Define universal constants. 
- */
-/** Plugin Directory */
-define( 'PT_DIR', WP_PLUGIN_DIR . '/presstest' );
-/** Plugin URL */
-define( 'PT_URL', plugins_url( 'presstest' ) );
-/**#@-*/
-
 /**
- * Defines the constants and initializes the code.
- *
- * Attaches functions to all the required actions; singleton
- * that can be reused as required.
+ * Attaches functions to all the required actions; singleton.
  */
-class PT_Core {
+class PT_Core extends KB_Singleton {
 	/**
 	 * Singleton instance of class.
 	 */
-	static $instance;
+	protected static $instance;
 
 	/**
 	 * Initialize the plugin for the first time; otherwise do nothing.
 	 * @see __construct
 	 */
-	public function init() {
+	public static function singleton() {
 		if( !isset( self::$instance ) ) { 
 			$c = __CLASS__;
 			self::$instance = new $c;
@@ -40,17 +28,23 @@ class PT_Core {
 	}
 
 	/** Initialize the plugin. */
-	private function __construct() {
+	protected function __construct() {
 		/** Add the admin menu page */
 		add_action( ( is_multisite() )? 'network_admin_menu' : 'admin_menu', Array( $this, 'admin_page_menu' ) );
+
+		/** Initate the admin page if it's presstest's page */
+		if( 'presstest' == $_GET['page'] ) {
+			require "pt-admin.php";
+			PT_Admin::singleton();
+		}
 	}
 
-	/** Register the administrator menu page. */
-	public function admin_page_menu() {
-		add_menu_page( 'PressTest', 'PressTest', 'administrator', 'presstest', Array( $this, 'admin_page_contents' ) );
+	/** 
+	 * Register the administrator menu page and intiate the Admin page class. 
+	 * @see PT_Admin
+	 */
+	public static function admin_page_menu() {
+		add_menu_page( 'PressTest', 'PressTest', 'administrator', 'presstest', Array( 'PT_Admin', 'render' ) );
 	}
 
-	/** Generate the general administrator page contents. */
-	public function admin_page_contents() {
-	}
 }

@@ -34,8 +34,30 @@
  * @package PressTest
  */
 
+/**#@+ 
+ * Define universal constants. 
+ */
+/** Plugin Directory */
+define( 'PT_DIR', WP_PLUGIN_DIR . '/presstest' );
+/** Plugin URL */
+define( 'PT_URL', plugins_url( 'presstest' ) );
+/** Plugin Homepage */
+define( 'PT_HOME', 'http://github.com/kunalb/presstest/' );
+/**#@-*/
+
+/**#@+
+ * Generic includes.
+ */
+/** The singleton abstract class */
+require "includes/kb_singleton.php";
+/**#@-*/
+
+/**#@+
+ * PressTest includes.
+ */
 /** The core plugin class */
 require "pt-core.php";
+/**#@-*/
 
 /** Start your engines! */
-PT_Core::init();
+PT_Core::singleton();
