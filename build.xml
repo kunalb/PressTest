@@ -47,7 +47,7 @@
 		programpath="/usr/bin/phpdoc"
 		destdir="docs"
 		sourcecode="false"
-		output="HTML:Smarty:HandS" 
+		output="HTML:frames:earthli" 
 		quiet="true"
 		sourcepath=".">
 	</phpdocext>
