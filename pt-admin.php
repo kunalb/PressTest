@@ -32,6 +32,10 @@ class PT_Admin extends KB_Singleton {
 		<div class = 'wrap'>
 		        <div id = "icon-tools" class = "icon32" ><br></div>
 			<h2>PressTest</h2>
+
+			<div id = 'available-tests'>
+				<h3>Available tests</h3>
+			</div>
 		</div>
 ADMIN_PAGE;
 	}

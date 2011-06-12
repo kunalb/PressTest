@@ -33,7 +33,7 @@ class PT_Core extends KB_Singleton {
 		add_action( ( is_multisite() )? 'network_admin_menu' : 'admin_menu', Array( $this, 'admin_page_menu' ) );
 
 		/** Initate the admin page if it's presstest's page */
-		if( 'presstest' == $_GET['page'] ) {
+		if( PT_SLUG == $_GET['page'] ) {
 			require "pt-admin.php";
 			PT_Admin::singleton();
 		}
@@ -44,7 +44,7 @@ class PT_Core extends KB_Singleton {
 	 * @see PT_Admin
 	 */
 	public static function admin_page_menu() {
-		add_menu_page( 'PressTest', 'PressTest', 'administrator', 'presstest', Array( 'PT_Admin', 'render' ) );
+		add_menu_page( 'PressTest', 'PressTest', 'administrator', PT_SLUG, Array( 'PT_Admin', 'render' ) );
 	}
 
 }
