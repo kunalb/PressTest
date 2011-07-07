@@ -80,7 +80,10 @@
 			);
 	}
 
-	/** Wrapper for conditionally loading resources */
+	/** 
+	 * Wrapper for conditionally loading resources 
+	 * @param string hook_suffix The current hook suffix for checking before loading.
+	 */
 	public function init( $hook_suffix ) {
 		if( $this->hook_suffix == $hook_suffix ) {
 			$this->load_resources();
