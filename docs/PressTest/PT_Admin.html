@@ -19,19 +19,18 @@
 	<div class="info-box-title">Description</div>
 	<div class="nav-bar">
 					<span class="disabled">Description</span> |
-													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
 						
 					</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Renders the contents of the admin pages on initiation, singleton</p>
+<p class="short-description">The Admin page functionality for PressTest</p>
 		<p class="notes">
 			Located in <a class="field" href="_pt-admin.php.html">/pt-admin.php</a> (line <span class="field">11</span>)
 		</p>
 		
 				
-		<pre><a href="../KB_Includes/KB_Singleton.html">KB_Singleton</a>
+		<pre><a href="../KB_Includes/KB_Admin.html">KB_Admin</a>
    |
    --PT_Admin</pre>
 	
@@ -40,56 +39,27 @@
 
 
 
-	<a name="sec-var-summary"></a>
-	<div class="info-box">
-		<div class="info-box-title">Variable Summary</span></div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
-							| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-								</div>
-		<div class="info-box-body">
-			<div class="var-summary">
-												<div class="var-title">
-					<img src="../media/images/StaticVariable.png" alt=" " />
-					static <span class="var-type">mixed</span>
-					<a href="#$instance" title="details" class="var-name">$instance</a>
-				</div>
-																							</div>
-		</div>
-	</div>
 
 	<a name="sec-method-summary"></a>
 	<div class="info-box">
 		<div class="info-box-title">Method Summary</span></div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-				 
-				|
-						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
 																				<div class="method-definition">
 					<img src="../media/images/StaticMethod.png" alt=" "/>
 											static <span class="method-result">void</span>
+										<a href="#display" title="details" class="method-name">display</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
 										<a href="#help" title="details" class="method-name">help</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$help</span>)
-									</div>
-																<div class="method-definition">
-					<img src="../media/images/StaticMethod.png" alt=" "/>
-											static <span class="method-result">void</span>
-										<a href="#render" title="details" class="method-name">render</a>
-										()
-									</div>
-																<div class="method-definition">
-					<img src="../media/images/StaticMethod.png" alt=" "/>
-											static <span class="method-result">void</span>
-										<a href="#singleton" title="details" class="method-name">singleton</a>
-										()
 									</div>
 																				<div class="method-definition">
 					<img src="../media/images/Constructor.png" alt=" "/>
@@ -97,74 +67,52 @@
 										<a href="#__construct" title="details" class="method-name">__construct</a>
 										()
 									</div>
-																																			</div>
+																											</div>
 		</div>
 	</div>		
 
-	<a name="sec-vars"></a>
-	<div class="info-box">
-		<div class="info-box-title">Variables</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
-						
-			
-										| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-			<a name="var$instance" id="$instance"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<img src="../media/images/Variable.png" />
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$instance</span>
-						(line <span class="line-number">13</span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">The singleton instance</p>
-	<ul class="tags">
-				<li><span class="field">access:</span> protected</li>
-			</ul>
-	
-	
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../KB_Includes/KB_Singleton.html#var$instance">KB_Singleton::$instance</a></dt>
-						<dd>Storing the instance</dd>
-					</dl>
-		
-		
-
-</div>
-
-						
-		</div>
-	</div>
 	
 	<a name="sec-methods"></a>
 	<div class="info-box">
 		<div class="info-box-title">Methods</div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-														<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
 						
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
+<a name="methoddisplay" id="display"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static display</span> (line <span class="line-number">19</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Renders the admin page.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			display
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 <a name="methodhelp" id="help"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static help</span> (line <span class="line-number">40</span>)
+		<span class="method-title">static help</span> (line <span class="line-number">34</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -189,74 +137,18 @@
 		
 			
 	</div>
-<a name="methodrender" id="render"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static render</span> (line <span class="line-number">30</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Renders the admin page.</p>
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			render
-		</span>
-				()
-			</div>
-	
-		
-			
-	</div>
-<a name="methodsingleton" id="singleton"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static singleton</span> (line <span class="line-number">16</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Initiates the plugin or returns the existing instance.</p>
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			singleton
-		</span>
-				()
-			</div>
-	
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../KB_Includes/KB_Singleton.html#methodsingleton">KB_Singleton::singleton()</a></dt>
-						<dd>The singleton function must control access</dd>
-					</dl>
-			
-	</div>
 <a name="method__construct" id="__construct"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">25</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">14</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Does the actual plugin initiation-adding hooks for help, stylesheets, etc.</p>
+<p class="short-description">Call the parent's constructor, which works as a single check to load scripts and styles, if required.</p>
 	<ul class="tags">
-				<li><span class="field">access:</span> protected</li>
+				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
@@ -271,20 +163,20 @@
 			<hr class="separator" />
 		<div class="notes">Redefinition of:</div>
 		<dl>
-			<dt><a href="../KB_Includes/KB_Singleton.html#method__construct">KB_Singleton::__construct()</a></dt>
-						<dd>The constructor must be hidden.</dd>
+			<dt><a href="../KB_Includes/KB_Admin.html#method__construct">KB_Admin::__construct()</a></dt>
+						<dd>The constructor, conditionally initializes the requirements for the plugin.</dd>
 					</dl>
 			
 	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
 									<!-- =========== Summary =========== -->
-					<p>Inherited From <span class="classname"><a href="../KB_Includes/KB_Singleton.html">KB_Singleton</a></span></p>
+					<p>Inherited From <span class="classname"><a href="../KB_Includes/KB_Admin.html">KB_Admin</a></span></p>
 					<blockquote>
 													<img src="../media/images/Constructor.png" alt=" "/>
-							<span class="method-name"><a href="../KB_Includes/KB_Singleton.html#method__construct">KB_Singleton::__construct()</a></span><br>
-													<img src="../media/images/AbstractMethod.png" alt=" "/>
-							<span class="method-name"><a href="../KB_Includes/KB_Singleton.html#methodsingleton">KB_Singleton::singleton()</a></span><br>
+							<span class="method-name"><a href="../KB_Includes/KB_Admin.html#method__construct">KB_Admin::__construct()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../KB_Includes/KB_Admin.html#methodrender">KB_Admin::render()</a></span><br>
 											</blockquote>
 										
 		</div>
@@ -292,7 +184,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Sun, 12 Jun 2011 17:40:44 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 08 Jul 2011 01:51:48 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
