@@ -10,28 +10,30 @@
  */
 class PT_Admin extends KB_Admin {
 
-	/** Call the parent's constructor, which works as a single check to load scripts and styles, if required. */
+	/** Call the parent's constructor with appropriate arguments. */
 	public function __construct() {
-		parent::__construct( PT_SLUG );
+		parent::__construct( Array(
+			'slug' => PT_SLUG,
+			'page-title' => __( 'PressTest', 'presstest' ),
+			'menu-title' => __( 'PressTest', 'presstest' ),
+			'capability' => 'read'
+		) );
+	}
+
+	public function customize_screen() {
+		add_screen_option( 'per_page', Array( 'label' => 'Rows per page' ) );
 	}
 
 	/** Renders the admin page. */
-	public static function display() {
-		echo <<<ADMIN_PAGE
-		<div class = 'wrap'>
-		        <div id = "icon-tools" class = "icon32" ><br></div>
+	public function body() {
+		return <<<BODY
+		        <div id = "icon-tools" class = "icon32"><br></div>
 			<h2>PressTest</h2>
-
-			<div id = 'available-tests'>
-				<h3>Available tests</h3>
-				$available_tests_table
-			</div>
-		</div>
-ADMIN_PAGE;
+BODY;
 	}
 
 	/** Modify the help text for this plugin */
-	public static function help( $help ) {
+	public function help() {
 		$home = PT_HOME;
 		return <<<HELPTEXT
 			<p>PressTest is a testing framework that lets plugin authors write and run unit tests simply and easily in an automated manner. The code, phpdocs et al can be found at <a href = '{$home}'>{$home}</a>.</p>

@@ -35,20 +35,8 @@ class PT_Core extends KB_Singleton {
 		/** Set up empty internals */
 		$this->internals = Array();
 
-		/** Add the admin menu page */
-		add_action( ( is_multisite() )? 'network_admin_menu' : 'admin_menu', Array( $this, 'admin_page_menu' ) );
-
 		/** Initialize the admin page class */
 		$this->internals['PT_Admin'] = new PT_Admin();
-
-	}
-
-	/** 
-	 * Register the administrator menu page and intiate the Admin page class. 
-	 * @see PT_Admin
-	 */
-	public static function admin_page_menu() {
-		add_menu_page( 'PressTest', 'PressTest', 'administrator', PT_SLUG, Array( 'PT_Admin', 'render' ) );
 	}
 
 }
