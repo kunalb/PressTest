@@ -15,6 +15,9 @@ class PT_Core extends KB_Singleton {
 	 */
 	protected static $instance;
 
+	/** Internal classes, stored if required only. */
+	private static $internals;
+
 	/**
 	 * Initialize the plugin for the first time; otherwise do nothing.
 	 * @see __construct
@@ -29,14 +32,15 @@ class PT_Core extends KB_Singleton {
 
 	/** Initialize the plugin. */
 	protected function __construct() {
+		/** Set up empty internals */
+		$this->internals = Array();
+
 		/** Add the admin menu page */
 		add_action( ( is_multisite() )? 'network_admin_menu' : 'admin_menu', Array( $this, 'admin_page_menu' ) );
 
-		/** Initate the admin page if it's presstest's page */
-		if( PT_SLUG == $_GET['page'] ) {
-			require "pt-admin.php";
-			PT_Admin::singleton();
-		}
+		/** Initialize the admin page class */
+		$this->internals['PT_Admin'] = new PT_Admin();
+
 	}
 
 	/** 

@@ -6,28 +6,17 @@
  */
 
 /**
- * Renders the contents of the admin pages on initiation, singleton
+ * The Admin page functionality for PressTest
  */
-class PT_Admin extends KB_Singleton {
-	/** The singleton instance */
-	protected static $instance;
+class PT_Admin extends KB_Admin {
 
-	/** Initiates the plugin or returns the existing instance. */
-	public static function singleton() {
-		if( !isset( self::$instance ) ) { 
-			$c = __CLASS__;
-			self::$instance = new $c;
-		}
-		return self::$instance;
-	}
-
-	/** Does the actual plugin initiation-adding hooks for help, stylesheets, etc. */
-	protected function __construct() {
-		add_filter( 'contextual_help', Array( $this, 'help' ) );
+	/** Call the parent's constructor, which works as a single check to load scripts and styles, if required. */
+	public function __construct() {
+		parent::__construct( PT_SLUG );
 	}
 
 	/** Renders the admin page. */
-	public static function render() {
+	public static function display() {
 		echo <<<ADMIN_PAGE
 		<div class = 'wrap'>
 		        <div id = "icon-tools" class = "icon32" ><br></div>
@@ -35,6 +24,7 @@ class PT_Admin extends KB_Singleton {
 
 			<div id = 'available-tests'>
 				<h3>Available tests</h3>
+				$available_tests_table
 			</div>
 		</div>
 ADMIN_PAGE;
