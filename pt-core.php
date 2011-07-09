@@ -36,7 +36,7 @@ class PT_Core extends KB_Singleton {
 		$this->internals = Array();
 
 		/** Initialize the admin page class */
-		$this->internals['PT_Admin'] = new PT_Admin();
+		$this->internals['PT_Admin'] = PT_Admin::singleton();
 	}
 
 }

@@ -27,10 +27,10 @@
 	 * plugin pages.
 	 *
 	 * @param Array[string]string args The Admin Page structure for the menu; accepts an Array with the options
-	 * - 'parent'     => Parent Menu (default admin.php)
+	 * - 'parent'     => Parent Menu (default admin.php, if menu-title is specified)
 	 * - 'slug'       => Slug for link (required)
 	 * - 'page-title' => Page title (required)
-	 * - 'menu-title' => Menu title (required)
+	 * - 'menu-title' => Menu title (optional, if not provided no menu entry will be created)
 	 * - 'capability' => Who can access this page (default 'read')
 	 * - 'icon-url'   => Icon, only for top level pages (default none)
 	 * - 'position'   => Position in the Menu, only for top level pages (default 100)

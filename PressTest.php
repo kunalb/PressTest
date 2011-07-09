@@ -50,6 +50,8 @@ require "includes/kb-admin.php";
 require "pt-constants.php";
 /** The core plugin class */
 require "pt-core.php";
+/** The Plugin Test handler */
+require "pt-tests.php";
 /** The admin page class */
 require "pt-admin.php";
 /**#@-*/
