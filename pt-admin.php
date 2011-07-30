@@ -66,7 +66,7 @@ class PT_Admin extends KB_Singleton {
 			<hr>
 			<h3>About PressTest</h3>
 			<p>PressTest is a testing framework that lets plugin authors write and run unit tests simply and easily in an automated manner. The code, phpdocs et al can be found at <a href = '{$home}'>{$home}</a>.</p>
-			<p>This plugin allows you to run tests via PHPUnit, Selenium and qUnit. Tests are picked up directly from all plugins by looking for <code>/presstests</code> in every plugin's folder (active or inactive). Details about available tests are shown in the installed plugins table itself.</p>
+			<p>This plugin allows you to run tests via PHPUnit, Selenium and qUnit. Tests are picked up directly from all plugins by looking for <code>/ptests</code> in every plugin's folder (active or inactive). Details about available tests are shown in the installed plugins table itself.</p>
 			
 HELPTEXT;
 		$help[ PT_PLUGINS_SCREEN ] .= $helpText;
