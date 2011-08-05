@@ -64,6 +64,9 @@ class PT_Tests {
 			}
 		}
 
+		if( count($this->tests['js']) == 0 && count($this->tests['php']) == 0 )
+			return false;
+
 		return true;
 	}
 
@@ -72,7 +75,16 @@ class PT_Tests {
 	 */
 	public function summary() {
 		if( $this->testable() ) {
-			printf( __( "phpUnit (%d), qUnit (%d)." ), count($this->tests['php']), count($this->tests['js']));
+			$phpTests = count($this->tests['php']);
+			$jsTests = count($this->tests['js']);
+
+			if( $phpTests > 0 && $jsTests > 0 )
+				printf( __( "phpUnit (%d), qUnit (%d)." ), $phpTests, $jsTests );
+			else if( $phpTests > 0 )
+				printf( __( "phpUnit (%d)." ), $phpTests );	
+			else if( $jsTests > 0 )	
+				printf( __( "qUnit (%d)." ), $jsTests );	
+			else throw new Exception("Should not be reached.");	
 		} else echo __( "<p>No tests.</p>", 'presstest' );
 	}
 
