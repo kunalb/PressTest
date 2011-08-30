@@ -34,27 +34,5 @@
  * @package PressTest
  */
 
-/**#@+
- * Generic includes.
- */
-/** The singleton abstract class */
-require "includes/kb-singleton.php";
-/** The Admin page base class */
-require "includes/kb-admin.php";
-/**#@-*/
-
-/**#@+
- * PressTest includes.
- */
-/** Constant definitions */ 
-require "pt-constants.php";
 /** The core plugin class */
-require "pt-core.php";
-/** The Plugin Test handler */
-require "pt-tests.php";
-/** The admin page class */
-require "pt-admin.php";
-/**#@-*/
-
-/** Start your engines! */
-PT_Core::singleton();
+require "core.php";

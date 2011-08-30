@@ -8,26 +8,10 @@
 /**
  * The Admin page functionality for PressTest
  */
-class PT_Admin extends KB_Singleton {
-	/**
-	 * Singleton instance of class.
-	 */
-	protected static $instance;
-
-	/**
-	 * Initialize the plugin for the first time; otherwise do nothing.
-	 * @see __construct
-	 */
-	public static function singleton() {
-		if( !isset( self::$instance ) ) { 
-			$c = __CLASS__;
-			self::$instance = new $c;
-		}
-		return self::$instance;
-	}
+class PT_Admin {
 
 	/** Set up hooks for modifying the plugin screen */
-	protected function __construct() {
+	public function __construct() {
 		add_action( 'admin_enqueue_scripts', Array( $this, 'init' ) );
 	}
 
