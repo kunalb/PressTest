@@ -1,3 +1,30 @@
 [submodule "includes"]
 	path = includes
 	url = git@github.com:kunalb/KB-Includes.git
+[submodule "phpunit/phpunit"]
+	path = phpunit/phpunit
+	url = git://github.com/sebastianbergmann/phpunit.git
+[submodule "phpunit/dbunit"]
+	path = phpunit/dbunit
+	url = git://github.com/sebastianbergmann/dbunit.git
+[submodule "phpunit/php-file-iterator"]
+	path = phpunit/php-file-iterator
+	url = git://github.com/sebastianbergmann/php-file-iterator.git
+[submodule "phpunit/php-text-template"]
+	path = phpunit/php-text-template
+	url = git://github.com/sebastianbergmann/php-text-template.git
+[submodule "phpunit/php-code-coverage"]
+	path = phpunit/php-code-coverage
+	url = git://github.com/sebastianbergmann/php-code-coverage.git
+[submodule "phpunit/php-token-stream"]
+	path = phpunit/php-token-stream
+	url = git://github.com/sebastianbergmann/php-token-stream.git
+[submodule "phpunit/php-timer"]
+	path = phpunit/php-timer
+	url = git://github.com/sebastianbergmann/php-timer.git
+[submodule "phpunit/phpunit-mock-objects"]
+	path = phpunit/phpunit-mock-objects
+	url = git://github.com/sebastianbergmann/phpunit-mock-objects.git
+[submodule "phpunit/phpunit-selenium"]
+	path = phpunit/phpunit-selenium
+	url = git://github.com/sebastianbergmann/phpunit-selenium.git
