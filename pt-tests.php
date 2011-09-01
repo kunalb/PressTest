@@ -6,7 +6,7 @@
  */
 
 /**
- * Maintains a cached list of tests available for plugins.
+ * Tests available for hplugins.
  */
 class PT_Tests {
 	/** Base file for plugin */

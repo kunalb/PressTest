@@ -20,6 +20,8 @@ require "includes/kb-admin.php";
 require "constants.php";
 /** The Plugin Test handler */
 require "pt-tests.php";
+/** The plugin page modifier class */
+require "pt-plugin.php";
 /** The admin page class */
 require "pt-admin.php";
 /**#@-*/

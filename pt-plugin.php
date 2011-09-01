@@ -54,12 +54,14 @@ class PT_Plugin {
 
 	/** Modify the help text for this plugin */
 	public function help( $help, $screen ) {
-		$home = PT_HOME;
+		$home = PT_HOME; $images = Array( PT_IMAGES_URL . '/plugins-help.png' ); 
 		$helpText = <<<HELPTEXT
 			<hr>
 			<h3>About PressTest</h3>
 			<p>PressTest is a testing framework that lets plugin authors write and run unit tests simply and easily in an automated manner. The code, phpdocs et al can be found at <a href = '{$home}'>{$home}</a>.</p>
-			<p>This plugin allows you to run tests via PHPUnit, Selenium and qUnit. Tests are picked up directly from all plugins by looking for <code>/ptests</code> in every plugin's folder (active or inactive). Details about available tests are shown in the installed plugins table itself.</p>
+			<p>This plugin allows you to run tests via PHPUnit, Selenium and qUnit. Tests are picked up directly from all plugins by looking for <code>/ptests</code> in every plugin's base folder (active or inactive). Available tests appear as links below the plugin description.</p>
+			<img src = '{$images[0]}' style = 'display: block; margin: 0 auto; padding-top: 1px; background-color: #fff; border: solid 1px #dfdfdf' />
+			<p style = 'display: block; text-align: center; font-style: italic;'>Use the links indicated to run the tests for the plugins.</p>
 			
 HELPTEXT;
 		$help[ PT_PLUGINS_SCREEN ] .= $helpText;
