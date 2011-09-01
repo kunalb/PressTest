@@ -8,7 +8,7 @@
 /**
  * The Admin page functionality for PressTest
  */
-class PT_Admin {
+class PT_Plugin {
 
 	/** Set up hooks for modifying the plugin screen */
 	public function __construct() {
@@ -20,8 +20,8 @@ class PT_Admin {
 		if( (get_current_screen()->id) == PT_PLUGINS_SCREEN) {
 			add_action( 'admin_enqueue_scripts', Array( $this, 'load_resources' ), 10, 1 );
 			add_action( 'contextual_help_list', Array( $this, 'help' ), 10, 2 );
-			add_filter( 'manage_' . PT_PLUGINS_SCREEN . '_columns', Array( $this, 'modify_columns' ) );
-			add_action( 'manage_plugins_custom_column', Array( $this, 'tests_row' ), 10, 3 );
+			add_filter( 'bulk_actions-plugins', Array( $this, 'bulk_actions' ) );
+			add_filter( 'plugin_row_meta', Array( $this, 'row_meta' ), 10, 4 );
 		}
 	}
 
@@ -29,18 +29,27 @@ class PT_Admin {
 	public function load_resources( $hook ) {
 	}
 
-	/** Modify the list of columns in the plugins table */
-	public function modify_columns( $columns ) {
-		$columns[PT_COL] = __( 'Available Tests', 'presstest' );
-		return $columns;
+	/** Modify the meta actions available for the plugin */
+	public function row_meta( $meta, $plugin_file, $plugin_data, $status ) {
+		$tests = new PT_Tests( $plugin_file );
+		
+		$options = Array( 'phpUnit', 'qUnit' );
+		 
+		foreach( $options as $option ) { 
+			if( $tests->available( $option ) ) {
+				$curLength = count( $meta );
+				$meta[ $curLength ] = $meta[ count( $meta ) - 1 ];
+				$meta[ $curLength - 1 ] = $tests->links( $option );
+			}
+		}
+
+		return $meta;
 	}
 
-	/** Return details about the given plugin */
-	public function tests_row( $column, $plugin_file, $plugin_data ) {
-		if( $column == PT_COL ) {
-			$plugin_tests = new PT_Tests( $plugin_file );
-			return $plugin_tests->summary();
-		}
+	/** Change the bulk actions behaviour */
+	public function bulk_actions( $actions ) {
+		kb_debug( $actions );
+		return $actions;
 	}
 
 	/** Modify the help text for this plugin */

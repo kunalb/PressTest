@@ -89,6 +89,34 @@ class PT_Tests {
 	}
 
 	/**
+	 * Whether this plugin has any Tests.
+	 */
+	public function available( $type ) {
+		$count = 0;
+		if( $type == 'phpUnit' )  
+			$count = count( $this->tests['php'] );
+		else if( $type == 'qUnit' )
+			$count = count( $this->tests['js'] );
+		else    $count = count( $this->tests['php'] ) + count( $this->tests['js'] );	
+		return $count > 0;		
+	}
+
+	/**
+	 * The link to running a specific set of tests from this plugin.
+	 */
+	public function links( $type ) {
+		$link = "";
+
+		if( $type == 'phpUnit' )  
+			$link = '<a href = "' . get_admin_url() . '">Run phpUnit tests</a>';
+		else if( $type == 'qUnit' )
+			$link = '<a href = "' . get_admin_url() . '">Run qUnit tests</a>';
+		else throw new Exception( 'Invalid type passed' );	
+
+		return $link;
+	}
+
+	/**
 	 * Whether this plugin has any tests at all.
 	 */
 	public function testable() {

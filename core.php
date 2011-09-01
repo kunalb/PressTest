@@ -9,8 +9,6 @@
 /**#@+
  * Generic includes.
  */
-/** The singleton abstract class */
-require "includes/kb-singleton.php";
 /** The Admin page base class */
 require "includes/kb-admin.php";
 /**#@-*/
@@ -37,6 +35,9 @@ class PressTest {
 	public function __construct() {
 		/** Set up empty internals */
 		$this->internals = Array();
+
+		/** Initialize the admin page class */
+		$this->internals['PT_Plugin'] = new PT_Plugin();
 
 		/** Initialize the admin page class */
 		$this->internals['PT_Admin'] = new PT_Admin();
