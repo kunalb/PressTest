@@ -17,6 +17,9 @@ define( 'PT_HOME', 'http://github.com/kunalb/presstest/' );
 /** PressTest Admin Slug */
 define( 'PT_SLUG', 'presstest' );
 
+/** PressTest Admin Page URL */
+define( 'PT_ADMIN_URL', get_admin_url() .  PT_SLUG );
+
 /** PressTest Screen modified */
 define( 'PT_PLUGINS_SCREEN', 'plugins');
 

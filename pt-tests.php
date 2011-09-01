@@ -71,24 +71,6 @@ class PT_Tests {
 	}
 
 	/**
-	 * Returns a pretty printable summary of available tests.
-	 */
-	public function summary() {
-		if( $this->testable() ) {
-			$phpTests = count($this->tests['php']);
-			$jsTests = count($this->tests['js']);
-
-			if( $phpTests > 0 && $jsTests > 0 )
-				printf( __( "phpUnit (%d), qUnit (%d)." ), $phpTests, $jsTests );
-			else if( $phpTests > 0 )
-				printf( __( "phpUnit (%d)." ), $phpTests );	
-			else if( $jsTests > 0 )	
-				printf( __( "qUnit (%d)." ), $jsTests );	
-			else throw new Exception("Should not be reached.");	
-		} else echo __( "<p>No tests.</p>", 'presstest' );
-	}
-
-	/**
 	 * Whether this plugin has any Tests.
 	 */
 	public function available( $type ) {
@@ -105,12 +87,12 @@ class PT_Tests {
 	 * The link to running a specific set of tests from this plugin.
 	 */
 	public function links( $type ) {
-		$link = "";
+		$link = ""; $link_data = rawurlencode( $this->plugin_file );
 
 		if( $type == 'phpUnit' )  
-			$link = '<a href = "' . get_admin_url() . '">Run phpUnit tests</a>';
+			$link = '<a href = "' . PT_ADMIN_URL . '?pt_type=phpunit&pt_plugin=' . $link_data . '">Run phpUnit tests</a>';
 		else if( $type == 'qUnit' )
-			$link = '<a href = "' . get_admin_url() . '">Run qUnit tests</a>';
+			$link = '<a href = "' . PT_ADMIN_URL . '?pt_type=phpunit&pt_plugin=' . $link_data . '">Run qUnit tests</a>';
 		else throw new Exception( 'Invalid type passed' );	
 
 		return $link;
