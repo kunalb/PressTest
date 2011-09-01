@@ -10,8 +10,15 @@
  */
 class PT_Admin extends KB_Admin {
 
-	/** Set up hooks for modifying the plugin screen */
+	/**#@+
+	 * @see KB_Admin
+	 */
+	protected $slug = PT_SLUG;
+	protected $page_title = 'PressTest';
+	/**#@-*/
+
 	public function __construct() {
+		parent::__construct();
 	}
 
 }
