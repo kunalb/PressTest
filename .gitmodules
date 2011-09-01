@@ -28,3 +28,6 @@
 [submodule "phpunit/phpunit-selenium"]
 	path = phpunit/phpunit-selenium
 	url = git://github.com/sebastianbergmann/phpunit-selenium.git
+[submodule "qunit"]
+	path = qunit
+	url = https://github.com/jquery/qunit.git
