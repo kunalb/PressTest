@@ -8,6 +8,9 @@
 /** Plugin Directory */
 define( 'PT_DIR', WP_PLUGIN_DIR . '/PressTest' );
 
+/** phpUnit Directory */
+define( 'PT_PHPUNIT_DIR', PT_DIR . '/phpunit' );
+
 /** Plugin URL */
 define( 'PT_URL', plugins_url( 'PressTest' ) );
 
@@ -27,7 +30,7 @@ define( 'PT_HOME', 'http://github.com/kunalb/PressTest/' );
 define( 'PT_SLUG', 'presstest' );
 
 /** PressTest Admin Page URL */
-define( 'PT_ADMIN_URL', get_admin_url() .  PT_SLUG );
+define( 'PT_ADMIN_URL', get_admin_url() . 'admin.php?page=' .  PT_SLUG );
 
 /** PressTest Screen modified */
 define( 'PT_PLUGINS_SCREEN', 'plugins');

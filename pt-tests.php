@@ -85,14 +85,15 @@ class PT_Tests {
 
 	/**
 	 * The link to running a specific set of tests from this plugin.
+	 * @param String Test Type
 	 */
 	public function links( $type ) {
 		$link = ""; $link_data = rawurlencode( $this->plugin_file );
 
 		if( $type == 'phpUnit' )  
-			$link = '<a href = "' . PT_ADMIN_URL . '?pt_type=phpunit&pt_plugin=' . $link_data . '">Run phpUnit tests</a>';
+			$link = '<a href = "' . PT_ADMIN_URL . '&pt_type=phpUnit&pt_plugin=' . $link_data . '">phpUnit tests</a>';
 		else if( $type == 'qUnit' )
-			$link = '<a href = "' . PT_ADMIN_URL . '?pt_type=phpunit&pt_plugin=' . $link_data . '">Run qUnit tests</a>';
+			$link = '<a href = "' . PT_ADMIN_URL . '&pt_type=qUnit&pt_plugin=' . $link_data . '">qUnit tests</a>';
 		else throw new Exception( 'Invalid type passed' );	
 
 		return $link;
@@ -104,4 +105,35 @@ class PT_Tests {
 	public function testable() {
 		return $this->has_tests;
 	}
+
+	/**
+	 * Routes function based on test type.
+	 * 
+	 * @param String Test Type
+	 * @see run_phpUnit
+	 * @see run_qUnit
+	 * @return String Test Results
+	 */	
+	public function run_tests( $type ) {
+		if( is_callable( Array( $this, "run_$type" ) ) )
+			return call_user_func( Array( $this, "run_$type" ) );
+		else 
+			throw new Exception( "Invalid test type." );	
+	}
+
+	/**
+	 * Run phpUnit tests if available.
+	 * @return String Test Results
+	 */
+	private function run_phpUnit() {
+		/**
+		 * Slightly hack-ish way to handle phpUnit from within PHP  
+		 * without having to mess with internals.
+		 */
+		$_SERVER[ 'argv' ] = Array( 'phpUnit.php', $this->test_folder . '/sampleTest.php' ); 
+		
+		require_once PT_PHPUNIT_DIR . '/phpunit/PHPUnit/Autoload.php';
+		define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
+		PHPUnit_TextUI_Command::main( false );
+	} 
 }
