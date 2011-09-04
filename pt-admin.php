@@ -31,10 +31,17 @@ class PT_Admin extends KB_Admin {
 	public function __construct() {
 		parent::__construct();
 
-		$this->tests = new PT_Tests( $_GET[ 'pt_plugin' ] );
-		$this->test_type = $_GET[ 'pt_type' ];
 	}
 	/**#@-*/
+
+	/**
+	 * Conditionally initialize based on page being called.
+	 */
+	public function load_resources() {
+		$this->tests = new PT_Tests( $_GET[ 'pt_plugin' ] );
+		$this->test_type = $_GET[ 'pt_type' ];
+		$this->tests->setup_tests( $this->test_type );
+	}
 
 	/**
 	 * The content of the page. Loads and runs the available

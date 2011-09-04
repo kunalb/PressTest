@@ -107,13 +107,24 @@ class PT_Tests {
 	}
 
 	/**
-	 * Routes function based on test type.
+	 * Routes function to set up resources based on test type.
 	 * 
 	 * @param String Test Type
 	 * @see run_phpUnit
 	 * @see run_qUnit
 	 * @return String Test Results
 	 */	
+	public function setup_tests( $type ) {
+		if( is_callable( Array( $this, "setup_$type" ) ) )
+			return call_user_func( Array( $this, "setup_$type" ) );
+		else 
+			throw new Exception( "Invalid test type." );	
+	}
+
+	/** 
+	 * Routes function to set up actual markup to display the test.
+	 * @param String Test Type
+	 */
 	public function run_tests( $type ) {
 		if( is_callable( Array( $this, "run_$type" ) ) )
 			return call_user_func( Array( $this, "run_$type" ) );
@@ -122,18 +133,33 @@ class PT_Tests {
 	}
 
 	/**
-	 * Run phpUnit tests if available.
-	 * @return String Test Results
+	 * Set up resources for running phpUnit tests.
 	 */
-	private function run_phpUnit() {
+	private function setup_phpUnit() {
 		/**
 		 * Slightly hack-ish way to handle phpUnit from within PHP  
 		 * without having to mess with internals.
 		 */
 		$_SERVER[ 'argv' ] = Array( 'phpUnit.php', $this->test_folder . '/sampleTest.php' ); 
-		
-		require_once PT_PHPUNIT_DIR . '/phpunit/PHPUnit/Autoload.php';
-		define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
-		PHPUnit_TextUI_Command::main( false );
 	} 
+
+	/**
+	 * Set up resources for running qUnit tests.
+	 */
+	private function setup_qUnit() {
+	}
+
+	/**
+	 * Markup required for running and showing phpUnit test results.
+	 */
+	private function run_phpUnit() {
+	}
+
+	/*
+	 * Markup required for displaying qUnit test results.
+	 */
+	private function run_qUnit() {
+	}
+
+	 
 }
