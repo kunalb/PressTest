@@ -140,7 +140,6 @@ class PT_Tests {
 		 * Slightly hack-ish way to handle phpUnit from within PHP  
 		 * without having to mess with internals.
 		 */
-		$_SERVER[ 'argv' ] = Array( 'phpUnit.php', $this->test_folder . '/sampleTest.php' ); 
 	} 
 
 	/**
@@ -153,6 +152,8 @@ class PT_Tests {
 	 * Markup required for running and showing phpUnit test results.
 	 */
 	private function run_phpUnit() {
+		$iframe = PT_URL . "/pt-phpUnit.php?pt-tests=" . rawurlencode( WP_PLUGIN_DIR . '/' . $this->plugin_folder . 'ptests'  );
+		return "<iframe width = '100%' src = '$iframe'></iframe>";
 	}
 
 	/*
@@ -161,5 +162,4 @@ class PT_Tests {
 	private function run_qUnit() {
 	}
 
-	 
 }

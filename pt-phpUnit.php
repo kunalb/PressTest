@@ -12,4 +12,11 @@
  * @version 0.1
  */
 
- 
+require_once 'PHPUnit/Autoload.php';
+
+define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
+$_SERVER[ 'argv' ] = Array( 'phpUnit.php', rawurldecode( $_GET[ 'pt-tests' ] ) ); 
+
+PHPUnit_TextUI_Command::main();
+
+
