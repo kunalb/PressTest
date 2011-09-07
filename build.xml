@@ -12,14 +12,16 @@
 		sourcecode="false"
 		output="HTML:frames:earthli" 
 		quiet="true"
-		sourcepath=".">
+		sourcepath="."
+		ignore="phpunit/,qunit/"
+		>
 	</phpdocext>
     </target>
 
     <!-- ============================================  -->
     <!-- Target: build                                 -->
     <!-- ============================================  -->
-    <target name="build" depends="jsmin,cssmin,translate,docs">
+    <target name="build" depends="docs">
     </target>
 
     <!-- ============================================  -->

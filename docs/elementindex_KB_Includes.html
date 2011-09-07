@@ -24,6 +24,9 @@
 	<a class="index-letter" href="elementindex_KB_Includes.html#i">i</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#k">k</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#l">l</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#m">m</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#p">p</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#r">r</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#s">s</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#_">_</a>
 </div>
@@ -48,6 +51,28 @@
 			<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Plugin.html#method__construct">KB_Plugin::__construct()</a> in kb-plugin.php</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Constructor.png" alt="Method" title="Method" />
+			<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Cpt.html#method__construct">KB_Cpt::__construct()</a> in kb-cpt.php</div>
+							<div class="index-item-description">Constructor -- check if the 'init' action has run and accordingly register the post type.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Constructor.png" alt="Method" title="Method" />
+			<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_At.html#method__construct">KB_At::__construct()</a> in kb-at.php</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Constructor.png" alt="Method" title="Method" />
+			<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#method__construct">KB_Admin::__construct()</a> in kb-admin.php</div>
 							<div class="index-item-description">The constructor, conditionally initializes the requirements for the plugin.</div>
 					</dd>
@@ -65,7 +90,7 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodadd_to_menu">KB_Admin::add_to_menu()</a> in kb-admin.php</div>
-							<div class="index-item-description">Add menus and determine the hook_suffix.</div>
+							<div class="index-item-description">Add menus and determine the hook.</div>
 					</dd>
 		</dl>
 	<a name="b"></a>
@@ -81,7 +106,7 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodbody">KB_Admin::body()</a> in kb-admin.php</div>
-							<div class="index-item-description">Extend this function to actually display the contents of the page.</div>
+							<div class="index-item-description">Extend this function to actually display the contents of the page. Should  echo the data to be displayed.</div>
 					</dd>
 			<dt class="field">
 						<img src="media/images/Method.png" alt="Method" title="Method" />
@@ -99,6 +124,22 @@
 		<div style="clear: both"></div>
 	</div>
 	<dl>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$capability</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$capability">KB_Admin::$capability</a> in kb-admin.php</div>
+							<div class="index-item-description">Capability at which this page can be shown.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Method.png" alt="Method" title="Method" />
+			<span class="method-title">current_page</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodcurrent_page">KB_Admin::current_page()</a> in kb-admin.php</div>
+							<div class="index-item-description">Returns true if the current page is the one added by this class.</div>
+					</dd>
 			<dt class="field">
 						<img src="media/images/Method.png" alt="Method" title="Method" />
 			<span class="method-title">customize_screen</span>
@@ -123,6 +164,22 @@
 			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodhelp">KB_Admin::help()</a> in kb-admin.php</div>
 							<div class="index-item-description">Override to modify the help message.</div>
 					</dd>
+			<dt class="field">
+						<img src="media/images/Method.png" alt="Method" title="Method" />
+			<span class="method-title">hook_page</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodhook_page">KB_Admin::hook_page()</a> in kb-admin.php</div>
+							<div class="index-item-description">Add a page to be loaded for the specified slug. Do not over-ride.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Method.png" alt="Method" title="Method" />
+			<span class="method-title">hook_page_title</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodhook_page_title">KB_Admin::hook_page_title()</a> in kb-admin.php</div>
+							<div class="index-item-description">Set the title of a page defined without any entry in the menu.</div>
+					</dd>
 		</dl>
 	<a name="i"></a>
 	<div class="index-letter-section">
@@ -131,6 +188,14 @@
 		<div style="clear: both"></div>
 	</div>
 	<dl>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$icon</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$icon">KB_Admin::$icon</a> in kb-admin.php</div>
+							<div class="index-item-description">Icon to be added in the menu.</div>
+					</dd>
 			<dt class="field">
 						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
 			<span class="var-title">$instance</span>
@@ -164,6 +229,27 @@
 					</dd>
 			<dt class="field">
 						<img src="media/images/Page.png" alt="Page" title="Page" />
+			<span class="include-title">kb-at.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/_includes---kb-at.php.html">kb-at.php</a> in kb-at.php</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Page.png" alt="Page" title="Page" />
+			<span class="include-title">kb-cpt.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/_includes---kb-cpt.php.html">kb-cpt.php</a> in kb-cpt.php</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Page.png" alt="Page" title="Page" />
+			<span class="include-title">kb-plugin.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/_includes---kb-plugin.php.html">kb-plugin.php</a> in kb-plugin.php</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Page.png" alt="Page" title="Page" />
 			<span class="include-title">kb-singleton.php</span>
 					</dt>
 		<dd class="index-item-body">
@@ -176,6 +262,30 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html">KB_Admin</a> in kb-admin.php</div>
 							<div class="index-item-description">Generic Class that can be extended for creating admin screens for plugins.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Class.png" alt="Class" title="Class" />
+			KB_At
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_At.html">KB_At</a> in kb-at.php</div>
+							<div class="index-item-description">Automates adding functions to actions/filters.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Class.png" alt="Class" title="Class" />
+			KB_Cpt
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Cpt.html">KB_Cpt</a> in kb-cpt.php</div>
+							<div class="index-item-description">Generic class to handle common CPT functionality.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Class.png" alt="Class" title="Class" />
+			KB_Plugin
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Plugin.html">KB_Plugin</a> in kb-plugin.php</div>
+							<div class="index-item-description">Base class for plugins.</div>
 					</dd>
 			<dt class="field">
 						<img src="media/images/AbstractClass.png" alt="Class" title="Class" />
@@ -202,6 +312,69 @@
 							<div class="index-item-description">Override to load resources as required</div>
 					</dd>
 		</dl>
+	<a name="m"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">m</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$menu_title</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$menu_title">KB_Admin::$menu_title</a> in kb-admin.php</div>
+							<div class="index-item-description">Menu title</div>
+					</dd>
+		</dl>
+	<a name="p"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">p</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$page_title</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$page_title">KB_Admin::$page_title</a> in kb-admin.php</div>
+							<div class="index-item-description">Page title</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$parent</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$parent">KB_Admin::$parent</a> in kb-admin.php</div>
+							<div class="index-item-description">Parent Menu</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$position</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$position">KB_Admin::$position</a> in kb-admin.php</div>
+							<div class="index-item-description">Position in the menu</div>
+					</dd>
+		</dl>
+	<a name="r"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">r</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<img src="media/images/Method.png" alt="Method" title="Method" />
+			<span class="method-title">register</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Cpt.html#methodregister">KB_Cpt::register()</a> in kb-cpt.php</div>
+					</dd>
+		</dl>
 	<a name="s"></a>
 	<div class="index-letter-section">
 		<div style="float: left" class="index-letter-title">s</div>
@@ -209,6 +382,22 @@
 		<div style="clear: both"></div>
 	</div>
 	<dl>
+			<dt class="field">
+						<img src="media/images/Variable.png" alt="Variable" title="Variable" />
+			<span class="var-title">$slug</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#var$slug">KB_Admin::$slug</a> in kb-admin.php</div>
+							<div class="index-item-description">Store slug used for the page.</div>
+					</dd>
+			<dt class="field">
+						<img src="media/images/Method.png" alt="Method" title="Method" />
+			<span class="method-title">set_current_page</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="KB_Includes/KB_Admin.html#methodset_current_page">KB_Admin::set_current_page()</a> in kb-admin.php</div>
+							<div class="index-item-description">Runs only if the page corresponding to this class is called.</div>
+					</dd>
 			<dt class="field">
 						<img src="media/images/AbstractMethod.png" alt="Method" title="Method" />
 			<span class="method-title">singleton</span>
@@ -227,6 +416,9 @@
 	<a class="index-letter" href="elementindex_KB_Includes.html#i">i</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#k">k</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#l">l</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#m">m</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#p">p</a>
+	<a class="index-letter" href="elementindex_KB_Includes.html#r">r</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#s">s</a>
 	<a class="index-letter" href="elementindex_KB_Includes.html#_">_</a>
 </div>	</body>

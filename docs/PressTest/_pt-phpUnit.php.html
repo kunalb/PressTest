@@ -3,13 +3,13 @@
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos -->
-			<title>Docs for page PressTest.php</title>
+			<title>Docs for page pt-phpUnit.php</title>
 			<link rel="stylesheet" href="../media/stylesheet.css" />
 			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
 		</head>
 		<body>
 			<div class="page-body">			
-<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/PressTest.php</h2>
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/pt-phpUnit.php</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -17,10 +17,12 @@
 	<div class="nav-bar">
 					<span class="disabled">Description</span> |
 									<a href="#sec-includes">Includes</a>
-												</div>
+			|							<a href="#sec-constants">Constants</a>
+										</div>
 	<div class="info-box-body">	
 		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Loader. Set constants and load the main controller.</p>
+<p class="short-description">Loads and run the phpUnit tests for the  plugin specified in the GET parameters.</p>
+<p class="description"><p>Does not include any WordPress files --  any tests must include them as required.</p></p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Kunal Bhalla</li>
 				<li><span class="field">version:</span> 0.1</li>
@@ -36,27 +38,53 @@
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
 						<span class="disabled">Includes</span>
-														</div>
+			|							<a href="#sec-constants">Constants</a>
+															</div>
 		<div class="info-box-body">	
-			<a name="_core_php"><!-- --></a>
+			<a name="_PHPUnit/Autoload_php"><!-- --></a>
 <div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Page.png" alt=" " />
 		<span class="include-title">
-			<span class="include-type">require</span>
-			(<span class="include-name"><a href="../PressTest/_core.php.html">"core.php"</a></span>)
-			(line <span class="line-number">38</span>)
+			<span class="include-type">require_once</span>
+			(<span class="include-name">'PHPUnit/Autoload.php'</span>)
+			(line <span class="line-number">15</span>)
 		</span>
 	</div>
 
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">The core plugin class</p>
 	
 </div>
 		</div>
 	</div>
 	
+	<a name="sec-constants"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+											</div>
+		<div class="info-box-body">	
+			<a name="definePHPUnit_MAIN_METHOD"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PHPUnit_MAIN_METHOD</span> = 'PHPUnit_TextUI_Command::main'
+			(line <span class="line-number">17</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+		</div>
+	</div>
 	
 	
 	
