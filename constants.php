@@ -9,7 +9,10 @@
 define( 'PT_DIR', WP_PLUGIN_DIR . '/PressTest' );
 
 /** phpUnit Directory */
-define( 'PT_PHPUNIT_DIR', PT_DIR . '/phpunit' );
+define( 'PT_PHPUNIT_DIR', PT_DIR . '/phpunit/phpunit' );
+
+/** qUnit Directory */
+define( 'PT_QUNIT_DIR', PT_DIR . '/qunit/qunit' );
 
 /** Plugin URL */
 define( 'PT_URL', plugins_url( 'PressTest' ) );
