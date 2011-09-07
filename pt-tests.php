@@ -161,7 +161,7 @@ class PT_Tests {
 	 */
 	private function run_phpUnit() {
 		$iframe = PT_URL . "/pt-phpUnit.php?pt-tests=" . rawurlencode( WP_PLUGIN_DIR . '/' . $this->plugin_folder . 'ptests'  );
-		return "<iframe width = '100%' src = '$iframe'></iframe>";
+		return "<iframe width = '100%' height = '500px' src = '$iframe'></iframe>";
 	}
 
 	/*

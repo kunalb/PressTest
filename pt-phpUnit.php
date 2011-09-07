@@ -12,11 +12,20 @@
  * @version 0.1
  */
 
-require_once 'PHPUnit/Autoload.php';
+
+
+if( !class_exists( 'PHPUnit_TextUI_Command' ) )
+	require_once 'phpunit/phpunit/PHPUnit/Autoload.php';
+
+PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
 $_SERVER[ 'argv' ] = Array( 'phpUnit.php', rawurldecode( $_GET[ 'pt-tests' ] ) ); 
 
-PHPUnit_TextUI_Command::main();
+ob_start();
+PHPUnit_TextUI_Command::main(false);
+$data = ob_get_clean();
+
+echo preg_replace( '/\n/', '<br />', $data );
 
 
