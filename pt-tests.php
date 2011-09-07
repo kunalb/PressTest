@@ -136,16 +136,14 @@ class PT_Tests {
 	 * Set up resources for running phpUnit tests.
 	 */
 	private function setup_phpUnit() {
-		/**
-		 * Slightly hack-ish way to handle phpUnit from within PHP  
-		 * without having to mess with internals.
-		 */
 	} 
 
 	/**
 	 * Set up resources for running qUnit tests.
 	 */
 	private function setup_qUnit() {
+		wp_enqueue_script( 'qUnit', PT_QUNIT_URL . '/qunit.js', 'jquery' );
+		wp_enqueue_style( 'qUnit', PT_QUNIT_URL . '/qunit.css' );
 	}
 
 	/**
@@ -160,6 +158,14 @@ class PT_Tests {
 	 * Markup required for displaying qUnit test results.
 	 */
 	private function run_qUnit() {
+		return <<<MARKUP
+			<h1 id="qunit-header">PressTest</h1>
+			<h2 id="qunit-banner"></h2>
+			<div id="qunit-testrunner-toolbar"></div>
+			<h2 id="qunit-userAgent"></h2>
+			<ol id="qunit-tests"></ol>
+			<div id="qunit-fixture">test markup, will be hidden</div>
+MARKUP;
 	}
 
 }
