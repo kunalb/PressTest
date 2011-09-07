@@ -24,6 +24,9 @@ class PT_Tests {
 	/** The test folder string */
 	private $test_folder;
 
+	/** The test plugin URL */
+	private $plugin_url;
+
 	/**
 	 * Constructor. Extracts path data.
 	 *
@@ -34,6 +37,7 @@ class PT_Tests {
 	public function __construct( $file ) {
 		$this->plugin_file = $file;
 		$this->has_tests = $this->load_tests();
+		$this->plugin_url = plugins_url( '', $this->plugin_file );
 	}
 
 	/**
@@ -144,6 +148,12 @@ class PT_Tests {
 	private function setup_qUnit() {
 		wp_enqueue_script( 'qUnit', PT_QUNIT_URL . '/qunit.js', 'jquery' );
 		wp_enqueue_style( 'qUnit', PT_QUNIT_URL . '/qunit.css' );
+
+		$i = 0;
+		foreach( $this->tests[ 'js' ] as $test ) {
+			wp_enqueue_script( 'qUnit-test-$i', $this->plugin_url . '/ptests/' . $test, 'qUnit' );
+			$i++;
+		}
 	}
 
 	/**
