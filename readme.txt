@@ -24,7 +24,9 @@ None.
 Because.
 
 == Screenshots ==
-None.
+1. Running qUnit with sample tests.
+2. The additional links to run tests.
+3. Running phpUnit with sample tests.
 
 == Changelog ==
 Changeless.
