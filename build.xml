@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="PressTest" default="build">
-    <taskdef name="yuimin" classname="phing.tasks.my.YUIMinTask" />
-    <taskdef name="wppot" classname="phing.tasks.my.WPPotTask" />
-
-    <!-- ============================================  -->
-    <!-- Target: jsmin                                 -->
-    <!-- ============================================  -->
-    <target name="jsmin">
-        <echo msg="Compressing JavaScript Files" />
-	<yuimin showwarnings="false" path="~/builds/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar" >
-	    <fileset dir=".">
-	        <include name="**/*.dev.js" />
-	    </fileset>
-	    <mapper type="regexp" from="^(.*)\.dev.js" to="\1.js"/>
-	</yuimin>
-    </target>
-
-    <!-- ============================================  -->
-    <!-- Target: cssmin                                -->
-    <!-- ============================================  -->
-    <target name="cssmin">
-        <echo msg="Compressing CSS Files" />
-	<yuimin showwarnings="false" path="~/builds/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar" >
-	    <fileset dir=".">
-	        <include name="**/*.css" />
-	    </fileset>
-	    <mapper type="regexp" from="^(.*)\.dev.css" to="\1.css"/>
-	</yuimin>
-    </target>
-
-    <!-- ============================================  -->
-    <!-- Target: translate                             -->
-    <!-- ============================================  -->
-    <target name="translate">
-	<echo msg="Generating a new .pot file" />
-	<wppot path="~/builds/i18n" output="eventpress.pot" type="wp-plugin"/>
-    </target>
-
     <!-- ============================================ -->
     <!-- Target: docs                                 -->
     <!-- ============================================ -->
