@@ -48,7 +48,6 @@ class PT_Plugin {
 
 	/** Change the bulk actions behaviour */
 	public function bulk_actions( $actions ) {
-		kb_debug( $actions );
 		return $actions;
 	}
 
