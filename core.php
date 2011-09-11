@@ -43,6 +43,8 @@ class PressTest {
 
 		/** Initialize the admin page class */
 		$this->internals['PT_Admin'] = new PT_Admin();
+
+		do_action( 'PT_Initialize' );
 	}
 
 }

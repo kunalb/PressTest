@@ -30,5 +30,3 @@ PHPUnit_TextUI_Command::main(false);
 $data = ob_get_clean();
 
 echo preg_replace( '/\n/', '<br />', $data );
-
-
