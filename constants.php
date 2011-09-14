@@ -5,8 +5,14 @@
  * @package PressTest
  */
 
+/** Plugin Folder */
+define( 'PT_FOLDER', 'presstest' );
+
 /** Plugin Directory */
-define( 'PT_DIR', WP_PLUGIN_DIR . '/PressTest' );
+define( 'PT_DIR', WP_PLUGIN_DIR . '/' . PT_FOLDER  );
+
+/** Hand written basename to avoid soft linking issues */
+define( 'PT_FILE', PT_FOLDER . '/PressTest.php' );
 
 /** phpUnit Directory */
 define( 'PT_PHPUNIT_DIR', PT_DIR . '/phpunit/phpunit' );
@@ -40,3 +46,9 @@ define( 'PT_PLUGINS_SCREEN', 'plugins');
 
 /** PressTest Column identifier */
 define( 'PT_COL', 'pt_tests' );
+
+/** The file with mock functions */
+define( 'PT_MOCK_FILE', 'pt-mock.php' );
+
+/** The option indicating that the presstest folder should be writeable. */
+define( 'PT_NEEDS_PERMISSION', 'PT_Needs_Permission' );
