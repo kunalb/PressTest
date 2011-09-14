@@ -31,7 +31,7 @@ require "pt-admin.php";
  */
 class PressTest {
 	/** Internal classes, stored if required only. */
-	private static $internals;
+	private $internals;
 
 	/** Initialize the plugin. */
 	public function __construct() {
