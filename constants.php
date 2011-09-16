@@ -52,3 +52,9 @@ define( 'PT_MOCK_FILE', 'pt-mock.php' );
 
 /** The option indicating that the presstest folder should be writeable. */
 define( 'PT_NEEDS_PERMISSION', 'PT_Needs_Permission' );
+
+/** Admin path */
+define( 'PT_ADMIN_DIR', ABSPATH . 'wp-admin' );
+
+/** Admin includes path */
+define( 'PT_ADMIN_INCLUDES_DIR', PT_ADMIN_DIR . '/includes' );
