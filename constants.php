@@ -48,7 +48,7 @@ define( 'PT_PLUGINS_SCREEN', 'plugins');
 define( 'PT_COL', 'pt_tests' );
 
 /** The prefix for mocked files. */
-define( 'PT_MOCK_DIR', 'mocked' );
+define( 'PT_MOCK_DIR', PT_DIR . '/mocked' );
 
 /** The option indicating that the presstest folder should be writeable. */
 define( 'PT_NEEDS_PERMISSION', 'PT_Needs_Permission' );
