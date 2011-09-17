@@ -47,8 +47,8 @@ define( 'PT_PLUGINS_SCREEN', 'plugins');
 /** PressTest Column identifier */
 define( 'PT_COL', 'pt_tests' );
 
-/** The file with mock functions */
-define( 'PT_MOCK_FILE', 'pt-mock.php' );
+/** The prefix for mocked files. */
+define( 'PT_MOCK', 'mock-' );
 
 /** The option indicating that the presstest folder should be writeable. */
 define( 'PT_NEEDS_PERMISSION', 'PT_Needs_Permission' );
