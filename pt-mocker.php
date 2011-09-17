@@ -23,9 +23,11 @@ class PT_Mocker {
 	 * Create the files for mocking.
 	 */
 	public function create_mockers() {
-		if( @is_writable(  PT_MOCK_DIR ) ) {
+		if( @is_writable( PT_MOCK_DIR ) ) {
 			$filelist = $this->getPaths();
 			
+			// $this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
+			$this->mock( Array( ABSPATH . 'wp-includes/plugin.php' ), PT_MOCK_DIR . '/core.php' );
 		}
 	}
 
@@ -124,7 +126,33 @@ class PT_Mocker {
 		return preg_match( '/\.(inc|php)$/', $path );
 	}
 
-	private function parse( $file ) {
+	/**
+	 * Creates a mock version of files at the path.
+	 *
+	 * Mocks all classes and functions present in the file into a single output file.
+	 *
+	 * @param String $file Full path to file.
+	 * @param String $path Path to file to be created.
+	 */
+
+	private function mock( $files, $path ) {
+		$output = "";
+		foreach( $files as $file ) {
+			KB_Debug( $file );
+			$output .= $this->parse( file_get_contents( $file ) );
+		}
+	}
+
+	/**
+	 * Parses the given data and creates code appropriately. 
+	 * @param String $data Code to be parsed
+	 */
+	private function parse( $data ) {
+		KB_Debug( $data );
+
+		$tokens = token_get_all( $data );
+
+		KB_Debug( $tokens );
 	}
 
 }
