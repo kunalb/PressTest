@@ -19,35 +19,9 @@ class PT_Mocker {
 	}
 
 	public function create_mockers() {
-		global $wp_theme_directories;
 		$filelist = $this->getPaths();
 		
-		$escaped_wp_content_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WP_CONTENT_DIR );
-		$escaped_wp_plugin_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WP_PLUGIN_DIR );
-		$escaped_wp_mu_plugin_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WPMU_PLUGIN_DIR );
-
-		foreach( $wp_theme_directories as $wp_theme_dir )
-			$escaped_wp_theme_dirs[] = preg_replace( '/([\-\/\.])/', '\\\$1', $wp_theme_dir );
-
-		$files = array_filter( $this->flattenPaths( $filelist ), Array( $this, 'filterPaths' ) );
-
-		$core = Array();
-
-		foreach( $files as $file ) {
-			$matched = Array();
-			if( !preg_match( '/^' . $escaped_wp_content_dir . '\//', $file ) )
-				$core[] = $file;
-			else if( preg_match( '/^' . $escaped_wp_plugin_dir . '\/(.*?)(\/|$)/', $file, $matched ) )
-					$plugins[ $matched[ 1 ] ][] = $file;
-			else if( preg_match( '/^' . $escaped_wp_mu_plugin_dir . '\/(.*?)(\/|$)/', $file, $matched ) )
-					$muplugins[ $matched[ 1 ] ][] = $file;
-			else {		
-				foreach( $escaped_wp_theme_dirs as $escaped_wp_theme_dir )	
-					if( preg_match( '/^' . $escaped_wp_theme_dir . '\/(.*?)(\/|$)/', $file, $matched ) )
-						$themes[ $matched[ 1 ] ][] = $file;
-			}
-		}
-		
+		KB_Debug( $filelist );
 	}
 
 	/**
@@ -82,14 +56,58 @@ class PT_Mocker {
 	 * @return Array[string]Array Complete list of files
 	 */
 	private function getPaths() {
+		global $wp_theme_directories;
+
 		if( !class_exists( 'WP_Filesystem_Base' ) )
 			require PT_ADMIN_INCLUDES_DIR . '/class-wp-filesystem-base.php';
 		if( !class_exists( 'WP_Filesystem_Direct' ) )
 			require PT_ADMIN_INCLUDES_DIR . '/class-wp-filesystem-direct.php';
 		
 		$filesys = new WP_Filesystem_Direct();	
+		$filelist = $filesys->dirlist( ABSPATH, false, true );
+
+		$escaped_wp_content_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WP_CONTENT_DIR );
+		$escaped_wp_plugin_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WP_PLUGIN_DIR );
+		$escaped_wp_mu_plugin_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WPMU_PLUGIN_DIR );
+
+		foreach( $wp_theme_directories as $wp_theme_dir )
+			$escaped_wp_theme_dirs[] = preg_replace( '/([\-\/\.])/', '\\\$1', $wp_theme_dir );
+
+		$files = array_filter( $this->flattenPaths( $filelist ), Array( $this, 'filterPaths' ) );
+
+		$core = $plugins = $muplugins = $themes = $etc = Array();
+
+		foreach( $files as $file ) {
+			$matched = Array();
+			if( !preg_match( '/^' . $escaped_wp_content_dir . '\//', $file ) )
+				$core[] = $file;
+			else if( preg_match( '/^' . $escaped_wp_plugin_dir . '\/(.*?)(\/|$)/', $file, $matched ) )
+					$plugins[ $matched[ 1 ] ][] = $file;
+			else if( preg_match( '/^' . $escaped_wp_mu_plugin_dir . '\/(.*?)(\/|$)/', $file, $matched ) )
+					$muplugins[ $matched[ 1 ] ][] = $file;
+			else {		
+				$flag = false;
+				foreach( $escaped_wp_theme_dirs as $escaped_wp_theme_dir ) {	
+					if( preg_match( '/^' . $escaped_wp_theme_dir . '\/(.*?)(\/|$)/', $file, $matched ) ) {
+						$themes[ $matched[ 1 ] ][] = $file;
+						$flag = true;
+						break;
+					}
+				}
+
+				if( !flag )
+					$etc[] = $file;
+			}
+		}
+
+		return Array( 
+			'core' => $core,
+			'plugins' => $plugins,
+			'muplugins' => $muplugins,
+			'themes' => $themes,
+			'etc' => $etc
+		);
 		
-		return $filesys->dirlist( ABSPATH, false, true );
 	}
 
 	/**
