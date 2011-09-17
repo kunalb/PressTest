@@ -14,14 +14,16 @@ class PT_Mocker {
 	 * Show warning asking for correct permissions on mocked folder.
 	 */
 	public function permission_warning() {
-		if( get_option( PT_NEEDS_PERMISSION ) && !@fopen( PT_DIR . '/' . PT_MOCK_FILE, "w" ) )
+		if( !@is_writable( PT_DIR . '/' . PT_MOCK_DIR ) )
 			echo "<div class = 'updated'><p>Please make the folder <code>PressTest/mocked</code> <strong>writable</strong> to allow creation of mock functions based on your setup.</p></div>";
 	}
 
 	public function create_mockers() {
-		$filelist = $this->getPaths();
-		
-		KB_Debug( $filelist );
+		if( !@is_writable( PT_DIR . '/' . PT_MOCK_DIR ) ) {
+			$filelist = $this->getPaths();
+			
+			KB_Debug( $filelist );
+		}
 	}
 
 	/**
@@ -51,7 +53,7 @@ class PT_Mocker {
 	}
 
 	/** 
-	 * Return complete list of files 
+	 * Return complete list of files broken by source of file.
 	 *
 	 * @return Array[string]Array Complete list of files
 	 */
