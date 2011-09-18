@@ -24,6 +24,8 @@ require "pt-tests.php";
 require "pt-plugin.php";
 /** The admin page class */
 require "pt-admin.php";
+/** The code parser used by PT_Mocker */
+require "pt-parser.php";
 /** Creates the mock functions file */
 require "pt-mocker.php";
 /**#@-*/

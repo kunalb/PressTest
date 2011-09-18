@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Creates mock files.
+ *
+ * @package PressTest
+ * @author Kunal Bhalla
+ * @version 0.2
+ */
+
+/**
+ * Checks whether mock files are required and creates them.
+ *
+ * The mocked core functions and classes are placed in the PT_MOCK_DIR, 
+ * mocked plugin, theme files are placed in PT_MOCK_PLUGIN_DIR and
+ * PT_MOCK_THEME_DIR. 
+ */
 class PT_Mocker {
 
 	/**
@@ -139,20 +154,8 @@ class PT_Mocker {
 		$output = "";
 		foreach( $files as $file ) {
 			KB_Debug( $file );
-			$output .= $this->parse( file_get_contents( $file ) );
+			$parser = new PT_Parser( $file );
 		}
-	}
-
-	/**
-	 * Parses the given data and creates code appropriately. 
-	 * @param String $data Code to be parsed
-	 */
-	private function parse( $data ) {
-		KB_Debug( $data );
-
-		$tokens = token_get_all( $data );
-
-		KB_Debug( $tokens );
 	}
 
 }

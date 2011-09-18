@@ -47,8 +47,14 @@ define( 'PT_PLUGINS_SCREEN', 'plugins');
 /** PressTest Column identifier */
 define( 'PT_COL', 'pt_tests' );
 
-/** The prefix for mocked files. */
+/** The directory for mocked files. */
 define( 'PT_MOCK_DIR', PT_DIR . '/mocked' );
+
+/** The directory for mocked theme files. */
+define( 'PT_MOCK_THEME_DIR', PT_MOCK_DIR . '/themes' );
+
+/** The directory for mocked plugin files. */
+define( 'PT_MOCK_PLUGIN_DIR', PT_MOCK_DIR . '/plugins' );
 
 /** The option indicating that the presstest folder should be writeable. */
 define( 'PT_NEEDS_PERMISSION', 'PT_Needs_Permission' );
