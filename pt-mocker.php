@@ -154,8 +154,6 @@ class PT_Mocker {
 		$output = "";
 		foreach( $files as $file ) {
 			KB_Debug( $file );
-			$parser = new PT_Parser( $file );
-			KB_Debug( $parser->get_classes(), $parser->get_functions() );
 		}
 	}
 
