@@ -42,7 +42,7 @@ class PT_Mocker {
 			$filelist = $this->getPaths();
 			
 			// $this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
-			$this->mock( Array( ABSPATH . 'wp-includes/plugin.php' ), PT_MOCK_DIR . '/core.php' );
+			$this->mock( Array( ABSPATH . 'wp-content/plugins/presstest/pt-parser.php' ), PT_MOCK_DIR . '/core.php' );
 		}
 	}
 
@@ -155,6 +155,7 @@ class PT_Mocker {
 		foreach( $files as $file ) {
 			KB_Debug( $file );
 			$parser = new PT_Parser( $file );
+			KB_Debug( $parser->get_classes(), $parser->get_functions() );
 		}
 	}
 

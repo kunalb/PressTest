@@ -7,6 +7,14 @@
  * @version 0.2
  */
 
+/*
+
+add_action( 'shutdown', function(){
+	KB_Debug( memory_get_peak_usage( true ) );
+}, 1000 );
+
+*/
+
 /**
  * Parse provided code and return required values.
  */
@@ -88,7 +96,7 @@ class PT_Parser {
 					$this->mods['comment'] = $this->value();
 					break;	
 				case T_CLASS: 
-					KB_Debug( "Class Started" );	
+					$this->classes[] = $this->parse_class();
 					break;
 				case T_FUNCTION:
 					$this->functions[] = $this->parse_function(); 	
@@ -127,9 +135,89 @@ class PT_Parser {
 		$fn->args = $this->parse_arguments();
 		$fn->content = $this->parse_till_brace();
 
-		KB_Debug( $fn );
-
 		return $fn;
+	}
+
+	/**
+	 * Parse method
+	 * @return PT_Parse_Method
+	 */
+	private function parse_method() {
+		$m = $this->parse_function();
+		return $m;
+	}
+
+	/**
+	 * Parse class
+	 * @return PT_Parse_Class
+	 */
+	private function parse_class() {
+		$c = new PT_Parse_Class();
+
+		$c->file = $this->file;
+		if( array_key_exists( 'abstract', $this->mods ) && $this->mods['abstract'] )
+			$c->abstract = true;
+		else $c->abstract = false;	
+
+		if( array_key_exists( 'comment', $this->mods ) && !empty( $this->mods['comment'] ) )
+			$c->comment = $this->mods[ 'comment' ];
+
+		$this->mods = Array();
+
+		while( $this->token() != T_STRING )
+			$this->next();
+
+		$c->name = $this->value();
+		
+		$this->next(); $this->next();	
+
+		if( $this->token() == T_EXTENDS ) {
+			$this->next(); $this->next();	
+			$c->extends = $this->value();
+		}
+
+		//Now at the opening {
+		
+		while( !$this->token() != '}' ) {
+			$this->next();
+			switch( $this->token() ) {
+				case T_STATIC:
+					$this->mods[ 'static' ] = true;
+					break;
+				case T_PUBLIC:
+				case T_PRIVATE:
+				case T_PROTECTED:
+					$this->mods[ 'access' ] = $this->value();
+					break;
+				case T_VAR: 	 
+					$this->mods[ 'access' ] = 'public';
+					break;
+				case T_FUNCTION: 	
+					$c->methods[] = $this->parse_method();
+					break;
+				case T_VARIABLE:	
+					$var = new PT_Parse_Var;
+					if( array_key_exists( 'static', $this->mods ) && $this->mods[ 'static' ] )
+						$var->static = true;
+					else $var->static = false;
+					
+					if( array_key_exists( 'access', $this->mods ) )
+						$var->access = $this->mods[ 'access' ];
+					else $var->access = 'public';
+
+					$this->properties[] = $var;
+				case T_WHITESPACE: 
+					break;
+				case '=':
+					$this->next(); $this->next();
+					$this->properties[ count($this->properties) - 1 ]->default = $token->value(); 
+					break;	
+				default: 
+					$this->mods = Array();		
+			}
+		}
+
+		return $c;
 	}
 
 	/**
@@ -191,6 +279,8 @@ class PT_Parser {
 			$str .= $this->value();
 		}
 
+		$this->next();
+
 		return $str;
 	}
 
@@ -231,13 +321,15 @@ class PT_Parser {
 	/**
 	 * Returns parsed classes.
 	 */
-	public function classes() {
+	public function get_classes() {
+		return $this->classes;
 	}
 
 	/**
 	 * Return parsed functions
 	 */
-	public function functions() {
+	public function get_functions() {
+		return $this->functions;
 	}
 	 
 }
