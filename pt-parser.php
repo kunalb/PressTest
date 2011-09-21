@@ -115,7 +115,7 @@ class PT_Parse implements Iterator {
 	public function next() {
 		$this->position++;
 
-		if( !$this->end() )
+		if( $this->valid() )
 			$this->each();
 	}
 
@@ -123,7 +123,7 @@ class PT_Parse implements Iterator {
 	 * Returns the current key value.
 	 */
 	public function key() {
-		if( $this->end() ) return NULL;
+		if( !$this->valid() ) return NULL;
 
 		if( is_array( $this->tokens[ $this->position ] ) )
 			return $this->tokens[ $this->position ][ 0 ];
@@ -136,20 +136,27 @@ class PT_Parse implements Iterator {
 	 * @return PT_Parse_Token|Null 
 	 */
 	public function current() {
-		if( $this->end() ) return NULL;
-
-		if( is_array( $this->tokens[ $this->position ] ) )
-			$value = $this->tokens[ $this->position ][ 1 ];
-		else $value = $this->tokens[ $this->position ];
+		if( !$this->valid() ) return NULL;
 
 		return new PT_Parse_Token( Array( 
 			'token' => $this->key(),
-			'value' => $value(),
+			'value' => $this->value(),
 			'modifiers' => $this->mods,
 			'line' => $this->line()
 		) );
 	}	
 	/**#@-*/
+
+	/**
+	 * Return the current value of the token.
+	 */
+	protected function value() {
+		if( !$this->valid() ) return NULL;
+
+		if( is_array( $this->tokens[ $this->position ] ) )
+			$value = $this->tokens[ $this->position ][ 1 ];
+		else $value = $this->tokens[ $this->position ];
+	}
 
 	/**
 	 * Saves modifiers for future tokens.
@@ -186,10 +193,10 @@ class PT_Parse implements Iterator {
 	 * Returns the line of the current token.
 	 */
 	protected function line() {
-		if( $this->end() ) return NULL;
+		if( !$this->valid() ) return NULL;
 
 		if( is_array( $this->tokens[ $this->position ] ) && isset( $this->tokens[ $this->position ][ 2 ] ) )
-			return $this->tokens[ $this->position ][ 3 ];
+			return $this->tokens[ $this->position ][ 2 ];
 		else return NULL;
 	}
 
