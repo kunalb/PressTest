@@ -18,16 +18,16 @@
  * current token.
  */ 
 class PT_Parse_Token {
-	public $value;
+	public $val;
 	public $token;
 	public $line;
 	public $modifiers;
 
 	public function __construct( $args = Array() ) {
-		$value = array_key_exists( 'value', $args )? $args['value'] : "";
-		$token = array_key_exists( 'token', $args )? $args['token'] : "";
-		$line = array_key_exists( 'line', $args )? $args['line'] : "";
-		$modifiers = array_key_exists( 'modifiers', $args )? $args['modifiers'] : "";
+		$this->val = array_key_exists( 'val', $args )? $args['val'] : "";
+		$this->token = array_key_exists( 'token', $args )? $args['token'] : "";
+		$this->line = array_key_exists( 'line', $args )? $args['line'] : "";
+		$this->modifiers = array_key_exists( 'modifiers', $args )? $args['modifiers'] : "";
 	}
 
 	public function get_modifier( $token ) {
@@ -58,13 +58,13 @@ class PT_Parse implements Iterator {
 	 * Possible modifiers for upcoming tokens.
 	 * @var Array
 	 */
-	protected $mods;
+	protected $mods = Array();
 
 	/**
 	 * Distance since the modifier was captured.
 	 * @var Int
 	 */
-	protected $mod_distance;
+	protected $mod_distance = 0;
 
 	/**
 	 * Tokens of modifiers to be captured.
@@ -77,7 +77,8 @@ class PT_Parse implements Iterator {
 		T_PRIVATE,
 		T_PROTECTED,
 		T_VAR,
-		T_STATIC
+		T_STATIC,
+		'&'
 	);	
 
 	/**#@+
@@ -120,7 +121,7 @@ class PT_Parse implements Iterator {
 	}
 
 	/**
-	 * Returns the current key value.
+	 * Returns the current key val.
 	 */
 	public function key() {
 		if( !$this->valid() ) return NULL;
@@ -140,7 +141,7 @@ class PT_Parse implements Iterator {
 
 		return new PT_Parse_Token( Array( 
 			'token' => $this->key(),
-			'value' => $this->value(),
+			'val' => $this->val(),
 			'modifiers' => $this->mods,
 			'line' => $this->line()
 		) );
@@ -148,14 +149,14 @@ class PT_Parse implements Iterator {
 	/**#@-*/
 
 	/**
-	 * Return the current value of the token.
+	 * Return the current val of the token.
 	 */
-	protected function value() {
+	protected function val() {
 		if( !$this->valid() ) return NULL;
 
 		if( is_array( $this->tokens[ $this->position ] ) )
-			$value = $this->tokens[ $this->position ][ 1 ];
-		else $value = $this->tokens[ $this->position ];
+			return $this->tokens[ $this->position ][ 1 ];
+		else return $this->tokens[ $this->position ];
 	}
 
 	/**
@@ -166,11 +167,11 @@ class PT_Parse implements Iterator {
 	 */
 	protected function modifiers() {
 		if( in_array( $this->key(), $this->mod_list ) ) {
-			$this->mods[ $this->key() ] = $this->value();
+			$this->mods[ $this->key() ] = $this->val();
 			$this->mod_distance = 0;
 		} else if( $this->key() != T_WHITESPACE ) {
 			$this->mod_distance++;
-			if( $this->mod_distance > 0 )
+			if( $this->mod_distance > 1 )
 				$this->reset_modifiers();
 		}
 	}
