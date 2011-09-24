@@ -295,7 +295,29 @@ class PT_Parse_Class {
 }
 
 class PT_Parse_Function {
+	private $parser;
+	private $arguments;
+	private $globals;
 
+	public function __construct() {
+		if( get_class( $parser ) != PT_Parser )
+			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
+
+		$this->parser = $parser;
+		$this->parser->skip_till( T_FUNCTION );	
+	
+		$this->parse();
+	}
+
+	private function parse() {
+	}
+
+	public function get( $what ) {
+		if( in_array( $what, Array( 'arguments', 'globals' ) ) )
+			return $this->$what;
+
+		return NULL;
+	}
 }
 
 class PT_Parse_Method extends PT_Parse_Function {
