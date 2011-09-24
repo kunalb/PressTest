@@ -268,7 +268,28 @@ class PT_Parse_Class {
 			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
 
 		$parser->skip_till( T_CLASS );	
+	
+		$this->parse();
+	}
 
+	public function get( $what ) {
+		if( in_array( $what, Array( 'methods', 'properties' ) ) )
+			return $this->$what;
+
+		return NULL;
+	}
+
+	private function parse() {
+		foreach( $this->parser as $token ) {
+			switch( $token ) {
+				case T_FUNCTION:
+					$this->methods[] = new PT_Parse_Method( $this->parser );
+					break;
+				case T_VARIABLE:
+					$this->properties[] = new PT_Parse_Property( $this->parser );
+					break;	
+			}
+		}
 	}
 }
 
