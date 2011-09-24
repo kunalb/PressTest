@@ -118,8 +118,8 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group current
 	 * @dataProvider provider
+	 * @group skip
 	 */
 	public function testSkipStart( $code ) {
 		$tokens = token_get_all( $code );
@@ -144,8 +144,8 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group current
 	 * @dataProvider provider
+	 * @group skip
 	 */
 	public function testSkipEnd( $code ) {
 		$parser = new PT_Parse( $code );
@@ -157,8 +157,8 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group current
 	 * @dataProvider provider
+	 * @group skip
 	 */
 	public function testSkipMiddle( $code ) {
 		$tokens = token_get_all( $code );
@@ -169,8 +169,6 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	
 		for( $i = 0; $i < $skipLength; $i++ )
 			$parser->next();
-
-		$parser->next();	
 
 		$nextToken = T_ECHO;
 		$parser->skip_till( $nextToken );
@@ -190,8 +188,8 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group current
 	 * @dataProvider provider
+	 * @group skip
 	 */
 	public function testSkipNottoken( $code ) {
 		$tokens = token_get_all( $code );
@@ -208,5 +206,30 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 			return $token[$i];
 		else
 			return $token;
+	}
+
+	/**
+	 * @dataProvider provider
+	 * @group skip
+	 */
+	public function testNoSkip( $code ) {
+		$tokens = token_get_all( $code );
+		$length = count( $tokens ); $i = 0;
+		$parser = new PT_Parse( $code );
+
+		$skipLength = rand( 0, $length );
+	
+		for( $i = 0; $i < $skipLength; $i++ ) {
+			$parser->next();
+		}
+
+		$parser->skip_till( $parser->key() );
+
+		while( $i < $length ) {
+			$this->assertEquals( $parser->key(), $this->getVal( $tokens[ $i ], 0 ) );
+			$parser->next(); $i++;
+		}
+		
+		$this->assertTrue( !$parser->valid() );	
 	}
 }
