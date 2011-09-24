@@ -211,21 +211,6 @@ class PT_Parse implements Iterator {
 			$this->next();
 		}
 	}
-
-	/**
-	 * Find and skip the next { ... } block.
-	 */
-	public function skip_block() {
-		$balancer = -1;
-		$this->skip_till( '{' );
-
-		while( $balancer < 0 && $this->next() ) {
-			if( $this->token() == '{' )
-				$balancer--;
-			else if( $this->token() == '}' )
-				$balancer++;
-		}	
-	}
 }
 
 class PT_Parse_File extends PT_Parse {
