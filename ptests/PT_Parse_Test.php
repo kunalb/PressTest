@@ -12,6 +12,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provider
+	 * @group iterator
 	 */
 	public function testNextAll( $code ) {
 		$parser = new PT_Parse( $code );
@@ -28,6 +29,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provider
+	 * @group iterator
 	 */
 	public function testNextMatchToken( $code ) {
 		$parser = new PT_Parse( $code );
@@ -42,6 +44,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provider
+	 * @group iterator
 	 */
 	public function testNextMatchVal( $code ) {
 		$parser = new PT_Parse( $code );
@@ -55,10 +58,8 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Tests matching in loops of two to ensure that the loop isn't rewound
-	 * automatically.
-	 *
 	 * @dataProvider provider
+	 * @group iterator
 	 */
 	public function testNoRewind( $code ) {
 		$parser = new PT_Parse( $code );
@@ -67,13 +68,14 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 		$i = 0; $count = count( $tokens );
 
 		foreach( $parser as $token ) {
-			foreach( $parser as $token ) {
-				$i++;
-				if( $i % 5 == 0 ) break;
-			}
+			$i++;
 		}
 
-		$this->assertEquals( $count, $i );
+		foreach( $parser as $token ) {
+			$i++;
+		}
+
+		$this->assertEquals( $count * 2, $i );
 	}
 
 	public function provider() {
@@ -90,6 +92,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provider
+	 * @group mods
 	 */
 	public function testMods( $code ) {
 		$defaults = self::$ref->getDefaultProperties();
