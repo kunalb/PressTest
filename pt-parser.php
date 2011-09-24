@@ -213,7 +213,8 @@ class PT_Parse implements Iterator {
 	}
 }
 
-class PT_Parse_File extends PT_Parse {
+class PT_Parse_File {
+	private $parser;
 	private $classes;
 	private $functions;
 	private $constants;
@@ -230,18 +231,18 @@ class PT_Parse_File extends PT_Parse {
 	}
 }
 
-class PT_Parse_Class extends PT_Parse {
+class PT_Parse_Class {
 }
 
-class PT_Parse_Function extends PT_Parse {
+class PT_Parse_Function {
 }
 
 class PT_Parse_Method extends PT_Parse_Function {
 }
 
-class PT_Parse_Argument extends PT_Parse {
+class PT_Parse_Argument {
 }
 
-class PT_Parse_Property extends PT_Parse {
+class PT_Parse_Property {
 }
 
