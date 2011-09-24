@@ -72,6 +72,7 @@ class PT_Parse implements Iterator {
 	 */
 	protected $mod_list = Array( 
 		T_DOC_COMMENT,
+		T_CONST,
 		T_FINAL,
 		T_PUBLIC,
 		T_PRIVATE,
@@ -103,11 +104,9 @@ class PT_Parse implements Iterator {
 
 	/**
 	 * Return to the start.
-	 *
-	 * Does nothing as the iterator should remember it's state across
-	 * foreach calls.
 	 */
 	public function rewind() {
+		$this->position = 0;
 	}
 
 	/**
@@ -215,23 +214,57 @@ class PT_Parse implements Iterator {
 
 class PT_Parse_File {
 	private $parser;
-	private $classes;
-	private $functions;
-	private $constants;
-	private $globals;
+	private $file = '';
+	private $classes = Array();
+	private $functions = Array();
+	private $constants = Array();
+	private $globals = Array();
 
 	public function __construct( $file ) {
+		$code = file_get_contents( $file );
+		if( $code !== FALSE ) {
+			$this->parser = new PT_Parse( file_get_contents( $file ) );
+			$this->file = $file;
+		}
+
+		$this->parse();
 	}
 
-	public function getClasses() {
-		return $this->classes;
+	private function parse() {
+		foreach( $this->parser as $token ) {
+			switch( $token ) {
+				case T_CLASS:
+					$this->classes[] = new PT_Parse_Class( $this->parser );
+					break;
+				case T_FUNCTION:
+					$this->functions[] = new PT_Parse_Function( $this->parser );
+					break;
+				case T_GLOBAL:
+					$this->globals[] = new PT_Parse_Global( $this->parser );
+					break;
+				case T_STRING:
+					if( $this->parser->val() == 'define' )
+						$this->constants[] = new PT_Parse_Constant( $this->parser );
+					break;	
+			}
+		}
 	}
 
-	public function getFunctions() {
+	public function get( $what ) {
+		if( in_array( $what, Array( 'constants', 'globals', 'classes', 'functions' ) ) )
+			return $this->$what;
+
+		return NULL;
 	}
 }
 
 class PT_Parse_Class {
+	private $parser;
+	private $methods;
+	private $properties;
+
+	public function __construct( $parser ) {
+	}
 }
 
 class PT_Parse_Function {
@@ -246,3 +279,5 @@ class PT_Parse_Argument {
 class PT_Parse_Property {
 }
 
+class PT_Parse_Global {
+}
