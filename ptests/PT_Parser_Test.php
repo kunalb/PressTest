@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Tests for the base parser that iterates over the tokens.
+ *
+ * @version 0.2
+ * @author Kunal Bhalla
+ * @package PressTest
+ * @subPackage ptests 
+ */
+
 include dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 
 class PT_Parser_Test extends PHPUnit_Framework_TestCase {
