@@ -269,7 +269,6 @@ class PT_Parse_Class {
 
 		$parser->skip_till( T_CLASS );	
 
-		$this->parse
 	}
 }
 
