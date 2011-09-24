@@ -89,7 +89,6 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group current
 	 * @dataProvider provider
 	 */
 	public function testMods( $code ) {
@@ -118,16 +117,96 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( TRUE );
 	}
 
-	public function modsProvider() {
-		$code = Array();
-		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
-		$samples = opendir( $sampleDir );
+	/**
+	 * @group current
+	 * @dataProvider provider
+	 */
+	public function testSkipStart( $code ) {
+		$tokens = token_get_all( $code );
+		$length = count( $tokens ); $i = 0;
+		$parser = new PT_Parse( $code );
 
-		while( $path = readdir( $samples ) ) 
-			if( is_file( $sampleDir . $path ) && preg_match( '/^mods-/', $path ) )
-				$code[] = Array( file_get_contents( $sampleDir . $path ) );
-		
-		return $code;
+		$nextToken = T_ECHO;
+		$parser->skip_till( $nextToken );
+
+		$this->assertTrue(  !$parser->valid() || ( $parser->key() == $nextToken ) );
+
+		while( $i < $length && $this->getVal( $tokens[ $i ], 0 ) != $nextToken )
+			$i++;
+
+		while( $i < $length ) {
+			$this->assertEquals( $parser->key(), $this->getVal( $tokens[ $i ], 0 ) );	
+
+			$i++; $parser->next();
+		}
+
+		$this->assertTrue( !$parser->valid() );	
 	}
 
+	/**
+	 * @group current
+	 * @dataProvider provider
+	 */
+	public function testSkipEnd( $code ) {
+		$parser = new PT_Parse( $code );
+		foreach( $parser as $token ) {;}
+
+		$parser->skip_till( T_PUBLIC );
+
+		$this->assertTrue( !$parser->valid() );
+	}
+
+	/**
+	 * @group current
+	 * @dataProvider provider
+	 */
+	public function testSkipMiddle( $code ) {
+		$tokens = token_get_all( $code );
+		$length = count( $tokens ); $i = 0;
+		$parser = new PT_Parse( $code );
+
+		$skipLength = rand( 0, $length );
+	
+		for( $i = 0; $i < $skipLength; $i++ )
+			$parser->next();
+
+		$parser->next();	
+
+		$nextToken = T_ECHO;
+		$parser->skip_till( $nextToken );
+
+		$this->assertTrue(  !$parser->valid() || ( $parser->key() == $nextToken ) );
+
+		while( $i < $length && $this->getVal( $tokens[ $i ], 0 ) != $nextToken )
+			$i++;
+
+		while( $i < $length ) {
+			$this->assertEquals( $parser->key(), $this->getVal( $tokens[ $i ], 0 ) );	
+
+			$i++; $parser->next();
+		}
+
+		$this->assertTrue( !$parser->valid() );	
+	}
+
+	/**
+	 * @group current
+	 * @dataProvider provider
+	 */
+	public function testSkipNottoken( $code ) {
+		$tokens = token_get_all( $code );
+		$parser = new PT_Parse( $code );
+
+		$nextToken = '!!!!';
+		$parser->skip_till( $nextToken );
+
+		$this->assertTrue( !$parser->valid() );	
+	}
+
+	public function getVal( $token, $i ) {
+		if( is_array( $token ) )
+			return $token[$i];
+		else
+			return $token;
+	}
 }
