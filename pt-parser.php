@@ -267,7 +267,8 @@ class PT_Parse_Class {
 		if( get_class( $parser ) != PT_Parser )
 			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
 
-		$parser->skip_till( T_CLASS );	
+		$this->parser = $parser;
+		$this->parser->skip_till( T_CLASS );	
 	
 		$this->parse();
 	}
@@ -294,6 +295,7 @@ class PT_Parse_Class {
 }
 
 class PT_Parse_Function {
+
 }
 
 class PT_Parse_Method extends PT_Parse_Function {
