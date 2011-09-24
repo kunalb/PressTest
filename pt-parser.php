@@ -12,12 +12,12 @@
  */
 
 /**
- * Value returned by the PT_Parse Iterator.
+ * Value returned by the PT_Parser Iterator.
  *
- * @link PT_Parse. Returns details about the
+ * @link PT_Parser. Returns details about the
  * current token.
  */ 
-class PT_Parse_Token {
+class PT_Parser_Token {
 	public $val;
 	public $token;
 	public $line;
@@ -40,7 +40,7 @@ class PT_Parse_Token {
 /**
  * Smart iterator for tokens obtained parsed code.
  */ 
-class PT_Parse implements Iterator {
+class PT_Parser implements Iterator {
 
 	/** 
 	 * Token list
@@ -131,14 +131,14 @@ class PT_Parse implements Iterator {
 	}	
 
 	/**
-	 * Returns a PT_Parse_Token instance or NULL in case the iterator has overshot.
+	 * Returns a PT_Parser_Token instance or NULL in case the iterator has overshot.
 	 * 
-	 * @return PT_Parse_Token|Null 
+	 * @return PT_Parser_Token|Null 
 	 */
 	public function current() {
 		if( !$this->valid() ) return NULL;
 
-		return new PT_Parse_Token( Array( 
+		return new PT_Parser_Token( Array( 
 			'token' => $this->key(),
 			'val' => $this->val(),
 			'modifiers' => $this->mods,
@@ -223,7 +223,7 @@ class PT_Parse_File {
 	public function __construct( $file ) {
 		$code = file_get_contents( $file );
 		if( $code !== FALSE ) {
-			$this->parser = new PT_Parse( file_get_contents( $file ) );
+			$this->parser = new PT_Parser( file_get_contents( $file ) );
 			$this->file = $file;
 		}
 
@@ -264,6 +264,12 @@ class PT_Parse_Class {
 	private $properties;
 
 	public function __construct( $parser ) {
+		if( get_class( $parser ) != PT_Parser )
+			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
+
+		$parser->skip_till( T_CLASS );	
+
+		$this->parse
 	}
 }
 

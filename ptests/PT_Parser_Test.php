@@ -2,12 +2,12 @@
 
 include dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 
-class PT_Parse_Test extends PHPUnit_Framework_TestCase {
+class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 
 	private static $ref;
 
 	public static function setUpBeforeClass() {
-		self::$ref = new ReflectionClass( 'PT_Parse' );
+		self::$ref = new ReflectionClass( 'PT_Parser' );
 	}
 
 	/**
@@ -15,7 +15,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 * @group iterator
 	 */
 	public function testNextAll( $code ) {
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 		$tokens = token_get_all( $code );
 
 		$count = 0;
@@ -32,7 +32,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 * @group iterator
 	 */
 	public function testNextMatchToken( $code ) {
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 		$tokens = token_get_all( $code ); $i = 0;
 
 		foreach( $parser as $token ) {
@@ -47,7 +47,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 * @group iterator
 	 */
 	public function testNextMatchVal( $code ) {
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 		$tokens = token_get_all( $code ); $i = 0;
 
 		foreach( $parser as $token ) {
@@ -62,7 +62,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 * @group iterator
 	 */
 	public function testNoRewind( $code ) {
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 		$tokens = token_get_all( $code ); 
 		
 		$i = 0; $count = count( $tokens );
@@ -99,7 +99,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 		$modList = $defaults["mod_list"];
 		$i = 0; $tokens = token_get_all( $code );
 
-		$parse = new PT_Parse( $code );
+		$parse = new PT_Parser( $code );
 
 		foreach( $parse as $token ) {
 			if( $token->token != T_WHITESPACE ) {
@@ -127,7 +127,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	public function testSkipStart( $code ) {
 		$tokens = token_get_all( $code );
 		$length = count( $tokens ); $i = 0;
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 
 		$nextToken = T_ECHO;
 		$parser->skip_till( $nextToken );
@@ -151,7 +151,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 * @group skip
 	 */
 	public function testSkipEnd( $code ) {
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 		foreach( $parser as $token ) {;}
 
 		$parser->skip_till( T_PUBLIC );
@@ -166,7 +166,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	public function testSkipMiddle( $code ) {
 		$tokens = token_get_all( $code );
 		$length = count( $tokens ); $i = 0;
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 
 		$skipLength = rand( 0, $length );
 	
@@ -196,7 +196,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function testSkipNottoken( $code ) {
 		$tokens = token_get_all( $code );
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 
 		$nextToken = '!!!!';
 		$parser->skip_till( $nextToken );
@@ -218,7 +218,7 @@ class PT_Parse_Test extends PHPUnit_Framework_TestCase {
 	public function testNoSkip( $code ) {
 		$tokens = token_get_all( $code );
 		$length = count( $tokens ); $i = 0;
-		$parser = new PT_Parse( $code );
+		$parser = new PT_Parser( $code );
 
 		$skipLength = rand( 0, $length );
 	
