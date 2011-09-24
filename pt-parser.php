@@ -207,7 +207,9 @@ class PT_Parse implements Iterator {
 	 * Useful for exploratory parsing
 	 */
 	public function skip_till( $token ) {
-		while( $this->token() != $token && $this->next() ) {}
+		while( $this->key() != $token && $this->valid() ) {
+			$this->next();
+		}
 	}
 
 	/**
