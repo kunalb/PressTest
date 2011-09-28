@@ -39,6 +39,7 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provider
 	 * @group iterator
+	 * @depends testNextAll
 	 */
 	public function testNextMatchToken( $code ) {
 		$parser = new PT_Parser( $code );
@@ -54,6 +55,7 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provider
 	 * @group iterator
+	 * @depends testNextMatchToken
 	 */
 	public function testNextMatchVal( $code ) {
 		$parser = new PT_Parser( $code );
@@ -69,8 +71,9 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provider
 	 * @group iterator
+	 * @depends testNextAll
 	 */
-	public function testNoRewind( $code ) {
+	public function testRewind( $code ) {
 		$parser = new PT_Parser( $code );
 		$tokens = token_get_all( $code ); 
 		
@@ -243,5 +246,24 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 		}
 		
 		$this->assertTrue( !$parser->valid() );	
+	}
+
+	/**
+	 * @group block
+	 */
+	public function testBlockSimple() {
+		$code = file_get_contents( "samples/class-wp-filesystem-direct.php" );
+		$tokens = token_get_all( $code );
+
+		$parser = new PT_Parser( $code );
+
+		while( $parser->block() ) 
+			$parser->next();
+
+		$this->assertEquals( $parser->key(), T_WHITESPACE );	
+
+		$parser->skip_till( T_DOC_COMMENT );
+
+		$this->assertEquals( $parser->val(), "/** @stop b1 */" );
 	}
 }
