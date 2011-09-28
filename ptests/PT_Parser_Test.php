@@ -251,7 +251,7 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	public function blockProvider() {
 		$code = Array();
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
-		$files = $sampleDir . Array( "class-wp-filesystem-direct.php" );
+		$files = Array( $sampleDir . "class-wp-filesystem-direct.php" );
 
 		foreach( $files as $file )
 			$code[] = Array( file_get_contents( $file ) );
