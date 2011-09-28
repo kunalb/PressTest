@@ -335,4 +335,22 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals( $blockCount, $fnCount );
 	}
+
+	/**
+	 * @group block
+	 */
+	function testBlockAltSimple() {
+		$code = file_get_contents( dirname( __FILE__ ) . '/samples/' . "plugins.php" );
+
+		$parser = new PT_Parser( $code );
+		$contents = '';
+		$parser->skip_till( '(' );
+
+		while( $parser->block( "()" ) ) {
+			$contents .= $parser->val();
+			$parser->next();
+		}
+
+		$this->assertEquals( "('./admin.php')", $contents );	
+	}
 }

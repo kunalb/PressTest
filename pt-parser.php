@@ -244,7 +244,10 @@ class PT_Parser implements Iterator {
 	 * @param String $id The identifier for the caller.
 	 * @return Bool True while the block hasn't ended.
 	 */
-	public function block( $id = '' ) {
+	public function block( $brackets = Array( "{", "}" ), $id = '' ) {
+		$lbracket = $brackets[0];
+		$rbracket = $brackets[1];
+
 		if( $id == '' ) {
 			$backtrace = debug_backtrace(false);
 			$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] );
@@ -256,11 +259,11 @@ class PT_Parser implements Iterator {
 		if( !array_key_exists( $id, $this->braceBlock ) )
 			$this->braceBlock[ $id ] = -1;
 
-		if( !$this->inBlock[ $id ] && $this->key() == '{' ) { //Opened the function
+		if( !$this->inBlock[ $id ] && $this->key() == $lbracket ) { //Opened the function
 			$this->inBlock[ $id ] = true; 
-		} else if( $this->inBlock[ $id ] && $this->key() == '{' ) {
+		} else if( $this->inBlock[ $id ] && $this->key() == $lbracket ) {
 			$this->braceBlock[ $id ]--;
-		} else if( $this->inBlock[ $id ] && $this->key() == '}' ) {
+		} else if( $this->inBlock[ $id ] && $this->key() == $rbracket ) {
 			$this->braceBlock[ $id ]++;
 		} 
 
@@ -366,6 +369,7 @@ class PT_Parse_Function {
 	private $parser;
 	private $arguments;
 	private $globals;
+	private $name;
 
 	public function __construct() {
 		if( get_class( $parser ) != PT_Parser )
@@ -378,6 +382,8 @@ class PT_Parse_Function {
 	}
 
 	private function parse() {
+		$this->name = $this->parser->skip_till( T_STRING )->val();
+
 		while( $this->parser->block() ) {
 		}
 	}
