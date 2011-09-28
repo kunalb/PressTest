@@ -309,7 +309,7 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	 * @group block
 	 */
 	public function testBlockComplex2() {
-		$code = file_get_contents( "samples/kb-admin.php" );
+		$code = file_get_contents( dirname( __FILE__ ) . '/samples/' . "kb-admin.php" );
 
 		$parser = new PT_Parser( $code );
 		$fnCount = 0; $tokens = token_get_all( $code );
