@@ -123,12 +123,15 @@ class PT_Parser implements Iterator {
 
 	/**
 	 * Moves to the next token and runs an 'each' internal call.
+	 * @return PT_Parser $this Allows chaining
 	 */
 	public function next() {
 		$this->position++;
 
 		if( $this->valid() )
 			$this->each();
+
+		return $this;	
 	}
 
 	/**
@@ -216,11 +219,14 @@ class PT_Parser implements Iterator {
 	 * Skip tokens till the specified token is reached.
 	 *
 	 * Useful for exploratory parsing
+	 *
+	 * @return PT_Parser $this Useful for chaining
 	 */
 	public function skip_till( $token ) {
 		while( $this->key() != $token && $this->valid() ) {
 			$this->next();
 		}
+		return $this;
 	}
 
 	/** 
@@ -372,7 +378,7 @@ class PT_Parse_Function {
 	}
 
 	private function parse() {
-		foreach( $this->parser as $token ) {
+		while( $this->parser->block() ) {
 		}
 	}
 
