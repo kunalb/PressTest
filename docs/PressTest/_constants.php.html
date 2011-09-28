@@ -35,14 +35,46 @@
 									<span class="disabled">Constants</span>
 											</div>
 		<div class="info-box-body">	
-			<a name="definePT_ADMIN_URL"><!-- --></a>
+			<a name="definePT_ADMIN_DIR"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PT_ADMIN_DIR</span> = ABSPATH.'wp-admin'
+			(line <span class="line-number">63</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Admin path</p>
+	
+		
+</div>
+<a name="definePT_ADMIN_INCLUDES_DIR"><!-- --></a>
 <div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
+			<span class="const-name">PT_ADMIN_INCLUDES_DIR</span> = PT_ADMIN_DIR.'/includes'
+			(line <span class="line-number">66</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Admin includes path</p>
+	
+		
+</div>
+<a name="definePT_ADMIN_URL"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
 			<span class="const-name">PT_ADMIN_URL</span> = get_admin_url().'admin.php?page='.PT_SLUG
-			(line <span class="line-number">36</span>)
+			(line <span class="line-number">42</span>)
 		</span>
 	</div>
 	
@@ -52,13 +84,13 @@
 		
 </div>
 <a name="definePT_COL"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_COL</span> = 'pt_tests'
-			(line <span class="line-number">42</span>)
+			(line <span class="line-number">48</span>)
 		</span>
 	</div>
 	
@@ -68,13 +100,13 @@
 		
 </div>
 <a name="definePT_DIR"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
-			<span class="const-name">PT_DIR</span> = WP_PLUGIN_DIR.'/PressTest'
-			(line <span class="line-number">9</span>)
+			<span class="const-name">PT_DIR</span> = WP_PLUGIN_DIR.'/'.PT_FOLDER
+			(line <span class="line-number">12</span>)
 		</span>
 	</div>
 	
@@ -83,14 +115,46 @@
 	
 		
 </div>
-<a name="definePT_HOME"><!-- --></a>
+<a name="definePT_FILE"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PT_FILE</span> = PT_FOLDER.'/PressTest.php'
+			(line <span class="line-number">15</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Hand written basename to avoid soft linking issues</p>
+	
+		
+</div>
+<a name="definePT_FOLDER"><!-- --></a>
 <div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
+			<span class="const-name">PT_FOLDER</span> = 'presstest'
+			(line <span class="line-number">9</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Plugin Folder</p>
+	
+		
+</div>
+<a name="definePT_HOME"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
 			<span class="const-name">PT_HOME</span> = 'http://github.com/kunalb/PressTest/'
-			(line <span class="line-number">30</span>)
+			(line <span class="line-number">36</span>)
 		</span>
 	</div>
 	
@@ -100,13 +164,13 @@
 		
 </div>
 <a name="definePT_IMAGES_URL"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_IMAGES_URL</span> = PT_URL.'/resources/images'
-			(line <span class="line-number">21</span>)
+			(line <span class="line-number">27</span>)
 		</span>
 	</div>
 	
@@ -115,14 +179,78 @@
 	
 		
 </div>
-<a name="definePT_PHPUNIT_DIR"><!-- --></a>
+<a name="definePT_MOCK_DIR"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PT_MOCK_DIR</span> = PT_DIR.'/mocked'
+			(line <span class="line-number">51</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The directory for mocked files.</p>
+	
+		
+</div>
+<a name="definePT_MOCK_PLUGIN_DIR"><!-- --></a>
 <div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
+			<span class="const-name">PT_MOCK_PLUGIN_DIR</span> = PT_MOCK_DIR.'/plugins'
+			(line <span class="line-number">57</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The directory for mocked plugin files.</p>
+	
+		
+</div>
+<a name="definePT_MOCK_THEME_DIR"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PT_MOCK_THEME_DIR</span> = PT_MOCK_DIR.'/themes'
+			(line <span class="line-number">54</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The directory for mocked theme files.</p>
+	
+		
+</div>
+<a name="definePT_NEEDS_PERMISSION"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">PT_NEEDS_PERMISSION</span> = 'PT_Needs_Permission'
+			(line <span class="line-number">60</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The option indicating that the presstest folder should be writeable.</p>
+	
+		
+</div>
+<a name="definePT_PHPUNIT_DIR"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
 			<span class="const-name">PT_PHPUNIT_DIR</span> = PT_DIR.'/phpunit/phpunit'
-			(line <span class="line-number">12</span>)
+			(line <span class="line-number">18</span>)
 		</span>
 	</div>
 	
@@ -132,13 +260,13 @@
 		
 </div>
 <a name="definePT_PLUGINS_SCREEN"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_PLUGINS_SCREEN</span> = 'plugins'
-			(line <span class="line-number">39</span>)
+			(line <span class="line-number">45</span>)
 		</span>
 	</div>
 	
@@ -148,13 +276,13 @@
 		
 </div>
 <a name="definePT_QUNIT_URL"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_QUNIT_URL</span> = PT_URL.'/qunit/qunit'
-			(line <span class="line-number">18</span>)
+			(line <span class="line-number">24</span>)
 		</span>
 	</div>
 	
@@ -164,13 +292,13 @@
 		
 </div>
 <a name="definePT_SCRIPTS_URL"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_SCRIPTS_URL</span> = PT_URL.'/resources/scripts'
-			(line <span class="line-number">24</span>)
+			(line <span class="line-number">30</span>)
 		</span>
 	</div>
 	
@@ -180,13 +308,13 @@
 		
 </div>
 <a name="definePT_SLUG"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_SLUG</span> = 'presstest'
-			(line <span class="line-number">33</span>)
+			(line <span class="line-number">39</span>)
 		</span>
 	</div>
 	
@@ -196,13 +324,13 @@
 		
 </div>
 <a name="definePT_STYLES_URL"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
 			<span class="const-name">PT_STYLES_URL</span> = PT_URL.'/resources/styles'
-			(line <span class="line-number">27</span>)
+			(line <span class="line-number">33</span>)
 		</span>
 	</div>
 	
@@ -212,13 +340,13 @@
 		
 </div>
 <a name="definePT_URL"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div>
 		<img src="../media/images/Constant.png" />
 		<span class="const-title">
-			<span class="const-name">PT_URL</span> = plugins_url('PressTest')
-			(line <span class="line-number">15</span>)
+			<span class="const-name">PT_URL</span> = plugins_url('presstest')
+			(line <span class="line-number">21</span>)
 		</span>
 	</div>
 	
@@ -233,7 +361,7 @@
 	
 	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 07 Sep 2011 14:54:16 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Thu, 29 Sep 2011 01:44:45 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page query.php</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/ptests/samples/omitted/query.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-classes">Classes</a>
+			|													<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">WordPress Query API</p>
+<p class="description"><p>The query API attempts to get which part of WordPress to the user is on. It  also provides functionality to getting URL query information.</p></p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://codex.wordpress.org/The_Loop">More information on The Loop.</a></li>
+			</ul>
+		
+			</div>
+</div>
+		
+	<a name="sec-classes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Classes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Classes</span>
+			|																<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../../WordPress/Query/WP_Query.html">WP_Query</a>
+					</td>
+					<td>
+											The WordPress Query class.
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionget_queried_object" id="functionget_queried_object"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">get_queried_object</span> (line <span class="line-number">41</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve the currently-queried object.  Wrapper for $wp_query-&gt;get_queried_object()</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> WP_Query::get_queried_object</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">object</span>
+		<span class="method-name">
+			get_queried_object
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionget_queried_object_id" id="functionget_queried_object_id"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">get_queried_object_id</span> (line <span class="line-number">56</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve ID of the current queried object. Wrapper for $wp_query-&gt;get_queried_object_id()</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> <a href="../../WordPress/Query/WP_Query.html#methodget_queried_object_id">WP_Query::get_queried_object_id()</a></li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			get_queried_object_id
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionget_query_var" id="functionget_query_var"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">get_query_var</span> (line <span class="line-number">24</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve variable in the WP_Query class.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodget">WP_Query::get()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			get_query_var
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$var</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$var</span><span class="var-description">: The variable key to retrieve.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionhave_comments" id="functionhave_comments"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">have_comments</span> (line <span class="line-number">792</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether there are comments to loop over.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodhave_comments">WP_Query::have_comments()</a></li>
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			have_comments
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionhave_posts" id="functionhave_posts"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">have_posts</span> (line <span class="line-number">731</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether current WordPress query has results to loop over.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodhave_posts">WP_Query::have_posts()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			have_posts
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionin_the_loop" id="functionin_the_loop"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">in_the_loop</span> (line <span class="line-number">745</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether the caller is in the Loop.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if caller is within loop, false if loop hasn't started or ended.</li>
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			in_the_loop
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_404" id="functionis_404"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_404</span> (line <span class="line-number">707</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query a 404 (returns no results)?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_404">WP_Query::is_404()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_404
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_archive" id="functionis_archive"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_archive</span> (line <span class="line-number">142</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an archive page?</p>
+<p class="description"><p>Month, Year, Category, Author, Post Type archive...</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_archive">WP_Query::is_archive()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_archive
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_attachment" id="functionis_attachment"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_attachment</span> (line <span class="line-number">183</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an attachment page?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_attachment">WP_Query::is_attachment()</a></li>
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_attachment
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_author" id="functionis_author"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_author</span> (line <span class="line-number">207</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an author archive page?</p>
+<p class="description"><p>If the $author parameter is specified, this function will additionally  check if the query is for one of the authors specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_author">WP_Query::is_author()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_author
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$author</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$author</span><span class="var-description">: Optional. User ID, nickname, nicename, or array of User IDs, nicknames, and nicenames</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_category" id="functionis_category"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_category</span> (line <span class="line-number">231</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a category archive page?</p>
+<p class="description"><p>If the $category parameter is specified, this function will additionally  check if the query is for one of the categories specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_category">WP_Query::is_category()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_category
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$category</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$category</span><span class="var-description">: Optional. Category ID, name, slug, or array of Category IDs, names, and slugs.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_comments_popup" id="functionis_comments_popup"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_comments_popup</span> (line <span class="line-number">304</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether the current URL is within the comments popup window.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_comments_popup">WP_Query::is_comments_popup()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_comments_popup
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_comment_feed" id="functionis_comment_feed"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_comment_feed</span> (line <span class="line-number">385</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a comments feed?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> WP_Query::is_comments_feed()</li>
+				<li><span class="field">since:</span> 3.0.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_comment_feed
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_date" id="functionis_date"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_date</span> (line <span class="line-number">324</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a date archive?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_date">WP_Query::is_date()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_date
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_day" id="functionis_day"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_day</span> (line <span class="line-number">344</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a day archive?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_day">WP_Query::is_day()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_day
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_feed" id="functionis_feed"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_feed</span> (line <span class="line-number">365</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a feed?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_feed">WP_Query::is_feed()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_feed
+		</span>
+					([<span class="var-type">string|array</span>&nbsp;<span class="var-name">$feeds</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|array</span>
+				<span class="var-name">$feeds</span><span class="var-description">: Optional feed types to check.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_front_page" id="functionis_front_page"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_front_page</span> (line <span class="line-number">415</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the front page of the site?</p>
+<p class="description"><p>This is for what is displayed at your site's main URL.</p><p>Depends on the site's &quot;Front page displays&quot; Reading Settings 'show_on_front' and 'page_on_front'.</p><p>If you set a static page for the front page of your site, this function will return  true when viewing that page.</p><p>Otherwise the same as @see is_home()</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True, if front of site.</li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_front_page">WP_Query::is_front_page()</a></li>
+				<li><span class="field">since:</span> 2.5.0</li>
+				<li><span class="field">uses:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_home">is_home()</a></li>
+				<li><span class="field">uses:</span> get_option()</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_front_page
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_home" id="functionis_home"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_home</span> (line <span class="line-number">444</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the blog homepage?</p>
+<p class="description"><p>This is the page which shows the time based blog content of your site.</p><p>Depends on the site's &quot;Front page displays&quot; Reading Settings 'show_on_front' and 'page_for_posts'.</p><p>If you set a static page for the front page of your site, this function will return  true only on the page you set as the &quot;Posts page&quot;.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if blog view homepage.</li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_front_page">is_front_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_home">WP_Query::is_home()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_home
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_month" id="functionis_month"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_month</span> (line <span class="line-number">464</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a month archive?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_month">WP_Query::is_month()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_month
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_page" id="functionis_page"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_page</span> (line <span class="line-number">491</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single page?</p>
+<p class="description"><p>If the $page parameter is specified, this function will additionally  check if the query is for one of the pages specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_single">is_single()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_page">WP_Query::is_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_singular">is_singular()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_page
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$page</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$page</span><span class="var-description">: Page ID, title, slug, or array of such.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_paged" id="functionis_paged"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_paged</span> (line <span class="line-number">511</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for paged result and not for the first page?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_paged">WP_Query::is_paged()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_paged
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_post_type_archive" id="functionis_post_type_archive"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_post_type_archive</span> (line <span class="line-number">163</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a post type archive page?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_post_type_archive">WP_Query::is_post_type_archive()</a></li>
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_post_type_archive
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post_types</span><span class="var-description">: Optional. Post type or array of posts types to check against.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_preview" id="functionis_preview"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_preview</span> (line <span class="line-number">531</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a post or page preview?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_preview">WP_Query::is_preview()</a></li>
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_preview
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_robots" id="functionis_robots"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_robots</span> (line <span class="line-number">551</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the robots file?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_robots">WP_Query::is_robots()</a></li>
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_robots
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_search" id="functionis_search"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_search</span> (line <span class="line-number">571</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a search?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_search">WP_Query::is_search()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_search
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_single" id="functionis_single"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_single</span> (line <span class="line-number">600</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single post?</p>
+<p class="description"><p>Works for any post type, except attachments and pages</p><p>If the $post parameter is specified, this function will additionally  check if the query is for one of the Posts specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_page">is_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_single">WP_Query::is_single()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_singular">is_singular()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_single
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post</span><span class="var-description">: Post ID, title, slug, or array of such.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_singular" id="functionis_singular"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_singular</span> (line <span class="line-number">627</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single post of any post type (post, attachment, page, ... )?</p>
+<p class="description"><p>If the $post_types parameter is specified, this function will additionally  check if the query is for one of the Posts Types specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_page">is_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_singular">WP_Query::is_singular()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_single">is_single()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_singular
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post_types</span><span class="var-description">: Optional. Post Type or array of Post Types</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_tag" id="functionis_tag"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_tag</span> (line <span class="line-number">255</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a tag archive page?</p>
+<p class="description"><p>If the $tag parameter is specified, this function will additionally  check if the query is for one of the tags specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_tag">WP_Query::is_tag()</a></li>
+				<li><span class="field">since:</span> 2.3.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_tag
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$slug</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$slug</span><span class="var-description">: Optional. Tag slug or array of slugs.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_tax" id="functionis_tax"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_tax</span> (line <span class="line-number">284</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a taxonomy archive page?</p>
+<p class="description"><p>If the $taxonomy parameter is specified, this function will additionally  check if the query is for that specific $taxonomy.</p><p>If the $term parameter is specified in addition to the $taxonomy parameter,  this function will additionally check if the query is for one of the terms  specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_tax">WP_Query::is_tax()</a></li>
+				<li><span class="field">since:</span> 2.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_tax
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$taxonomy</span> = <span class="var-default">&#039;&#039;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$term</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$taxonomy</span><span class="var-description">: Optional. Taxonomy slug or slugs.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$term</span><span class="var-description">: Optional. Term ID, name, slug or array of Term IDs, names, and slugs.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionis_time" id="functionis_time"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_time</span> (line <span class="line-number">647</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a specific time?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_time">WP_Query::is_time()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_time
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_trackback" id="functionis_trackback"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_trackback</span> (line <span class="line-number">667</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a trackback endpoint call?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_trackback">WP_Query::is_trackback()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_trackback
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionis_year" id="functionis_year"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">is_year</span> (line <span class="line-number">687</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a specific year?</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_year">WP_Query::is_year()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_year
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionquery_posts" id="functionquery_posts"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">query_posts</span> (line <span class="line-number">90</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set up The Loop with query parameters.</p>
+<p class="description"><p>This will override the current WordPress Loop and shouldn't be used more than  once. This must not be used within the WordPress Loop.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> List of posts</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			&amp;query_posts
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionrewind_posts" id="functionrewind_posts"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">rewind_posts</span> (line <span class="line-number">760</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Rewind the loop posts.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodrewind_posts">WP_Query::rewind_posts()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">null</span>
+		<span class="method-name">
+			rewind_posts
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionsetup_postdata" id="functionsetup_postdata"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">setup_postdata</span> (line <span class="line-number">3541</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set up global post data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True when finished.</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> do_action_ref_array() - Calls 'the_post'</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			setup_postdata
+		</span>
+					(<span class="var-type">object</span>&nbsp;<span class="var-name">$post</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$post</span><span class="var-description">: Post data.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionset_query_var" id="functionset_query_var"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">set_query_var</span> (line <span class="line-number">72</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set query variable.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodset">WP_Query::set()</a></li>
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">null</span>
+		<span class="method-name">
+			set_query_var
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$var</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$var</span><span class="var-description">: Query variable key.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionthe_comment" id="functionthe_comment"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">the_comment</span> (line <span class="line-number">806</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Iterate comment index in the comment loop.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodthe_comment">WP_Query::the_comment()</a></li>
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">object</span>
+		<span class="method-name">
+			the_comment
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionthe_post" id="functionthe_post"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">the_post</span> (line <span class="line-number">773</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Iterate the post index in the loop.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodthe_post">WP_Query::the_post()</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			the_post
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionwp_old_slug_redirect" id="functionwp_old_slug_redirect"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">wp_old_slug_redirect</span> (line <span class="line-number">3483</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Redirect old slugs to the correct permalink.</p>
+<p class="description"><p>Attempts to find the current slug from the past slugs.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> If no link is found, null is returned.</li>
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+				<li><span class="field">uses:</span> $wpdb</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">null</span>
+		<span class="method-name">
+			wp_old_slug_redirect
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionwp_reset_postdata" id="functionwp_reset_postdata"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">wp_reset_postdata</span> (line <span class="line-number">119</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">After looping through a separate query, this function restores  the $post global to the current post in the main query</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.0.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			wp_reset_postdata
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionwp_reset_query" id="functionwp_reset_query"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../../media/images/Function.png" />
+		<span class="method-title">wp_reset_query</span> (line <span class="line-number">106</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Destroy the previous query and set up a new query.</p>
+<p class="description"><p>This should be used after <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionquery_posts">query_posts()</a> and before another <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionquery_posts">query_posts()</a>. This will remove obscure bugs that occur when the previous  wp_query object is not destroyed properly before another is set up.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.3.0</li>
+				<li><span class="field">uses:</span> $wp_query</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			wp_reset_query
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Sep 2011 01:44:46 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

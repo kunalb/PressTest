@@ -19,16 +19,15 @@
 	<div class="info-box-title">Description</div>
 	<div class="nav-bar">
 					<span class="disabled">Description</span> |
-							<a href="#sec-descendents">Descendents</a>
-			|													<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
 						
 					</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Automates adding functions to actions/filters.</p>
-<p class="description"><p>Usage in any child class:  A method of the form      `at_&lt;hook name&gt;__[&lt;priority&gt;_][&lt;args&gt;_]&lt;method name&gt;`  will be attached to the corresponding &lt;hook name&gt;.</p><p>Terms in [] are optional.</p></p>
+<p class="short-description">Syntactic sugar for adding functions to actions/filters.</p>
+<p class="description"><p>In any class extending KB_At, adding phpdoc variables: <ul><li>@hook &lt;hook name&gt;</li><li>[@priority &lt;priority&gt;]</li></ul> will add that particular function to the specified hook.</p><p>The number of arguments to be passed will be picked up  automatically by reflection based on the arguments added  in the function.</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_includes---kb-at.php.html">/includes/kb-at.php</a> (line <span class="field">21</span>)
+			Located in <a class="field" href="_includes---kb-at.php.html">/includes/kb-at.php</a> (line <span class="field">25</span>)
 		</p>
 		
 				
@@ -37,48 +36,6 @@
 			</div>
 </div>
 
-	<a name="sec-descendents"></a>
-	<div class="info-box">
-		<div class="info-box-title">Direct descendents</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-			<span class="disabled">Descendents</span>
-			|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-								</div>
-		<div class="info-box-body">
-			<table cellpadding="2" cellspacing="0" class="class-table">
-				<tr>
-					<th class="class-table-header">Class</th>
-					<th class="class-table-header">Description</th>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../KB_Includes/KB_Plugin.html">KB_Plugin</a>
-					</td>
-					<td>
-											Base class for plugins.
-										</td>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../KB_Includes/KB_Cpt.html">KB_Cpt</a>
-					</td>
-					<td>
-											Generic class to handle common CPT functionality.
-										</td>
-				</tr>
-							</table>
-		</div>
-	</div>
 
 
 
@@ -87,7 +44,6 @@
 		<div class="info-box-title">Method Summary</span></div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-							<a href="#sec-descendents">Descendants</a> |
 												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
 		</div>
 		<div class="info-box-body">			
@@ -108,7 +64,6 @@
 		<div class="info-box-title">Methods</div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-							<a href="#sec-descendents">Descendents</a> |
 													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
 						
 		</div>
@@ -119,10 +74,12 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">22</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">39</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Hooks based on docs</p>
+<p class="description"><p>Obtains the docblocks for each method of the class,  and checks both for the existence of at @hook and  that the function is publically accessible.</p></p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -137,17 +94,6 @@
 	
 		
 			
-			<hr class="separator" />
-		<div class="notes">Redefined in descendants as:</div>
-		<ul class="redefinitions">
-					<li>
-				<a href="../KB_Includes/KB_Plugin.html#method__construct">KB_Plugin::__construct()</a>
-							</li>
-					<li>
-				<a href="../KB_Includes/KB_Cpt.html#method__construct">KB_Cpt::__construct()</a>
-								: Constructor -- check if the 'init' action has run and accordingly register the post type.
-							</li>
-				</ul>
 	</div>
 						
 		</div>
@@ -155,7 +101,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 07 Sep 2011 14:54:16 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Thu, 29 Sep 2011 01:44:45 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

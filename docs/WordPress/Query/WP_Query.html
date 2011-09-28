@@ -1,0 +1,3085 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class WP_Query</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> WP_Query</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The WordPress Query class.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://codex.wordpress.org/Function_Reference/WP_Query">Codex page.</a></li>
+				<li><span class="field">since:</span> 1.5.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_ptests---samples---omitted---query.php.html">/ptests/samples/omitted/query.php</a> (line <span class="field">822</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																																																																																																																																																																																																																																																																																																																																																								<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$comment" title="details" class="var-name">$comment</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$comments" title="details" class="var-name">$comments</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$comment_count" title="details" class="var-name">$comment_count</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$current_comment" title="details" class="var-name">$current_comment</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$current_post" title="details" class="var-name">$current_post</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$found_posts" title="details" class="var-name">$found_posts</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$in_the_loop" title="details" class="var-name">$in_the_loop</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_404" title="details" class="var-name">$is_404</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_admin" title="details" class="var-name">$is_admin</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_archive" title="details" class="var-name">$is_archive</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_attachment" title="details" class="var-name">$is_attachment</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_author" title="details" class="var-name">$is_author</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_category" title="details" class="var-name">$is_category</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_comments_popup" title="details" class="var-name">$is_comments_popup</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_comment_feed" title="details" class="var-name">$is_comment_feed</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_date" title="details" class="var-name">$is_date</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_day" title="details" class="var-name">$is_day</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_feed" title="details" class="var-name">$is_feed</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_home" title="details" class="var-name">$is_home</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_month" title="details" class="var-name">$is_month</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_page" title="details" class="var-name">$is_page</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_paged" title="details" class="var-name">$is_paged</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_posts_page" title="details" class="var-name">$is_posts_page</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_post_type_archive" title="details" class="var-name">$is_post_type_archive</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_preview" title="details" class="var-name">$is_preview</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_robots" title="details" class="var-name">$is_robots</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_search" title="details" class="var-name">$is_search</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_single" title="details" class="var-name">$is_single</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_singular" title="details" class="var-name">$is_singular</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_tag" title="details" class="var-name">$is_tag</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_tax" title="details" class="var-name">$is_tax</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_time" title="details" class="var-name">$is_time</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_trackback" title="details" class="var-name">$is_trackback</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$is_year" title="details" class="var-name">$is_year</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$max_num_comment_pages" title="details" class="var-name">$max_num_comment_pages</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$max_num_pages" title="details" class="var-name">$max_num_pages</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">object WP_Meta_Query</span>
+					<a href="#$meta_query" title="details" class="var-name">$meta_query</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">object</span>
+					<a href="#$post" title="details" class="var-name">$post</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$posts" title="details" class="var-name">$posts</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$post_count" title="details" class="var-name">$post_count</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">object|array</span>
+					<a href="#$queried_object" title="details" class="var-name">$queried_object</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">int</span>
+					<a href="#$queried_object_id" title="details" class="var-name">$queried_object_id</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$query" title="details" class="var-name">$query</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$query_vars" title="details" class="var-name">$query_vars</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">string</span>
+					<a href="#$request" title="details" class="var-name">$request</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">object WP_Tax_Query</span>
+					<a href="#$tax_query" title="details" class="var-name">$tax_query</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">bool</span>
+					<a href="#$thumbnails_cached" title="details" class="var-name">$thumbnails_cached</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																																																																																																																																																								<div class="method-definition">
+					<img src="../../media/images/Constructor.png" alt=" "/>
+											<span class="method-result"><a href="../../WordPress/Query/WP_Query.html">WP_Query</a></span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#fill_query_vars" title="details" class="method-name">fill_query_vars</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$array</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#get" title="details" class="method-name">get</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$query_var</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#get_posts" title="details" class="method-name">&amp;get_posts</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">object</span>
+										<a href="#get_queried_object" title="details" class="method-name">get_queried_object</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#get_queried_object_id" title="details" class="method-name">get_queried_object_id</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#have_comments" title="details" class="method-name">have_comments</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#have_posts" title="details" class="method-name">have_posts</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#init" title="details" class="method-name">init</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_404" title="details" class="method-name">is_404</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_archive" title="details" class="method-name">is_archive</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_attachment" title="details" class="method-name">is_attachment</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_author" title="details" class="method-name">is_author</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$author</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_category" title="details" class="method-name">is_category</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$category</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_comments_popup" title="details" class="method-name">is_comments_popup</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_comment_feed" title="details" class="method-name">is_comment_feed</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_date" title="details" class="method-name">is_date</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_day" title="details" class="method-name">is_day</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_feed" title="details" class="method-name">is_feed</a>
+											([<span class="var-type">string|array</span>&nbsp;<span class="var-name">$feeds</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_front_page" title="details" class="method-name">is_front_page</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_home" title="details" class="method-name">is_home</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_month" title="details" class="method-name">is_month</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_page" title="details" class="method-name">is_page</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$page</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_paged" title="details" class="method-name">is_paged</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_post_type_archive" title="details" class="method-name">is_post_type_archive</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_preview" title="details" class="method-name">is_preview</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_robots" title="details" class="method-name">is_robots</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_search" title="details" class="method-name">is_search</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_single" title="details" class="method-name">is_single</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_singular" title="details" class="method-name">is_singular</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_tag" title="details" class="method-name">is_tag</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$slug</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_tax" title="details" class="method-name">is_tax</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$taxonomy</span> = <span class="var-default">''</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$term</span> = <span class="var-default">''</span>], <span class="var-type">mixed</span>&nbsp;<span class="var-name">$term.</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_time" title="details" class="method-name">is_time</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_trackback" title="details" class="method-name">is_trackback</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#is_year" title="details" class="method-name">is_year</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Comment</span>
+										<a href="#next_comment" title="details" class="method-name">next_comment</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Next</span>
+										<a href="#next_post" title="details" class="method-name">next_post</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#parse_query" title="details" class="method-name">parse_query</a>
+											([<span class="var-type">string|array</span>&nbsp;<span class="var-name">$query</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#parse_query_vars" title="details" class="method-name">parse_query_vars</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#parse_tax_query" title="details" class="method-name">parse_tax_query</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$q</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#query" title="details" class="method-name">&amp;query</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#rewind_comments" title="details" class="method-name">rewind_comments</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#rewind_posts" title="details" class="method-name">rewind_posts</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#set" title="details" class="method-name">set</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$query_var</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#set_404" title="details" class="method-name">set_404</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#the_comment" title="details" class="method-name">the_comment</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#the_post" title="details" class="method-name">the_post</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$comment" id="$comment"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$comment</span>
+						(line <span class="line-number">968</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Current comment ID.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$comments" id="$comments"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$comments</span>
+						(line <span class="line-number">941</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The list of comments for current post.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$comment_count" id="$comment_count"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$comment_count</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">950</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The amount of comments for the posts.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$current_comment" id="$current_comment"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$current_comment</span>
+			 = <span class="var-default"> -1</span>			(line <span class="line-number">959</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The index of the comment in the comment loop.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$current_post" id="$current_post"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$current_post</span>
+			 = <span class="var-default"> -1</span>			(line <span class="line-number">914</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Index of the current item in the loop.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$found_posts" id="$found_posts"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$found_posts</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">977</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Amount of posts if limit clause was not used.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$in_the_loop" id="$in_the_loop"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$in_the_loop</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">923</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether the loop has started and the caller is in the loop.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_404" id="$is_404"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_404</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1166</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query couldn't found anything.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_admin" id="$is_admin"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_admin</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1193</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is part of administration page.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_archive" id="$is_archive"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_archive</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1031</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is an archive list.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_attachment" id="$is_attachment"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_attachment</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1202</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is an attachment.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_author" id="$is_author"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_author</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1085</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains an author.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_category" id="$is_category"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_category</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1094</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains category.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_comments_popup" id="$is_comments_popup"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_comments_popup</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1175</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is within comments popup window.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_comment_feed" id="$is_comment_feed"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_comment_feed</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1139</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is comment feed display.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_date" id="$is_date"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_date</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1040</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is part of a date.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_day" id="$is_day"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_day</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1067</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains a day.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_feed" id="$is_feed"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_feed</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1130</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is feed display.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_home" id="$is_home"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_home</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1157</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is blog homepage.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_month" id="$is_month"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_month</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1058</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains a month.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_page" id="$is_page"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_page</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1022</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query returns a page.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_paged" id="$is_paged"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_paged</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1184</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is paged</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_posts_page" id="$is_posts_page"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_posts_page</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1231</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains posts.</p>
+<p class="description"><p>Basically, the homepage if the option isn't set for the static homepage.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_post_type_archive" id="$is_post_type_archive"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_post_type_archive</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1240</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is for a post type archive.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_preview" id="$is_preview"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_preview</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1013</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is preview of blog.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_robots" id="$is_robots"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_robots</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1220</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is for robots.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_search" id="$is_search"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_search</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1121</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query was part of a search result.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_single" id="$is_single"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_single</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1004</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is single post.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_singular" id="$is_singular"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_singular</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1211</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if is single, is a page, or is an attachment.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_tag" id="$is_tag"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_tag</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1103</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains tag.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.3.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_tax" id="$is_tax"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_tax</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1112</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains taxonomy.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_time" id="$is_time"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_time</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1076</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains time.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_trackback" id="$is_trackback"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_trackback</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1148</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query is trackback.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$is_year" id="$is_year"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$is_year</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1049</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if query contains a year.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$max_num_comment_pages" id="$max_num_comment_pages"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$max_num_comment_pages</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">995</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The amount of comment pages.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.7.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$max_num_pages" id="$max_num_pages"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$max_num_pages</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">986</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The amount of pages.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$meta_query" id="$meta_query"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">object WP_Meta_Query</span>
+			<span class="var-name">$meta_query</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">858</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Metadata query container</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$post" id="$post"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">object</span>
+			<span class="var-name">$post</span>
+						(line <span class="line-number">932</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The current post ID.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">usedby:</span> <a href="../../WordPress/Query/WP_Query.html#methodthe_post">WP_Query::the_post()</a></li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$posts" id="$posts"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$posts</span>
+						(line <span class="line-number">896</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">List of posts.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$post_count" id="$post_count"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$post_count</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">905</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The amount of posts for the current query.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$queried_object" id="$queried_object"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">object|array</span>
+			<span class="var-name">$queried_object</span>
+						(line <span class="line-number">869</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Holds the data for a single object that is queried.</p>
+<p class="description"><p>Holds the contents of a post, page, category, attachment.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$queried_object_id" id="$queried_object_id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">int</span>
+			<span class="var-name">$queried_object_id</span>
+						(line <span class="line-number">878</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The ID of the queried object.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$query" id="$query"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$query</span>
+						(line <span class="line-number">831</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Query vars set by the user</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$query_vars" id="$query_vars"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$query_vars</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">840</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Query vars, after parsing</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$request" id="$request"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$request</span>
+						(line <span class="line-number">887</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get post database query.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.0.1</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$tax_query" id="$tax_query"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">object WP_Tax_Query</span>
+			<span class="var-name">$tax_query</span>
+						(line <span class="line-number">849</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Taxonomy query, as passed to get_tax_sql()</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$thumbnails_cached" id="$thumbnails_cached"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$thumbnails_cached</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">1267</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set if post thumbnails are cached</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Constructor.png" />
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">2989</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor.</p>
+<p class="description"><p>Sets up the WordPress query, if parameter is not empty.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../WordPress/Query/WP_Query.html">WP_Query</a></span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query</span><span class="var-description">: URL query string.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfill_query_vars" id="fill_query_vars"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">fill_query_vars</span> (line <span class="line-number">1354</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Fills in the query variables, which do not exist within the parameter.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Complete query variables with undefined ones filled in empty.</li>
+				<li><span class="field">since:</span> 2.1.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			fill_query_vars
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$array</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$array</span><span class="var-description">: Defined query variables.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodget" id="get"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">get</span> (line <span class="line-number">1874</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve query variable.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			get
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query_var</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query_var</span><span class="var-description">: Query variable key.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodget_posts" id="get_posts"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">get_posts</span> (line <span class="line-number">1906</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve the posts based on query variables.</p>
+<p class="description"><p>There are a few filters and actions that can be used to modify the post  database query.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> List of posts.</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> do_action_ref_array() - Calls 'pre_get_posts' hook before retrieving posts.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			&amp;get_posts
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_queried_object" id="get_queried_object"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">get_queried_object</span> (line <span class="line-number">2919</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve queried object.</p>
+<p class="description"><p>If queried object is not set, then the queried object will be set from  the category, tag, taxonomy, posts page, single post, page, or author  query variable. After it is set up, it will be returned.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object</span>
+		<span class="method-name">
+			get_queried_object
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_queried_object_id" id="get_queried_object_id"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">get_queried_object_id</span> (line <span class="line-number">2968</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieve ID of the current queried object.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">usedby:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionget_queried_object_id">get_queried_object_id()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			get_queried_object_id
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhave_comments" id="have_comments"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">have_comments</span> (line <span class="line-number">2869</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether there are more comments available.</p>
+<p class="description"><p>Automatically rewinds comments when finished.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True, if more comments. False, if no more posts.</li>
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			have_comments
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhave_posts" id="have_posts"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">have_posts</span> (line <span class="line-number">2800</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether there are more posts available in the loop.</p>
+<p class="description"><p>Calls action 'loop_end', when the loop is complete.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if posts are available, false if end of loop.</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> do_action_ref_array() - Calls 'loop_end' if loop is ended</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			have_posts
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinit" id="init"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">init</span> (line <span class="line-number">1313</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Initiates object properties and sets default values.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			init
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_404" id="is_404"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_404</span> (line <span class="line-number">3467</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query a 404 (returns no results)?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_404
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_archive" id="is_archive"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_archive</span> (line <span class="line-number">3004</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an archive page?</p>
+<p class="description"><p>Month, Year, Category, Author, Post Type archive...</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_archive
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_attachment" id="is_attachment"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_attachment</span> (line <span class="line-number">3032</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an attachment page?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_attachment
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_author" id="is_author"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_author</span> (line <span class="line-number">3047</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for an author archive page?</p>
+<p class="description"><p>If the $author parameter is specified, this function will additionally  check if the query is for one of the authors specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_author
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$author</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$author</span><span class="var-description">: Optional. User ID, nickname, nicename, or array of User IDs, nicknames, and nicenames</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_category" id="is_category"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_category</span> (line <span class="line-number">3079</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a category archive page?</p>
+<p class="description"><p>If the $category parameter is specified, this function will additionally  check if the query is for one of the categories specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_category
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$category</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$category</span><span class="var-description">: Optional. Category ID, name, slug, or array of Category IDs, names, and slugs.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_comments_popup" id="is_comments_popup"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_comments_popup</span> (line <span class="line-number">3174</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Whether the current URL is within the comments popup window.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_comments_popup
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_comment_feed" id="is_comment_feed"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_comment_feed</span> (line <span class="line-number">3225</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a comments feed?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_comment_feed
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_date" id="is_date"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_date</span> (line <span class="line-number">3185</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a date archive?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_date
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_day" id="is_day"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_day</span> (line <span class="line-number">3197</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a day archive?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_day
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_feed" id="is_feed"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_feed</span> (line <span class="line-number">3209</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a feed?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_feed
+		</span>
+					([<span class="var-type">string|array</span>&nbsp;<span class="var-name">$feeds</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|array</span>
+				<span class="var-name">$feeds</span><span class="var-description">: Optional feed types to check.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_front_page" id="is_front_page"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_front_page</span> (line <span class="line-number">3247</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the front page of the site?</p>
+<p class="description"><p>This is for what is displayed at your site's main URL.</p><p>Depends on the site's &quot;Front page displays&quot; Reading Settings 'show_on_front' and 'page_on_front'.</p><p>If you set a static page for the front page of your site, this function will return  true when viewing that page.</p><p>Otherwise the same as @see WP_Query::is_home()</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True, if front of site.</li>
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">uses:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_home">WP_Query::is_home()</a></li>
+				<li><span class="field">uses:</span> get_option()</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_front_page
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_home" id="is_home"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_home</span> (line <span class="line-number">3273</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the blog homepage?</p>
+<p class="description"><p>This is the page which shows the time based blog content of your site.</p><p>Depends on the site's &quot;Front page displays&quot; Reading Settings 'show_on_front' and 'page_for_posts'.</p><p>If you set a static page for the front page of your site, this function will return  true only on the page you set as the &quot;Posts page&quot;.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if blog view homepage.</li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_front_page">WP_Query::is_front_page()</a></li>
+				<li><span class="field">since:</span> 3.1.0</li>
+				<li><span class="field">usedby:</span> <a href="../../WordPress/Query/_ptests---samples---omitted---query.php.html#functionis_front_page">is_front_page()</a></li>
+				<li><span class="field">usedby:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_front_page">WP_Query::is_front_page()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_home
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_month" id="is_month"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_month</span> (line <span class="line-number">3284</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a month archive?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_month
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_page" id="is_page"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_page</span> (line <span class="line-number">3302</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single page?</p>
+<p class="description"><p>If the $page parameter is specified, this function will additionally  check if the query is for one of the pages specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_single">WP_Query::is_single()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_singular">WP_Query::is_singular()</a></li>
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_page
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$page</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$page</span><span class="var-description">: Page ID, title, slug, or array of such.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_paged" id="is_paged"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_paged</span> (line <span class="line-number">3330</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for paged result and not for the first page?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_paged
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_post_type_archive" id="is_post_type_archive"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_post_type_archive</span> (line <span class="line-number">3016</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a post type archive page?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_post_type_archive
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post_types</span><span class="var-description">: Optional. Post type or array of posts types to check against.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_preview" id="is_preview"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_preview</span> (line <span class="line-number">3341</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a post or page preview?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_preview
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_robots" id="is_robots"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_robots</span> (line <span class="line-number">3352</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for the robots file?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_robots
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_search" id="is_search"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_search</span> (line <span class="line-number">3363</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a search?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_search
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_single" id="is_single"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_single</span> (line <span class="line-number">3383</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single post?</p>
+<p class="description"><p>Works for any post type, except attachments and pages</p><p>If the $post parameter is specified, this function will additionally  check if the query is for one of the Posts specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_page">WP_Query::is_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_singular">WP_Query::is_singular()</a></li>
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_single
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post</span><span class="var-description">: Post ID, title, slug, or array of such.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_singular" id="is_singular"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_singular</span> (line <span class="line-number">3418</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a single post of any post type (post, attachment, page, ... )?</p>
+<p class="description"><p>If the $post_types parameter is specified, this function will additionally  check if the query is for one of the Posts Types specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_page">WP_Query::is_page()</a></li>
+				<li><span class="field">see:</span> <a href="../../WordPress/Query/WP_Query.html#methodis_single">WP_Query::is_single()</a></li>
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_singular
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$post_types</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$post_types</span><span class="var-description">: Optional. Post Type or array of Post Types</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_tag" id="is_tag"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_tag</span> (line <span class="line-number">3111</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a tag archive page?</p>
+<p class="description"><p>If the $tag parameter is specified, this function will additionally  check if the query is for one of the tags specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_tag
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$slug</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$slug</span><span class="var-description">: Optional. Tag slug or array of slugs.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_tax" id="is_tax"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_tax</span> (line <span class="line-number">3144</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a taxonomy archive page?</p>
+<p class="description"><p>If the $taxonomy parameter is specified, this function will additionally  check if the query is for that specific $taxonomy.</p><p>If the $term parameter is specified in addition to the $taxonomy parameter,  this function will additionally check if the query is for one of the terms  specified.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_tax
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$taxonomy</span> = <span class="var-default">''</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$term</span> = <span class="var-default">''</span>], <span class="var-type">mixed</span>&nbsp;<span class="var-name">$term.</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$taxonomy</span><span class="var-description">: Optional. Taxonomy slug or slugs.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$term.</span><span class="var-description">: Optional. Term ID, name, slug or array of Term IDs, names, and slugs.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$term</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_time" id="is_time"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_time</span> (line <span class="line-number">3434</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a specific time?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_time
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_trackback" id="is_trackback"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_trackback</span> (line <span class="line-number">3445</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a trackback endpoint call?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_trackback
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_year" id="is_year"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">is_year</span> (line <span class="line-number">3456</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is the query for a specific year?</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 3.1.0</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			is_year
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodnext_comment" id="next_comment"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">next_comment</span> (line <span class="line-number">2834</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Iterate current comment index and return comment object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> object.</li>
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Comment</span>
+		<span class="method-name">
+			next_comment
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodnext_post" id="next_post"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">next_post</span> (line <span class="line-number">2759</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set up the next post and iterate current post index.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> post.</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Next</span>
+		<span class="method-name">
+			next_post
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodparse_query" id="parse_query"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">parse_query</span> (line <span class="line-number">1415</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a query string and set query type booleans.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			parse_query
+		</span>
+					([<span class="var-type">string|array</span>&nbsp;<span class="var-name">$query</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|array</span>
+				<span class="var-name">$query</span><span class="var-description">: Optional query.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodparse_query_vars" id="parse_query_vars"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">parse_query_vars</span> (line <span class="line-number">1341</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Reparse the query vars.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			parse_query_vars
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodparse_tax_query" id="parse_tax_query"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">parse_tax_query</span> (line <span class="line-number">1674</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			parse_tax_query
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$q</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$q</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodquery" id="query"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">query</span> (line <span class="line-number">2901</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets up the WordPress query by parsing query string.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> List of posts.</li>
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			&amp;query
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query</span><span class="var-description">: URL query string.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrewind_comments" id="rewind_comments"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">rewind_comments</span> (line <span class="line-number">2885</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Rewind the comments, resets the comment index and comment to first.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			rewind_comments
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodrewind_posts" id="rewind_posts"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">rewind_posts</span> (line <span class="line-number">2819</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Rewind the posts and reset post index.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			rewind_posts
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodset" id="set"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">set</span> (line <span class="line-number">1890</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set query variable.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			set
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query_var</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query_var</span><span class="var-description">: Query variable key.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: Query variable value.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodset_404" id="set_404"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">set_404</span> (line <span class="line-number">1856</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the 404 property and saves whether query is feed.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.0.0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			set_404
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodthe_comment" id="the_comment"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">the_comment</span> (line <span class="line-number">2849</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets up the current comment.</p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2.2.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> do_action() - Calls 'comment_loop_start' hook when first comment is processed.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			the_comment
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodthe_post" id="the_post"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">the_post</span> (line <span class="line-number">2778</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets up the current post.</p>
+<p class="description"><p>Retrieves the next post, sets up the post, sets the 'in the loop'  property to true.</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 1.5.0</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> do_action_ref_array() - Calls 'loop_start' if loop has just started</li>
+				<li><span class="field">uses:</span> <a href="../../WordPress/Query/WP_Query.html#var$post">WP_Query::$post</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			the_post
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Sep 2011 01:44:46 +0530 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
