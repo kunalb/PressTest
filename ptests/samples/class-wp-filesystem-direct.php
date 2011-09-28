@@ -13,6 +13,7 @@
  * @package WordPress
  * @subpackage Filesystem
  * @uses WP_Filesystem_Base Extends class
+ * @start b1
  */
 class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	var $errors = null;
@@ -306,6 +307,7 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		return $this->delete($path, $recursive);
 	}
 
+	/** @start b2 */
 	function dirlist($path, $include_hidden = true, $recursive = false) {
 		if ( $this->is_file($path) ) {
 			$limit_file = basename($path);
@@ -360,5 +362,6 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		unset($dir);
 		return $ret;
 	}
-}
+	/** @stop b2 */
+} /** @stop b1 */
 ?>
