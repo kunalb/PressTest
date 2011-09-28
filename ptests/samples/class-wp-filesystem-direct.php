@@ -21,24 +21,20 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	 * constructor
 	 *
 	 * @param mixed $arg ignored argument
-	 * @start b2
 	 */
 	function __construct($arg) {
 		$this->method = 'direct';
 		$this->errors = new WP_Error();
 	}
-	/** @stop b2 */
 
 	/**
 	 * connect filesystem.
 	 *
 	 * @return bool Returns true on success or false on failure (always true for WP_Filesystem_Direct).
-	 * @start b3
 	 */
 	function connect() {
 		return true;
 	}
-	/** @stop b3 */
 
 	/**
 	 * Reads entire file into a string
@@ -368,6 +364,5 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		unset($dir);
 		return $ret;
 	}
-	/** @stop b2 */
 } /** @stop b1 */
 ?>

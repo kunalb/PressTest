@@ -279,9 +279,60 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Checks the total number of blocks in the second level.
+	 * @group block
+	 * @dataProvider blockProvider
+	 */
+	public function testBlockComplex( $code ) {
+		$parser = new PT_Parser( $code );
+		$fnCount = 0; $tokens = token_get_all( $code );
+		$blockCount = 0;
+
+		foreach( $tokens as $token )
+			if( $this->getVal( $token, 0 ) == T_FUNCTION )
+				$fnCount++;
+		
+		while( $parser->block() ) {
+			if( $parser->key() == T_FUNCTION ) {
+				$blockCount++;
+				while( $parser->block() ) 
+					$parser->next();
+			}
+			$parser->next();
+		}
+
+		$this->assertEquals( $blockCount, $fnCount );
+	}
+
+	/**
+	 * Checks the total number of blocks in the third level.
 	 * @group block
 	 */
-	public function testBlockComplex() {
+	public function testBlockComplex2() {
+		$code = file_get_contents( "samples/kb-admin.php" );
+
+		$parser = new PT_Parser( $code );
+		$fnCount = 0; $tokens = token_get_all( $code );
+		$blockCount = 0;
+
+		foreach( $tokens as $token )
+			if( $this->getVal( $token, 0 ) == T_FUNCTION )
+				$fnCount++;
 		
+		while( $parser->block() ) {
+			if( $parser->key() == T_CLASS ) {
+				while( $parser->block() ) {
+					if( $parser->key() == T_FUNCTION ) {
+						$blockCount++;
+						while( $parser->block() ) 
+							$parser->next();
+					}
+					$parser->next();
+				}
+			}
+			$parser->next();
+		}
+
+		$this->assertEquals( $blockCount, $fnCount );
 	}
 }
