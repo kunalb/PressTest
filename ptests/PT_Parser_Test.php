@@ -248,11 +248,22 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( !$parser->valid() );	
 	}
 
+	public function blockProvider() {
+		$code = Array();
+		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
+		$files = $sampleDir . Array( "class-wp-filesystem-direct.php" );
+
+		foreach( $files as $file )
+			$code[] = Array( file_get_contents( $file ) );
+		
+		return $code;
+	}
+
 	/**
 	 * @group block
+	 * @dataProvider blockProvider
 	 */
-	public function testBlockSimple() {
-		$code = file_get_contents( "samples/class-wp-filesystem-direct.php" );
+	public function testBlockSimple( $code ) {
 		$tokens = token_get_all( $code );
 
 		$parser = new PT_Parser( $code );
@@ -265,5 +276,12 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 		$parser->skip_till( T_DOC_COMMENT );
 
 		$this->assertEquals( $parser->val(), "/** @stop b1 */" );
+	}
+
+	/**
+	 * @group block
+	 */
+	public function testBlockComplex() {
+		
 	}
 }
