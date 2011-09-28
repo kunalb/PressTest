@@ -82,6 +82,18 @@ class PT_Parser implements Iterator {
 		'&'
 	);	
 
+	/**
+	 * State for the block function.
+	 * @var Array[String]Bool
+	 */
+	protected $inBlock = Array(); 
+
+	/**
+	 * Braces counter for the block function.
+	 * @var Array[String]Int
+	 */
+	protected $braceBlock = Array();
+
 	/**#@+
 	 * Function required for the Iterator interface.
 	 */
@@ -150,7 +162,7 @@ class PT_Parser implements Iterator {
 	/**
 	 * Return the current val of the token.
 	 */
-	protected function val() {
+	public function val() {
 		if( !$this->valid() ) return NULL;
 
 		if( is_array( $this->tokens[ $this->position ] ) )
@@ -209,6 +221,56 @@ class PT_Parser implements Iterator {
 		while( $this->key() != $token && $this->valid() ) {
 			$this->next();
 		}
+	}
+
+	/** 
+	 * Returns true while till the _upcoming_ pair of braces is matched.
+	 *
+	 * Useful for parsing blocks encapsulated using { }: for example,
+	 * to parse a function definition. Should only be used
+	 * from the _same place_ in a single file: identifying which block must be 
+	 * managed is done on the basis of uniqueness of the line number and the file name.
+	 *
+	 * Can also be passed an id to over-ride the auto generated id when the 1st stack
+	 * frame from `debug_backtrace` doesn't prove sufficient for identifing the final 
+	 * caller: for example from a constructor of another class.
+	 *	
+	 * @param String $id The identifier for the caller.
+	 * @return Bool True while the block hasn't ended.
+	 */
+	public function block( $id = '' ) {
+		if( $id == '' ) {
+			$backtrace = debug_backtrace(false);
+			$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] );
+		}
+	
+		if( !array_key_exists( $id, $this->inBlock ) )
+			$this->inBlock[ $id ] = false;
+
+		if( !array_key_exists( $id, $this->braceBlock ) )
+			$this->braceBlock[ $id ] = -1;
+
+		if( !$this->inBlock[ $id ] && $this->key() == '{' ) { //Opened the function
+			$this->inBlock[ $id ] = true; 
+		} else if( $this->inBlock[ $id ] && $this->key() == '{' ) {
+			$this->braceBlock[ $id ]--;
+		} else if( $this->inBlock[ $id ] && $this->key() == '}' ) {
+			$this->braceBlock[ $id ]++;
+		} 
+
+		if( $this->braceBlock[ $id ] == 0 && $this->inBlock[ $id ] ) {
+			$this->inBlock[ $id ] = false;
+			return true;
+		} else if( $this->braceBlock[ $id ] == 0 && !$this->inBlock[ $id ] ) {
+			return false;
+		} else if( $this->braceBlock[ $id ] == -1 && !$this->inBlock[ $id ] ) {
+			return true;
+		} else if( $this->inBlock[ $id ] ) {
+			return true;
+		} else {
+			return false;
+		}
+			
 	}
 }
 
@@ -310,6 +372,8 @@ class PT_Parse_Function {
 	}
 
 	private function parse() {
+		foreach( $this->parser as $token ) {
+		}
 	}
 
 	public function get( $what ) {
