@@ -230,7 +230,7 @@ class PT_Parser implements Iterator {
 	}
 
 	/**
-	 * Concatenates tokens till the given value, stripping any white space.
+	 * Concatenates tokens till the given value.
 	 *
 	 * @return String token value
 	 */
@@ -264,10 +264,8 @@ class PT_Parser implements Iterator {
 		$lbracket = $brackets[0];
 		$rbracket = $brackets[1];
 
-		if( $id == '' ) {
-			$backtrace = debug_backtrace(false);
-			$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] );
-		}
+		$backtrace = debug_backtrace(false);
+		$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] ) . "-$id";
 	
 		if( !array_key_exists( $id, $this->inBlock ) )
 			$this->inBlock[ $id ] = false;
@@ -403,14 +401,15 @@ class PT_Parse_Function {
 		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
 		$token = $this->parser->skip_till( T_STRING )->current();
 		$this->name = $token->val;
-		
-		while( $this->parser->block( '()' ) ) {
+
+		while( $this->parser->block( '()', $this->name ) ) {
 			if( $this->parser->key() == T_VARIABLE )
 				$this->arguments[] = new PT_Parse_Argument( $this->parser );
-			$this->parser->next();
+			else	
+				$this->parser->next();
 		}
 
-		while( $this->parser->block() ) {
+		while( $this->parser->block( '{}', $this->name ) ) {
 			if( $this->parser->key() == T_GLOBAL )
 				$this->globals[] = new PT_Parse_Global( $parser );
 			else if( $this->parser->key() == T_STRING && $this->parser->val() == 'define' )
@@ -434,8 +433,8 @@ class PT_Parse_Method extends PT_Parse_Function {
 class PT_Parse_Argument {
 	private $parser;
 	private $name;
-	private $reference;
-	private $default;
+	private $reference = false;
+	private $default = '';
 
 	public function __construct( $parser ) {
 		if( get_class( $parser ) != 'PT_Parser' )
@@ -450,12 +449,14 @@ class PT_Parse_Argument {
 	private function parse() {
 		$token = $this->parser->current();
 		$this->name = $token->val;
-
-		while( $this->parser->val() != ')' && $this->parser->val() != ',' ) {
+		$this->reference = ($token->get_modifier( '&' ) == NULL)? false : true;
+			
+		while( !in_array($this->parser->val(),  Array( ")", "," )) && $this->parser->valid() ) {
 			$this->parser->next();
+			
 			if( $this->parser->val() == '=' ) {
 				$this->parser->next();
-				$this->default = $this->parser->grab_till( Array( ',', ')' ) );
+				$this->default = trim( $this->parser->grab_till( Array( ',', ')' ) ) );
 			}
 		}
 	}

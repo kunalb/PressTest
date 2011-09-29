@@ -49,6 +49,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 	
 	/**
 	 * @dataProvider provider
+	 * @group function
 	 */
 	public function testName( $code, $expected ) {
 		$parser = new PT_Parser( $code );
@@ -65,6 +66,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 	
 	/**
 	 * @dataProvider provider
+	 * @group function
 	 */
 	public function testComment( $code, $expected ) {
 		$parser = new PT_Parser( $code );
@@ -79,4 +81,28 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 			$this->assertEquals( $check->getDocComment(), $functions[ $key ]->get( "docbloc" ) );
 	}
 	
+	/**
+	 * @dataProvider provider
+	 * @group argument
+	 */
+	public function testArgs( $code, $expected ) {
+		$parser = new PT_Parser( $code );
+		$functions = Array();
+
+		foreach( $parser as $token ) {
+			if( $token->token == T_FUNCTION )
+				$functions[] = new PT_Parse_Function( $parser );
+		}
+
+		foreach( $expected as $key => $check ) {
+			$this->assertEquals( $check->getNumberOfParameters(), count( $functions[ $key ]->get( "arguments" ) ) );
+			$givenArgs = $check->getParameters();
+			$actualArgs = $functions[ $key ]->get( "arguments" );
+			foreach( $givenArgs as $i => $arg ) {
+				$this->assertEquals( "$" . $arg->getName(), $actualArgs[ $i ]->get( "name" ) );
+				$this->assertEquals( $arg->isPassedByReference(), $actualArgs[ $i ]->get( "reference" ) );
+				$this->assertEquals( $arg->isDefaultValueAvailable(), $actualArgs[ $i ]->get( "default" ) != "" );
+			}
+		}
+	}
 }
