@@ -234,10 +234,10 @@ class PT_Parser implements Iterator {
 	 *
 	 * @return String token value
 	 */
-	public function grab_till( $token ) {
+	public function grab_till( $tokens ) {
 		$grabbed = "";
 
-		while( $this->key() != $token && $this->valid() ) {
+		while( !in_array($this->key(), $tokens) && $this->valid() ) {
 			$grabbed .= $this->val();
 			$this->next();
 		}
@@ -406,7 +406,7 @@ class PT_Parse_Function {
 		
 		while( $this->parser->block( '()' ) ) {
 			if( $this->parser->key() == T_VARIABLE )
-				$this->arguments[] = new PT_Parse_Argument( $parser );
+				$this->arguments[] = new PT_Parse_Argument( $this->parser );
 			$this->parser->next();
 		}
 
@@ -455,11 +455,7 @@ class PT_Parse_Argument {
 			$this->parser->next();
 			if( $this->parser->val() == '=' ) {
 				$this->parser->next();
-
-				while( $this->parser->token() == T_WHITESPACE )
-					$this->parser->next();
-				
-					
+				$this->default = $this->parser->grab_till( Array( ',', ')' ) );
 			}
 		}
 	}
