@@ -371,6 +371,7 @@ class PT_Parse_Function {
 	private $globals;
 	private $name;
 	private $docbloc;
+	private $constants;
 
 	public function __construct( $parser ) {
 		if( get_class( $parser ) != 'PT_Parser' )
@@ -395,7 +396,10 @@ class PT_Parse_Function {
 
 		while( $this->parser->block() ) {
 			if( $this->parser->key() == T_GLOBAL )
-				$this->arguments[] = new PT_Parse_Global( $parser );
+				$this->globals[] = new PT_Parse_Global( $parser );
+			else if( $this->parser->key() == T_STRING && $this->parser->val() == 'define' )
+				$this->constants = new PT_Parse_Constant( $parser );
+
 			$this->parser->next();
 		}
 	}
@@ -418,4 +422,7 @@ class PT_Parse_Property {
 }
 
 class PT_Parse_Global {
+}
+
+class PT_Parse_Constant {
 }
