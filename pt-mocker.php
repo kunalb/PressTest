@@ -153,7 +153,6 @@ class PT_Mocker {
 	private function mock( $files, $path ) {
 		$output = "";
 		foreach( $files as $file ) {
-			KB_Debug( $file );
 		}
 	}
 
