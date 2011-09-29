@@ -204,6 +204,42 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provider
+	 * @group grab
+	 */
+	public function testGrabMiddle( $code ) {
+		$tokens = token_get_all( $code );
+		$length = count( $tokens ); $i = 0;
+		$parser = new PT_Parser( $code );
+
+		$skipLength = rand( 0, $length );
+	
+		for( $i = 0; $i < $skipLength; $i++ )
+			$parser->next();
+
+		$nextToken = Array( T_ECHO );
+		$grabbed = $parser->grab_till( $nextToken );
+		$testGrabbed = "";
+
+		$this->assertTrue(  !$parser->valid() || in_Array( $parser->key(), $nextToken ) );
+
+		while( $i < $length && !in_Array( $this->getVal( $tokens[ $i ], 0 ), $nextToken ) ) {
+			$testGrabbed .= $this->getVal( $tokens[ $i ], 1 );
+			$i++;
+		}
+
+		$this->assertEquals( $testGrabbed, $grabbed );
+
+		while( $i < $length ) {
+			$this->assertEquals( $parser->key(), $this->getVal( $tokens[ $i ], 0 ) );	
+
+			$i++; $parser->next();
+		}
+
+		$this->assertTrue( !$parser->valid() );	
+	}
+
+	/**
+	 * @dataProvider provider
 	 * @group skip
 	 */
 	public function testSkipNottoken( $code ) {
