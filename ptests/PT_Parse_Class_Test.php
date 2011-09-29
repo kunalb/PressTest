@@ -14,7 +14,7 @@ include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 	static private $classes;
 	static private $code;
-	static private $files = Array ( 'kb-admin.php' );
+	static private $files = Array ( 'kb-admin.php', 'kb-at.php' );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/';
@@ -90,6 +90,33 @@ class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 				$this->assertEquals( $eMethod->isPublic(), $aMethods[ $j ]->get( 'access' ) == 'public' );
 				$this->assertEquals( $eMethod->isProtected(), $aMethods[ $j ]->get( 'access' ) == 'protected' );
 				$this->assertEquals( $eMethod->isPrivate(), $aMethods[ $j ]->get( 'access' ) == 'private' );
+			}
+		}
+	}
+
+	/**
+	 * @dataProvider provider
+	 * @group properties
+	 */
+	public function testProperties( $code, $classes ) {
+		$parser = new PT_Parser( $code );
+		$parsed = Array();
+
+		foreach( $parser as $token )
+			if( $token->token == T_CLASS )
+				$parsed[] = new PT_Parse_Class( $parser );
+
+		foreach( $classes as $i => $class ) {
+			$eProps = $class->getProperties();
+			$aProps = $parsed[ $i ]->get( 'properties' );
+		
+			foreach( $eProps as $j => $eProp ) {
+				$this->assertEquals( '$' . $eProp->getName(), $aProps[ $j ]->get( 'name' ) );
+				$this->assertEquals( $eProp->getDocComment(), $aProps[ $j ]->get( 'docbloc' ) );
+				$this->assertEquals( $eProp->isPublic(), $aProps[ $j ]->get( 'access' ) == 'public' );
+				$this->assertEquals( $eProp->isProtected(), $aProps[ $j ]->get( 'access' ) == 'protected' );
+				$this->assertEquals( $eProp->isPrivate(), $aProps[ $j ]->get( 'access' ) == 'private' );
+				$this->assertEquals( $eProp->isStatic(), $aProps[ $j ]->get( 'static' ) );
 			}
 		}
 	}
