@@ -383,9 +383,9 @@ class PT_Parse_Function {
 	}
 
 	private function parse() {
+		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
 		$token = $this->parser->skip_till( T_STRING )->current();
 		$this->name = $token->val;
-		$this->docbloc = $token->get_modifier( T_DOC_COMMENT );
 		
 		while( $this->parser->block( '()' ) ) {
 			if( $this->parser->key() == T_VARIABLE )
