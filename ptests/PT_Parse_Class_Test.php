@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Tests for the file parser.
+ *
+ * @version 0.2
+ * @author Kunal Bhalla
+ * @package PressTest
+ * @subPackage ptests 
+ */
+
+include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
+
+class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
+	static private $classes;
+	static private $code;
+	static private $files = Array ( 'kb-admin.php' );
+
+	static public function _setUpBeforeClass() {
+		$sampleDir = dirname( __FILE__ ) . '/samples/';
+
+		foreach( self::$files as $file ) {
+			$originalClasses = get_declared_classes();
+
+			include_once $sampleDir . $file;
+			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
+			
+			$newClasses = get_declared_classes();
+
+			$classes[ $file ] = array_diff( $newClasses, $originalClasses );
+			foreach( $classes[ $file ] as $class ) 
+				self::$classes[ $file ][] = new ReflectionClass( $class );
+		}
+	}
+
+	public function provider() {
+		if( empty(self::$classes) )
+			self::_setUpBeforeClass();
+
+		$test = Array();
+		foreach( self::$files as $file ) {
+			$test[] = Array( self::$code[ $file ], self::$classes[ $file ] );
+		}
+		return $test;
+	}
+
+	/**
+	 * @dataProvider provider
+	 * @group class
+	 */
+	public function testSimple( $code, $classes ) {
+		$parser = new PT_Parser( $code );
+		$parsed = Array();
+
+		foreach( $parser as $token )
+			if( $token->token == T_CLASS )
+				$parsed[] = new PT_Parse_Class( $parser );
+
+		foreach( $classes as $key => $class ) {
+			$this->assertEquals( $class->getName(), $parsed[ $key ]->get( 'name' ) );
+			$this->assertEquals( count( $class->getMethods() ), count( $parsed[ $key ]->get( 'methods' ) ) );
+			$this->assertEquals( count( $class->getProperties() ), count( $parsed[ $key ]->get( 'properties' ) ) );
+			$this->assertEquals( $class->getDocComment(), $parsed[ $key ]->get( 'docbloc' ) );
+		}
+	}
+
+	/**
+	 * @dataProvider provider
+	 * @group methods
+	 */
+	public function testMethods( $code, $classes ) {
+		$parser = new PT_Parser( $code );
+		$parsed = Array();
+
+		foreach( $parser as $token )
+			if( $token->token == T_CLASS )
+				$parsed[] = new PT_Parse_Class( $parser );
+
+		foreach( $classes as $i => $class ) {
+			$eMethods = $class->getMethods();
+			$aMethods = $parsed[ $i ]->get( 'methods' );
+		
+			foreach( $eMethods as $j => $eMethod ) {
+				$this->assertEquals( $eMethod->getName(), $aMethods[ $j ]->get( 'name' ) );
+				$this->assertEquals( $eMethod->getDocComment(), $aMethods[ $j ]->get( 'docbloc' ) );
+				$this->assertEquals( $eMethod->isStatic(), $aMethods[ $j ]->get( 'static' ) );
+				$this->assertEquals( $eMethod->getNumberOfParameters(), count( $aMethods[ $j ]->get( 'arguments' ) ) );
+				$this->assertEquals( $eMethod->isFinal(), $aMethods[ $j ]->get( 'final' ) );
+				$this->assertEquals( $eMethod->isAbstract(), $aMethods[ $j ]->get( 'abstract' ) );
+				$this->assertEquals( $eMethod->isPublic(), $aMethods[ $j ]->get( 'access' ) == 'public' );
+				$this->assertEquals( $eMethod->isProtected(), $aMethods[ $j ]->get( 'access' ) == 'protected' );
+				$this->assertEquals( $eMethod->isPrivate(), $aMethods[ $j ]->get( 'access' ) == 'private' );
+			}
+		}
+	}
+}

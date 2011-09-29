@@ -79,6 +79,7 @@ class PT_Parser implements Iterator {
 		T_PROTECTED,
 		T_VAR,
 		T_STATIC,
+		T_FINAL,
 		'&'
 	);	
 
@@ -350,9 +351,10 @@ class PT_Parse_Class {
 	protected $name;
 	protected $abstract;
 	protected $extends;
+	protected $docbloc;
 
 	public function __construct( $parser ) {
-		if( get_class( $parser ) != PT_Parser )
+		if( get_class( $parser ) != 'PT_Parser' )
 			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
 
 		$this->parser = $parser;
@@ -362,7 +364,7 @@ class PT_Parse_Class {
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'methods', 'properties' ) ) )
+		if( in_array( $what, Array( 'methods', 'properties', 'name', 'abstract', 'extends', 'docbloc' ) ) )
 			return $this->$what;
 
 		return NULL;
@@ -370,10 +372,11 @@ class PT_Parse_Class {
 
 	protected function parse() {
 		$this->abstract = ($this->parser->current()->get_modifier( T_ABSTRACT ) == null)? true : false;
+		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
 		$this->name = $this->parser->skip_till( T_STRING )->val();
 
-		while( $this->block( '{}', $this->name ) ) {
-			switch( $token ) {
+		while( $this->parser->block( '{}', $this->name ) ) {
+			switch( $this->parser->key() ) {
 				case T_EXTENDS: 
 					$this->extends = $this->parser->skip_till( T_STRING )->val();
 					break;
@@ -421,11 +424,14 @@ class PT_Parse_Function {
 		}
 
 		while( $this->parser->block( '{}', $this->name ) ) {
+		/* ToDo Decide whether to implement or not 	
 			if( $this->parser->key() == T_GLOBAL )
 				$this->globals[] = new PT_Parse_Global( $parser );
 			else if( $this->parser->key() == T_STRING && $this->parser->val() == 'define' )
 				$this->constants = new PT_Parse_Constant( $parser );
-
+			else	
+				$this->parser->next();
+		*/
 			$this->parser->next();
 		}
 	}
@@ -439,7 +445,9 @@ class PT_Parse_Function {
 }
 
 class PT_Parse_Method extends PT_Parse_Function {
-	protected $access;
+	protected $access = 'public';
+	protected $static = false;
+	protected $final = false;
 
 	public function parse() {
 		if( $this->parser->current()->get_modifier( T_PRIVATE ) != null )
@@ -448,6 +456,9 @@ class PT_Parse_Method extends PT_Parse_Function {
 			$this->access = 'protected';
 		else 
 			$this->access = 'public';
+		
+		$this->static = ($this->parser->current()->get_modifier( T_STATIC ) == null) ? FALSE : TRUE ;
+		$this->final = ($this->parser->current()->get_modifier( T_FINAL ) == null) ? FALSE : TRUE ;
 
 		parent::parse();	
 	}
@@ -505,6 +516,7 @@ class PT_Parse_Property {
 	protected $access = 'public';
 	protected $default = '';
 	protected $docbloc = '';
+	protected $static = false;
 
 	public function __construct( $parser ) {
 		if( get_class( $parser ) != 'PT_Parser' )
@@ -519,7 +531,14 @@ class PT_Parse_Property {
 	protected function parse() {
 		$token = $this->parser->current();
 		$this->name = $token->val;
-		$this->reference = ($token->get_modifier( '&' ) == NULL)? false : true;
+		if( $this->parser->current()->get_modifier( T_PRIVATE ) != null )
+			$this->access = 'private';
+		else if( $this->parser->current()->get_modifier( T_PROTECTED ) != null )
+			$this->access = 'protected';
+		else 
+			$this->access = 'public';
+
+		$this->static = ($this->parser->current()->get_modifier( T_STATIC ) == null) ? FALSE : TRUE ;
 			
 		while( !in_array($this->parser->val(),  Array( ";" )) && $this->parser->valid() ) {
 			$this->parser->next();
@@ -532,7 +551,7 @@ class PT_Parse_Property {
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'name', 'reference', 'default' ) ) )
+		if( in_array( $what, Array( 'name', 'access', 'default', 'docbloc' ) ) )
 			return $this->$what;
 
 		return NULL;
@@ -540,7 +559,9 @@ class PT_Parse_Property {
 }
 
 class PT_Parse_Global {
+	/** ToDo Decide whether to implement or not */
 }
 
 class PT_Parse_Constant {
+	/** Todo Decide whether to implement or not */
 }
