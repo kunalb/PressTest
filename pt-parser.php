@@ -33,7 +33,7 @@ class PT_Parser_Token {
 	public function get_modifier( $token ) {
 		if( isset( $this->modifiers[$token] ) )
 			return $this->modifiers[$token];
-		else return false;	
+		else return '';	
 	}
 }
 
@@ -370,9 +370,10 @@ class PT_Parse_Function {
 	private $arguments;
 	private $globals;
 	private $name;
+	private $docbloc;
 
-	public function __construct() {
-		if( get_class( $parser ) != PT_Parser )
+	public function __construct( $parser ) {
+		if( get_class( $parser ) != 'PT_Parser' )
 			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
 
 		$this->parser = $parser;
@@ -382,14 +383,25 @@ class PT_Parse_Function {
 	}
 
 	private function parse() {
-		$this->name = $this->parser->skip_till( T_STRING )->val();
+		$token = $this->parser->skip_till( T_STRING )->current();
+		$this->name = $token->val;
+		$this->docbloc = $token->get_modifier( T_DOC_COMMENT );
+		
+		while( $this->parser->block( '()' ) ) {
+			if( $this->parser->key() == T_VARIABLE )
+				$this->arguments[] = new PT_Parse_Argument( $parser );
+			$this->parser->next();
+		}
 
 		while( $this->parser->block() ) {
+			if( $this->parser->key() == T_GLOBAL )
+				$this->arguments[] = new PT_Parse_Global( $parser );
+			$this->parser->next();
 		}
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'arguments', 'globals' ) ) )
+		if( in_array( $what, Array( 'arguments', 'globals', 'name', 'docbloc' ) ) )
 			return $this->$what;
 
 		return NULL;
