@@ -9,7 +9,7 @@
  * @subPackage ptests 
  */
 
-include dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
+include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 
 class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 
