@@ -13,47 +13,46 @@ include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 
 class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 
-	public function provider() {
-		$code = Array();
-		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
-		$files = Array( $sampleDir . "plugin.php" );
+	static private $functions;
+	static private $code;
+	static private $files = Array ( 'plugin.php' );
 
-		foreach( $files as $file )
-			$code[] = Array( file_get_contents( $file ) );
-		
-		return $code;
+	static public function _setUpBeforeClass() {
+		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
+
+		foreach( self::$files as $file ) {
+			$originalFn = get_defined_functions();
+			$originalFn = $originalFn['user'];
+
+			include_once $sampleDir . $file;
+			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
+			
+			$newFn = get_defined_functions();
+			$newFn = $newFn['user'];
+
+			$functions[ $file ] = array_diff( $newFn, $originalFn );
+			foreach( $functions[ $file ] as $function ) 
+				self::$functions[ $file ][] = new ReflectionFunction( $function );
+		}
+	}
+
+	public function provider() {
+		if( empty(self::$functions) )
+			self::_setUpBeforeClass();
+
+		$test = Array();
+		foreach( self::$files as $file ) {
+			$test[] = Array( self::$code[ $file ], self::$functions[ $file ] );
+		}
+		return $test;
 	}
 	
 	/**
 	 * @dataProvider provider
 	 */
-	public function testSimple( $code ) {
+	public function testSimple( $code, $expected ) {
 		$parser = new PT_Parser( $code );
 		$functions = Array();
-		$expected = Array(
-			"add_filter",
-			"has_filter",
-			"apply_filters",
-			"apply_filters_ref_array",
-			"remove_filter",
-			"remove_all_filters",
-			"current_filter",
-			"add_action",
-			"do_action",
-			"did_action",
-			"do_action_ref_array",
-			"has_action",
-			"remove_action",
-			"remove_all_actions",
-			"plugin_basename",
-			"plugin_dir_path",
-			"plugin_dir_url",
-			"register_activation_hook",
-			"register_deactivation_hook",
-			"register_uninstall_hook",
-			"_wp_call_all_hook",
-			"_wp_filter_build_unique_id"
-		);
 
 		foreach( $parser as $token ) {
 			if( $token->token == T_FUNCTION )
@@ -61,6 +60,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 		}
 
 		foreach( $expected as $key => $check )
-			$this->assertEquals( $check, $functions[ $key ]->get( "name" ) );
+			$this->assertEquals( $check->getName(), $functions[ $key ]->get( "name" ) );
 	}
+	
 }
