@@ -50,7 +50,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provider
 	 */
-	public function testSimple( $code, $expected ) {
+	public function testName( $code, $expected ) {
 		$parser = new PT_Parser( $code );
 		$functions = Array();
 
@@ -61,6 +61,22 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 
 		foreach( $expected as $key => $check )
 			$this->assertEquals( $check->getName(), $functions[ $key ]->get( "name" ) );
+	}
+	
+	/**
+	 * @dataProvider provider
+	 */
+	public function testComment( $code, $expected ) {
+		$parser = new PT_Parser( $code );
+		$functions = Array();
+
+		foreach( $parser as $token ) {
+			if( $token->token == T_FUNCTION )
+				$functions[] = new PT_Parse_Function( $parser );
+		}
+
+		foreach( $expected as $key => $check )
+			$this->assertEquals( $check->getDocComment(), $functions[ $key ]->get( "docbloc" ) );
 	}
 	
 }
