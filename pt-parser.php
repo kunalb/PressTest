@@ -229,6 +229,22 @@ class PT_Parser implements Iterator {
 		return $this;
 	}
 
+	/**
+	 * Concatenates tokens till the given value, stripping any white space.
+	 *
+	 * @return String token value
+	 */
+	public function grab_till( $token ) {
+		$grabbed = "";
+
+		while( $this->key() != $token && $this->valid() ) {
+			$grabbed .= $this->val();
+			$this->next();
+		}
+
+		return $grabbed;
+	}
+
 	/** 
 	 * Returns true while till the _upcoming_ pair of braces is matched.
 	 *
@@ -405,7 +421,7 @@ class PT_Parse_Function {
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'arguments', 'globals', 'name', 'docbloc' ) ) )
+		if( in_array( $what, Array( 'arguments', 'globals', 'name', 'docbloc', 'constants' ) ) )
 			return $this->$what;
 
 		return NULL;
@@ -416,6 +432,44 @@ class PT_Parse_Method extends PT_Parse_Function {
 }
 
 class PT_Parse_Argument {
+	private $parser;
+	private $name;
+	private $reference;
+	private $default;
+
+	public function __construct( $parser ) {
+		if( get_class( $parser ) != 'PT_Parser' )
+			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
+
+		$this->parser = $parser;
+		$this->parser->skip_till( T_VARIABLE );	
+	
+		$this->parse();
+	}
+
+	private function parse() {
+		$token = $this->parser->current();
+		$this->name = $token->val;
+
+		while( $this->parser->val() != ')' && $this->parser->val() != ',' ) {
+			$this->parser->next();
+			if( $this->parser->val() == '=' ) {
+				$this->parser->next();
+
+				while( $this->parser->token() == T_WHITESPACE )
+					$this->parser->next();
+				
+					
+			}
+		}
+	}
+
+	public function get( $what ) {
+		if( in_array( $what, Array( 'name', 'reference', 'default' ) ) )
+			return $this->$what;
+
+		return NULL;
+	}
 }
 
 class PT_Parse_Property {
