@@ -474,7 +474,7 @@ class PT_Parse_Argument {
 	protected $reference = false;
 	protected $default = '';
 
-	public function __construct( $parser ) {
+	public function __construct( $parser, $blockid = '') {
 		if( get_class( $parser ) != 'PT_Parser' )
 			throw new BadMethodCallException( "Incorrect argument passed to PT_Parse_Class. PT_Parser required." );
 
@@ -494,7 +494,20 @@ class PT_Parse_Argument {
 			
 			if( $this->parser->val() == '=' ) {
 				$this->parser->next();
-				$this->default = trim( $this->parser->grab_till( Array( ',', ')' ) ) );
+				/* Grab the mixed value till a comma or an unbalanced bracket. */
+				$default = "";
+				$balance = 0;
+				while( !( $balance == 0 && in_array( $this->parser->val(), Array( ',', ')' ) ) ) ) {
+					switch( $this->parser->val() ) {
+						case '(': $balance--; break;
+						case ')': $balance++; break;
+						default: 
+							$default .= $this->parser->val();
+					}
+					$this->parser->next();
+				}
+
+				$this->default = trim( $default );
 			}
 		}
 	}
