@@ -16,7 +16,7 @@ class PT_Parse_File_Test extends PHPUnit_Framework_TestCase {
 	static private $classes = Array();
 	static private $functions = Array();
 	static private $code = "";
-	static private $files = Array( /* 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', */ 'kb-loop.php' );
+	static private $files = Array( 'query.php' /*, 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php' */ );
 
 	static public function _setUpBeforeClass() {
 		
@@ -66,6 +66,9 @@ class PT_Parse_File_Test extends PHPUnit_Framework_TestCase {
 		$parsedFile = new PT_Parse_File( $file );
 		$parsedClasses = $parsedFile->get( 'classes' );
 		$parsedFunctions = $parsedFile->get( 'functions' );
+
+		$this->assertEquals( count( $classes ), count( $parsedClasses ) );
+		$this->assertEquals( count( $functions ), count( $parsedFunctions ) );
 
 		foreach( $classes as $i=>$class ) {
 			$this->assertEquals( $class->getName(), $parsedClasses[ $i ]->get( 'name' ) );

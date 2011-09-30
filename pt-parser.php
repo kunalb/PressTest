@@ -1,5 +1,8 @@
 <?php
 
+define( 'PT_DEBUG_SHOW_PARSED', false );
+define( 'PT_DEBUG_SHOW_BLOCKS', false );
+
 /**
  * Classes for Parsing code. 
  *
@@ -265,12 +268,13 @@ class PT_Parser implements Iterator {
 		$lbracket = $brackets[0];
 		$rbracket = $brackets[1];
 
-		//echo $this->val();
+		if( PT_DEBUG_SHOW_BLOCKS )
+			echo $this->val();
 
 		$backtrace = debug_backtrace(false);
-		$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] ) . "-$id";
+		$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] . "-$id" );
 	
-		if( !array_key_exists( $id, $this->inBlock ) )
+		if( !array_key_exists( $id, $this->inBlock ) ) 
 			$this->inBlock[ $id ] = false;
 
 		if( !array_key_exists( $id, $this->braceBlock ) )
@@ -278,13 +282,16 @@ class PT_Parser implements Iterator {
 
 		if( !$this->inBlock[ $id ] && $this->val() == $lbracket ) { //Opened the function
 			$this->inBlock[ $id ] = true; 
-		//echo "[[[ " . $this->braceBlock[ $id ] . " ]]]";
+			if( PT_DEBUG_SHOW_BLOCKS )
+				echo "[[S" . $this->braceBlock[ $id ] . " ]]";
 		} else if( $this->inBlock[ $id ] && $this->val() == $lbracket ) {
 			$this->braceBlock[ $id ]--;
-		//echo "[[[ " . $this->braceBlock[ $id ] . " ]]]";
+			if( PT_DEBUG_SHOW_BLOCKS )
+				echo "[[ " . $this->braceBlock[ $id ] . " ]]";
 		} else if( $this->inBlock[ $id ] && $this->val() == $rbracket ) {
 			$this->braceBlock[ $id ]++;
-		//echo "[[[ " . $this->braceBlock[ $id ] . " ]]]";
+			if( PT_DEBUG_SHOW_BLOCKS )
+				echo "[[ " . $this->braceBlock[ $id ] . " ]]";
 		} 
 
 
@@ -327,9 +334,13 @@ class PT_Parse_File {
 			switch( $token->token ) {
 				case T_CLASS:
 					$this->classes[] = new PT_Parse_Class( $this->parser );
+					if( PT_DEBUG_SHOW_PARSED )
+						echo "\n -- Parsed a class. At " . $token->line . "-" . $this->parser->current()->line . ".";
 					break;
 				case T_FUNCTION:
 					$this->functions[] = new PT_Parse_Function( $this->parser );
+					if( PT_DEBUG_SHOW_PARSED )
+						echo "\n -- Parsed a function. At " . $token->line . "-" . $this->parser->current()->line . ".";
 					break;
 			}
 		}
@@ -376,6 +387,7 @@ class PT_Parse_Class {
 		$this->name = $this->parser->skip_till( T_STRING )->val();
 
 		while( $this->parser->block( '{}', $this->name ) ) {
+			$token = $this->parser->current();
 			switch( $this->parser->key() ) {
 				case T_EXTENDS: 
 					$this->extends = $this->parser->skip_till( T_STRING )->val();
@@ -384,10 +396,14 @@ class PT_Parse_Class {
 					$this->implements = $this->parser->skip_till( T_STRING )->val();
 					break;	
 				case T_FUNCTION:
-					$this->methods[] = new PT_Parse_Method( $this->parser );
+					$this->methods[] = new PT_Parse_Method( $this->parser, $this->name );
+					if( PT_DEBUG_SHOW_PARSED )
+						echo "\n -- Parsed a method. At " . $token->line . "-" . $this->parser->current()->line . ".";
 					break;
 				case T_VARIABLE:
 					$this->properties[] = new PT_Parse_Property( $this->parser );
+					if( PT_DEBUG_SHOW_PARSED )
+						echo "\n -- Parsed a property. At " . $token->line . "-" . $this->parser->current()->line . ".";
 					break;	
 				default: 
 					$this->parser->next();	
@@ -422,10 +438,14 @@ class PT_Parse_Function {
 		$this->name = $token->val;
 
 		while( $this->parser->block( '()', $this->name . '()' ) ) {
+			$token = $this->parser->current();
 			if( $this->parser->key() == T_VARIABLE )
 				$this->arguments[] = new PT_Parse_Argument( $this->parser );
 			else	
 				$this->parser->next();
+			
+			if( PT_DEBUG_SHOW_PARSED )
+				echo "\n -- Parsed arguments " . $token->line . "-" . $this->parser->current()->line . ".";
 		}
 
 		while( $this->parser->block( '{}', $this->name . '{}' ) ) {
@@ -445,6 +465,13 @@ class PT_Parse_Method extends PT_Parse_Function {
 	protected $access = 'public';
 	protected $static = false;
 	protected $final = false;
+	protected $class;
+
+	public function __construct( $parser, $class ) {
+		parent::__construct( $parser );
+
+		$this->class = $class;
+	}
 
 	public function parse() {
 		if( $this->parser->current()->get_modifier( T_PRIVATE ) != null )
@@ -457,7 +484,26 @@ class PT_Parse_Method extends PT_Parse_Function {
 		$this->static = ($this->parser->current()->get_modifier( T_STATIC ) == null) ? FALSE : TRUE ;
 		$this->final = ($this->parser->current()->get_modifier( T_FINAL ) == null) ? FALSE : TRUE ;
 
-		parent::parse();	
+		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
+		$token = $this->parser->skip_till( T_STRING )->current();
+		$this->reference = ($this->parser->current()->get_modifier( '&' ) == null)? FALSE : TRUE;
+
+		$this->name = $token->val;
+
+		while( $this->parser->block( '()', $this->class . $this->name . '()' ) ) {
+			$token = $this->parser->current();
+			if( $this->parser->key() == T_VARIABLE )
+				$this->arguments[] = new PT_Parse_Argument( $this->parser );
+			else	
+				$this->parser->next();
+			
+			if( PT_DEBUG_SHOW_PARSED )
+				echo "\n -- Parsed arguments " . $token->line . "-" . $this->parser->current()->line . ".";
+		}
+
+		while( $this->parser->block( '{}', $this->class . $this->name . '{}' ) ) {
+			$this->parser->next();
+		}
 	}
 
 	public function get( $what ) {

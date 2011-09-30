@@ -14,7 +14,7 @@ include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 	static private $classes;
 	static private $code;
-	static private $files = Array ( 'kb-admin.php', 'kb-at.php' );
+	static private $files = Array ( 'kb-admin.php', 'kb-at.php', 'query.php', 'kb-loop.php' );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/';
@@ -76,9 +76,13 @@ class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 			if( $token->token == T_CLASS )
 				$parsed[] = new PT_Parse_Class( $parser );
 
+		$this->assertEquals( count( $classes ), count( $parsed ) );
+
 		foreach( $classes as $i => $class ) {
 			$eMethods = $class->getMethods();
 			$aMethods = $parsed[ $i ]->get( 'methods' );
+
+			$this->assertEquals( count( $eMethods ), count( $aMethods ) );
 		
 			foreach( $eMethods as $j => $eMethod ) {
 				$this->assertEquals( $eMethod->getName(), $aMethods[ $j ]->get( 'name' ) );

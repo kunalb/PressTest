@@ -2775,7 +2775,7 @@ class WP_Query {
 	 * @uses $post
 	 * @uses do_action_ref_array() Calls 'loop_start' if loop has just started
 	 */
-	function the_post() {
+	function thet_post() {
 		global $post;
 		$this->in_the_loop = true;
 

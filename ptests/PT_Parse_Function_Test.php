@@ -15,7 +15,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 
 	static private $functions;
 	static private $code;
-	static private $files = Array ( 'query.php' );
+	static private $files = Array ( 'query.php', 'plugin.php', 'kb-loop.php' );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
@@ -62,6 +62,8 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 			else if( $token->token == T_FUNCTION )
 				$functions[] = new PT_Parse_Function( $parser );
 		}
+
+		$this->assertEquals( count( $expected ), count( $functions ) );
 
 		foreach( $expected as $key => $check )
 			$this->assertEquals( $check->getName(), $functions[ $key ]->get( "name" ) );
