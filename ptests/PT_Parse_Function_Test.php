@@ -21,18 +21,19 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
 
 		foreach( self::$files as $file ) {
-			$originalFn = get_defined_functions();
-			$originalFn = $originalFn['user'];
-
 			include_once $sampleDir . $file;
 			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
-			
-			$newFn = get_defined_functions();
-			$newFn = $newFn['user'];
+		}
 
-			$functions[ $file ] = array_diff( $newFn, $originalFn );
-			foreach( $functions[ $file ] as $function ) 
-				self::$functions[ $file ][] = new ReflectionFunction( $function );
+		$functions = get_defined_functions();
+		$functions = $functions[ 'user' ];
+
+		foreach( $functions as $function ) {
+			$rf = new ReflectionFunction( $function );
+			$definedIn = basename( $rf->getFileName() );
+
+			if( in_array( $definedIn, self::$files ) )
+				self::$functions[ $definedIn ][] = $rf;
 		}
 	}
 

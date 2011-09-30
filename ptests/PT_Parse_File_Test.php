@@ -16,30 +16,34 @@ class PT_Parse_File_Test extends PHPUnit_Framework_TestCase {
 	static private $classes = Array();
 	static private $functions = Array();
 	static private $code = "";
-	static private $files = Array( 'query.php' /*, 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php' */ );
+	static private $files = Array( 'query.php', 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php' );
 
 	static public function _setUpBeforeClass() {
-		
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
 
 		foreach( self::$files as $file ) {
-			$originalClasses = get_declared_classes();
-			$originalFn = get_defined_functions();
-			$originalFn = $originalFn['user'];
-
 			include_once $sampleDir . $file;
 			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
-			
-			$newClasses = get_declared_classes();
-			$newFn = get_defined_functions();
-			$newFn = $newFn['user'];
+		}
 
-			$classes[ $file ] = array_diff( $newClasses, $originalClasses );
-			$functions[ $file ] = array_diff( $newFn, $originalFn );
-			foreach( $classes[ $file ] as $class ) 
-				self::$classes[ $file ][] = new ReflectionClass( $class );
-			foreach( $functions[ $file ] as $function ) 
-				self::$functions[ $file ][] = new ReflectionFunction( $function );
+		$functions = get_defined_functions();
+		$functions = $functions[ 'user' ];
+
+		$classes = get_declared_classes();
+		foreach( $classes as $class ) {
+			$rc = new ReflectionClass( $class );
+			$definedIn = basename( $rc->getFileName() );
+
+			if( in_array( $definedIn, self::$files ) )
+				self::$classes[ $definedIn ][] = $rc;
+		}
+
+		foreach( $functions as $function ) {
+			$rf = new ReflectionFunction( $function );
+			$definedIn = basename( $rf->getFileName() );
+
+			if( in_array( $definedIn, self::$files ) )
+				self::$functions[ $definedIn ][] = $rf;
 		}
 	}
 
