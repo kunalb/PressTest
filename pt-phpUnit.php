@@ -17,6 +17,18 @@
  */
 set_include_path('phpunit/phpunit' . PATH_SEPARATOR . get_include_path() );
 
+/**
+ * Increase the execution time.
+ */
+set_time_limit( 600 );
+
+/**
+ * Hide deprecated notices
+ */
+if( defined( 'E_DEPRECATED' ) ) 
+	error_reporting( E_ALL ^ E_DEPRECATED );
+
+
 if( !class_exists( 'PHPUnit_TextUI_Command' ) )
 	require_once 'phpunit/phpunit/PHPUnit/Autoload.php';
 
@@ -25,8 +37,6 @@ PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
 $_SERVER[ 'argv' ] = Array( 'phpunit/phpunit/phpUnit.php', rawurldecode( $_GET[ 'pt-tests' ] ) ); 
 
-ob_start();
+echo "<pre>";
 PHPUnit_TextUI_Command::main(false);
-$data = ob_get_clean();
-
-echo preg_replace( '/\n/', '<br />', $data );
+echo "</pre>";
