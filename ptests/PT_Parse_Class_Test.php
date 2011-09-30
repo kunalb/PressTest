@@ -20,16 +20,17 @@ class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 		$sampleDir = dirname( __FILE__ ) . '/samples/';
 
 		foreach( self::$files as $file ) {
-			$originalClasses = get_declared_classes();
-
 			include_once $sampleDir . $file;
 			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
-			
-			$newClasses = get_declared_classes();
+		}
 
-			$classes[ $file ] = array_diff( $newClasses, $originalClasses );
-			foreach( $classes[ $file ] as $class ) 
-				self::$classes[ $file ][] = new ReflectionClass( $class );
+		$classes = get_declared_classes();
+		foreach( $classes as $class ) {
+			$rc = new ReflectionClass( $class );
+			$definedIn = basename( $rc->getFileName() );
+
+			if( in_array( $definedIn, self::$files ) )
+				self::$classes[ $definedIn ][] = $rc;
 		}
 	}
 
