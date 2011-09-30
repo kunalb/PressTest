@@ -185,6 +185,9 @@ class PT_Parser implements Iterator {
 	 */
 	protected function modifiers() {
 		if( in_array( $this->key(), $this->mod_list ) ) {
+			if( $this->mod_distance != 0 )
+				$this->reset_modifiers();
+
 			$this->mods[ $this->key() ] = $this->val();
 			$this->mod_distance = 0;
 		} else if( $this->key() != T_WHITESPACE ) {
