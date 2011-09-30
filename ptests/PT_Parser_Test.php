@@ -94,11 +94,9 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 		$code = Array();
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
 		$samples = opendir( $sampleDir );
-
 		while( $path = readdir( $samples ) ) 
 			if( is_file( $sampleDir . $path ) )
 				$code[] = Array( file_get_contents( $sampleDir . $path ) );
-		
 		return $code;
 	}
 
@@ -123,7 +121,6 @@ class PT_Parser_Test extends PHPUnit_Framework_TestCase {
 					else if( $curtoken != T_WHITESPACE && $j != $i )
 						break;	
 				}
-
 				$this->assertEquals( $mods, $token->modifiers );
 			}
 			$i++;
