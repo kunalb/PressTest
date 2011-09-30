@@ -303,14 +303,14 @@ class PT_Parse_File {
 	protected $file = '';
 	protected $classes = Array();
 	protected $functions = Array();
-	protected $constants = Array();
-	protected $globals = Array();
+	protected $name;
 
 	public function __construct( $file ) {
 		$code = file_get_contents( $file );
 		if( $code !== FALSE ) {
 			$this->parser = new PT_Parser( file_get_contents( $file ) );
 			$this->file = $file;
+			$this->name = basename( $file );
 		}
 
 		$this->parse();
@@ -318,26 +318,19 @@ class PT_Parse_File {
 
 	protected function parse() {
 		foreach( $this->parser as $token ) {
-			switch( $token ) {
+			switch( $token->token ) {
 				case T_CLASS:
 					$this->classes[] = new PT_Parse_Class( $this->parser );
 					break;
 				case T_FUNCTION:
 					$this->functions[] = new PT_Parse_Function( $this->parser );
 					break;
-				case T_GLOBAL:
-					$this->globals[] = new PT_Parse_Global( $this->parser );
-					break;
-				case T_STRING:
-					if( $this->parser->val() == 'define' )
-						$this->constants[] = new PT_Parse_Constant( $this->parser );
-					break;	
 			}
 		}
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'constants', 'globals', 'classes', 'functions' ) ) )
+		if( in_array( $what, Array( 'constants', 'globals', 'classes', 'functions', 'name', 'file' ) ) )
 			return $this->$what;
 
 		return NULL;
