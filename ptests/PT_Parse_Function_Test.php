@@ -15,7 +15,7 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 
 	static private $functions;
 	static private $code;
-	static private $files = Array ( 'plugin.php' );
+	static private $files = Array ( 'query.php' );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
@@ -56,7 +56,10 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 		$functions = Array();
 
 		foreach( $parser as $token ) {
-			if( $token->token == T_FUNCTION )
+			if( $token->token == T_CLASS )
+				while( $parser->block( "{}", $token->line ) )
+					$parser->next();
+			else if( $token->token == T_FUNCTION )
 				$functions[] = new PT_Parse_Function( $parser );
 		}
 
@@ -73,7 +76,10 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 		$functions = Array();
 
 		foreach( $parser as $token ) {
-			if( $token->token == T_FUNCTION )
+			if( $token->token == T_CLASS )
+				while( $parser->block( "{}", $token->line ) )
+					$parser->next();
+			else if( $token->token == T_FUNCTION )
 				$functions[] = new PT_Parse_Function( $parser );
 		}
 
@@ -89,8 +95,11 @@ class PT_Parse_Function_Test extends PHPUnit_Framework_TestCase {
 		$parser = new PT_Parser( $code );
 		$functions = Array();
 
-		foreach( $parser as $token ) {
-			if( $token->token == T_FUNCTION )
+		foreach( $parser as $i=>$token ) {
+			if( $token->token == T_CLASS )
+				while( $parser->block( "{}", $token->line ) )
+					$parser->next();
+			else if( $token->token == T_FUNCTION )
 				$functions[] = new PT_Parse_Function( $parser );
 		}
 
