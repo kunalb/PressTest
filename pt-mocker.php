@@ -44,6 +44,7 @@ class PT_Mocker {
 			$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
 
 			//$this->mock( Array( ABSPATH . 'wp-includes/plugin.php' ), PT_MOCK_DIR . '/core.php' );
+			var_dump( "Memory Usage: " . memory_get_peak_usage() . " bytes" );
 		}
 	}
 
@@ -156,13 +157,17 @@ class PT_Mocker {
 		$output = fopen( $path, "w" );
 		fwrite( $output, "<?php \n" );
 
-		$i = 500; 
+		$i = 500; //Throttle for debugging 
 		foreach( $files as $file ) {
 			$parsed = new PT_Parse_File( $file );
 			$newFunctions = $parsed->get( 'functions' );
-
 			foreach( $newFunctions as $fun ) {
 				fwrite( $output,  "\n" . $this->mock_function( $fun ) . "\n" );
+			}
+
+			$newClasses = $parsed->get( 'classes' );
+			foreach( $newClasses as $cl ) {
+				fwrite( $output,  "\n" . $this->mock_class( $cl ) . "\n" );
 			}
 
 			unset( $parsed );
@@ -175,10 +180,69 @@ class PT_Mocker {
 	}
 
 	/**
+	 * Returns the mocked equivalent of a class.
+	 *
+	 * @param PT_Parse_Class $class
+	 * @return String Mocked class string
+	 */
+	private function mock_class( $class ) {
+		$cname = $class->get( 'name' );
+
+		$propertyList = '';
+		$properties = $class->get( 'properties' );
+		if( $properties == '' ) 
+			$properties = Array();
+		foreach( $properties as $property ) {
+			$pname = $property->get( 'name' );
+			$paccess = $property->get( 'access' ) . " ";
+			$pdefault = ($property->get( 'default' ) != null)? " = ''" : "";
+			$pstatic = ($property->get( 'static' ) != null )? "static " : "";
+			$propertyMock = <<<PROP
+		$paccess$pstatic$pname$pdefault;
+PROP;
+			$propertyList .= $propertyMock . "\n";
+		}
+
+		$methodList = '';
+		$methods = $class->get( 'methods' );
+		if( $methods == '' )
+			$methods = Array();
+		foreach( $methods as $method ) {
+			$mname = $method->get( 'name' );
+			$maccess = $method->get( 'access' ) . " ";
+			$mstatic = ($method->get( 'static' ) != null )? "static " : "";
+			$margstring = "";
+			$margs = $method->get( 'arguments' );
+			if( $margs == '' )
+				$margs = Array();
+			foreach( $margs as $marg ) {
+				$margstring .= ( $marg->get( 'name' ) );
+				if( $marg->get( 'default' ) != '' )
+					$margstring .= " = ''";
+				$margstring .=', ';	
+			}
+			$margstring = rtrim( $margstring, ", " );
+			$methodMock = <<<METH
+		$maccess{$mstatic}function $mname($margstring) {;}
+METH;
+			$methodList .= $methodMock . "\n";
+		}
+
+		return <<<CLS
+if( !class_exists( '$cname' ) ) {
+	class $cname {
+$propertyList
+$methodList
+	}
+}
+CLS;
+	}
+
+	/**
 	 * Returns the mocked equivalent of a function.
 	 *
 	 * @param PT_Parse_Function $function
-	 * @return 
+	 * @return String Mocked function string.
 	 */
 	private function mock_function( $function ) {
 		$fnname = $function->get( 'name' );
