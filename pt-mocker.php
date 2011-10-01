@@ -21,7 +21,11 @@ class PT_Mocker {
 	 * Enqueues required functions on appropriate hooks.
 	 */
 	public function __construct() {
+		add_action( 'PT_Activate', Array( $this, 'run' ) );
 		add_action( 'admin_notices', Array( $this, 'permission_warning' ) );
+	}
+
+	public function run() {
 		add_action( 'shutdown', Array( $this, 'create_mockers' ), 1 );
 	}
 

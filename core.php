@@ -54,7 +54,7 @@ class PressTest {
 		do_action( 'PT_Initialize' );
 
 		/** For Debugging only */
-		do_action( 'PT_Activate' );
+		//do_action( 'PT_Activate' );
 	}
 
 	/**
