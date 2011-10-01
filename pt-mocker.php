@@ -42,9 +42,6 @@ class PT_Mocker {
 			set_time_limit( 600 );
 			$filelist = $this->getPaths();
 			$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
-
-			//$this->mock( Array( ABSPATH . 'wp-includes/plugin.php' ), PT_MOCK_DIR . '/core.php' );
-			var_dump( "Memory Usage: " . memory_get_peak_usage() . " bytes" );
 		}
 	}
 
