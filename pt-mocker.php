@@ -22,7 +22,7 @@ class PT_Mocker {
 	 */
 	public function __construct() {
 		add_action( 'admin_notices', Array( $this, 'permission_warning' ) );
-		add_action( 'shutdown', Array( $this, 'create_mockers' ), 1000 );
+		add_action( 'shutdown', Array( $this, 'create_mockers' ), 1 );
 	}
 
 	/**
@@ -39,10 +39,11 @@ class PT_Mocker {
 	 */
 	public function create_mockers() {
 		if( @is_writable( PT_MOCK_DIR ) ) {
+			set_time_limit( 600 );
 			$filelist = $this->getPaths();
-			
-			// $this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
-			$this->mock( Array( ABSPATH . 'wp-content/plugins/presstest/pt-parser.php' ), PT_MOCK_DIR . '/core.php' );
+			$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
+
+			//$this->mock( Array( ABSPATH . 'wp-includes/plugin.php' ), PT_MOCK_DIR . '/core.php' );
 		}
 	}
 
@@ -85,7 +86,7 @@ class PT_Mocker {
 		if( !class_exists( 'WP_Filesystem_Direct' ) )
 			require PT_ADMIN_INCLUDES_DIR . '/class-wp-filesystem-direct.php';
 		
-		$filesys = new WP_Filesystem_Direct();	
+		$filesys = new WP_Filesystem_Direct('');	
 		$filelist = $filesys->dirlist( ABSPATH, false, true );
 
 		$escaped_wp_content_dir = preg_replace( '/([\-\/\.])/', '\\\$1', WP_CONTENT_DIR );
@@ -117,7 +118,7 @@ class PT_Mocker {
 					}
 				}
 
-				if( !flag )
+				if( !$flag )
 					$etc[] = $file;
 			}
 		}
@@ -149,11 +150,54 @@ class PT_Mocker {
 	 * @param String $file Full path to file.
 	 * @param String $path Path to file to be created.
 	 */
-
 	private function mock( $files, $path ) {
-		$output = "";
+		$classes = Array(); $functions = Array();
+
+		$output = fopen( $path, "w" );
+		fwrite( $output, "<?php \n" );
+
+		$i = 500; 
 		foreach( $files as $file ) {
+			$parsed = new PT_Parse_File( $file );
+			$newFunctions = $parsed->get( 'functions' );
+
+			foreach( $newFunctions as $fun ) {
+				fwrite( $output,  "\n" . $this->mock_function( $fun ) . "\n" );
+			}
+
+			unset( $parsed );
+			
+			if( --$i < 0 )
+				break;
+		} 
+
+		fclose( $output );
+	}
+
+	/**
+	 * Returns the mocked equivalent of a function.
+	 *
+	 * @param PT_Parse_Function $function
+	 * @return 
+	 */
+	private function mock_function( $function ) {
+		$fnname = $function->get( 'name' );
+		$argstring = "";
+
+		$args = $function->get( 'arguments' );
+		if( $args == '' )
+			$args = Array();
+
+		foreach( $args as $arg ) {
+			$argstring .= ( $arg->get( 'name' ) );
+			if( $arg->get( 'default' ) != '' )
+				$argstring .= " = ''";
+			$argstring .=', ';	
 		}
+
+		$argstring = rtrim( $argstring, ", " );
+
+		return "if( !function_exists( '$fnname' ) ) { function $fnname($argstring) {;} }";
 	}
 
 }
