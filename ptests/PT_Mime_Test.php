@@ -15,13 +15,13 @@ include_once dirname( dirname( __FILE__ ) ) . "/mocked/core.php";
 class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 
 	/**
-	 * @group args
+	 * @group functions_args
 	 */
-	public function testArguments() {
-		PT_Mime::fset_callback( 'add_action', Array( $this, 'passthrough' ) );
+	public function testfArguments() {
+		PT_Mime::fset_callback( 'kses_init', Array( $this, 'passthrough' ) );
 		$argList = Array( 1, "tn", 9 );
 
-		$returned = add_action( 1, "tn", 9 );
+		$returned = kses_init( 1, "tn", 9 );
 		$this->assertEquals( $argList, $returned );
 	}
 
@@ -30,20 +30,20 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group return
+	 * @group functions_return
 	 */
-	public function testReturn() {
+	public function testfReturn() {
 		PT_Mime::fset_return( 'list_cats', 'testing' );
 		$returned = list_cats( 'test', 'test1' );
 		$this->assertEquals( 'testing', $returned, $returned );
 	}
 
 	/**
-	 * @group callback
+	 * @group functions_callback
 	 */
-	public function testCallback() {
-		PT_Mime::fset_callback( 'add_action', Array( $this, 'add' ) );
-		$returned = add_action( 1, 2, 3 );
+	public function testfCallback() {
+		PT_Mime::fset_callback( 'kses_init', Array( $this, 'add' ) );
+		$returned = kses_init( 1, 2, 3 );
 		$this->assertEquals( 1+2+3, $returned, $returned );
 	}
 
@@ -58,9 +58,9 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group calls
+	 * @group functions_calls
 	 */
-	public function testCalls() {
+	public function testfCalls() {
 		PT_Mime::fset_callback( 'wp_set_post_tags', Array( $this, 'passthrough' ) );
 		$noOfCalls = rand( 2, 10 );
 		for( $i=0; $i<$noOfCalls; $i++ )
@@ -73,9 +73,9 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group return
+	 * @group functions_return
 	 */
-	public function testReturns() {
+	public function testfReturns() {
 		PT_Mime::fset_return( 'list_cats', 'testing' );
 		PT_Mime::fset_return( 'get_to_ping', 'testing2' );
 
@@ -87,24 +87,27 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @group callback
+	 * @group functions_callback
 	 */
-	public function testCallbacks() {
-		PT_Mime::fset_callback( 'have_posts', Array( $this, 'add' ) );
-		PT_Mime::fset_callback( 'the_post', Array( $this, 'passthrough' ) );
+	public function testfCallbacks() {
+		PT_Mime::fset_callback( 'wp_kses', Array( $this, 'add' ) );
+		PT_Mime::fset_callback( 'wp_kses_hook', Array( $this, 'passthrough' ) );
 
 		$this->assertEquals(
 			2+3,
-			have_posts( 2, 3 )
+			wp_kses( 2, 3 )
 		);
 
 		$this->assertEquals(
-			Array( 2, 3 ),
-			the_post( 2, 3 )
+			Array( 2, 3, 4 ),
+			wp_kses_hook( 2, 3, 4 )
 		);
 	}
 
-	public function testOverride() {
+	/**
+	 * @group functions_override
+	 */
+	public function testfOverride() {
 		PT_Mime::fset_return( 'wp_insert_user', '123' );
 		PT_Mime::fset_callback( 'wp_insert_user', Array( $this, 'passthrough' ) );
 
@@ -113,4 +116,47 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 			Array( '456' )
 		);
 	}
+
+	/**
+	 * @group methods_return
+	 */
+	public function testcReturns() {
+		PT_Mime::cset_return( 'WP_Widget_Calendar', 'widget', 123 );
+		$testClass = new WP_Widget_Calendar();
+
+		$this->assertEquals( 
+			123,
+			$testClass->widget( 1, 3 )
+		);
+	}
+
+	/**
+	 * @group methods_callback
+	 */
+	public function testcCallback() {
+		PT_Mime::cset_callback( 'WP_Widget_RSS', 'widget', Array( $this, 'add' ) );
+		$testClass = new WP_Widget_RSS;
+
+		$this->assertEquals(
+			3,
+			$testClass->widget( 1, 2 )
+		);
+	}
+
+	/**
+	 * @group functions_calls
+	 */
+	public function testcCalls() {
+		$testClass = new WP_Nav_Menu_Widget();
+		$noOfCalls = rand( 2, 10 );
+
+		for( $i=0; $i<$noOfCalls; $i++ )
+			$testClass->widget(1, 2, 3);
+
+		$this->assertEquals( 
+			$noOfCalls, 
+			count( PT_Mime::cget_calls( 'WP_Nav_Menu_Widget', 'widget' ) )
+		);
+	}
+
 }
