@@ -385,7 +385,7 @@ class PT_Parse_Class {
 	}
 
 	protected function parse() {
-		$this->abstract = ($this->parser->current()->get_modifier( T_ABSTRACT ) == null)? true : false;
+		$this->abstract = ($this->parser->current()->get_modifier( T_ABSTRACT ) != null);
 		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
 		$this->name = $this->parser->skip_till( T_STRING )->val();
 

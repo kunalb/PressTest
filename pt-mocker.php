@@ -158,22 +158,41 @@ class PT_Mocker {
 		$output = fopen( $path, "w" );
 		fwrite( $output, "<?php \n" );
 
+		$classesCompleted = Array();
+		$captured = Array();
+
 		$i = 500; //Throttle for debugging 
 		foreach( $files as $file ) {
 			$parsed = new PT_Parse_File( $file );
-			fwrite( $output, "\n/**#@+ @file: " . $file . " */\n" );
 
 			$newFunctions = $parsed->get( 'functions' );
 			foreach( $newFunctions as $fun ) {
+				fwrite( $output, "\n/** @file " . $file . " */" );
 				fwrite( $output,  "\n" . $this->mock_function( $fun ) . "\n" );
 			}
 
 			$newClasses = $parsed->get( 'classes' );
 			foreach( $newClasses as $cl ) {
-				fwrite( $output,  "\n" . $this->mock_class( $cl ) . "\n" );
+				$dependency = $cl->get( 'extends' );
+				$mockedClass = "\n" . $this->mock_class( $cl ) . "\n";
+
+				if( $dependency != null && !in_array( $dependency, $classesCompleted ) )
+					$captured[$dependency][] = Array( $file, $mockedClass );
+				else {	
+					fwrite( $output, "\n/** @file " . $file . " */" );
+					fwrite( $output,  $mockedClass );
+
+					$classesCompleted[] = $cl->get( 'name' );
+					if( array_key_exists( $cl->get( 'name' ), $captured ) ) {
+						foreach( $captured[ $cl->get( 'name' ) ] as $captive ) {
+							fwrite( $output, "\n/** @file " . $captive[0] . " */" );
+							fwrite( $output,  $captive[1] );
+						}
+						unset( $captured[ $cl->get( 'name' ) ] );
+					}
+				}
 			}
 
-			fwrite( $output, "\n/**#@-*/\n" );
 			unset( $parsed );
 			
 			if( --$i < 0 )
@@ -191,6 +210,8 @@ class PT_Mocker {
 	 */
 	private function mock_class( $class ) {
 		$cname = $class->get( 'name' );
+		$abstract = $class->get( 'abstract' )? "abstract " : "";
+		$extends = ( $class->get( 'extends' ) != null )? " extends " . $class->get( 'extends' ) : "";
 
 		$propertyList = '';
 		$properties = $class->get( 'properties' );
@@ -235,7 +256,7 @@ METH;
 
 		return <<<CLS
 if( !class_exists( '$cname' ) ) {
-	class $cname {
+	{$abstract}class $cname{$extends} {
 $propertyList
 $methodList
 	}
