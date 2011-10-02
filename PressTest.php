@@ -1,9 +1,9 @@
 <?php
 /*
 	Plugin Name: PressTest
-	Plugin URI: http://github.com/kunalb/presstest
+	Plugin URI: http://explog.in/PressTest
 	Description: Tip 62: "Test early. Test often. Test Automatically."
-	Version: 0.1-bleeding
+	Version: 0.2
 	Author: Kunal Bhalla. 
 	Author URI: http://kunal-b.in
 	License: GPL2
