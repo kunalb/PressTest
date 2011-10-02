@@ -483,7 +483,7 @@ class PT_Parse_Method extends PT_Parse_Function {
 		else 
 			$this->access = 'public';
 		
-		$this->static = ($this->parser->current()->get_modifier( T_STATIC ) == null) ? FALSE : TRUE ;
+		$this->static = ($this->parser->current()->get_modifier( T_STATIC ) != null);
 		$this->final = ($this->parser->current()->get_modifier( T_FINAL ) == null) ? FALSE : TRUE ;
 
 		$this->docbloc = $this->parser->current()->get_modifier( T_DOC_COMMENT );
@@ -510,7 +510,7 @@ class PT_Parse_Method extends PT_Parse_Function {
 	}
 
 	public function get( $what ) {
-		if( in_array( $what, Array( 'arguments', 'globals', 'name', 'docbloc', 'constants', 'access' ) ) )
+		if( in_array( $what, Array( 'arguments', 'globals', 'name', 'docbloc', 'constants', 'access', 'static' ) ) )
 			return $this->$what;
 
 		return NULL;
