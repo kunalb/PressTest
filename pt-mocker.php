@@ -226,8 +226,9 @@ PROP;
 				$margstring .=', ';	
 			}
 			$margstring = rtrim( $margstring, ", " );
+			$content = $this->mime_content();
 			$methodMock = <<<METH
-		$maccess{$mstatic}function $mname($margstring) {;}
+		$maccess{$mstatic}function $mname($margstring) { $content }
 METH;
 			$methodList .= $methodMock . "\n";
 		}
@@ -264,10 +265,19 @@ CLS;
 		}
 
 		$argstring = rtrim( $argstring, ", " );
+		$content = $this->mime_content();
 
-		return "if( !function_exists( '$fnname' ) ) { function $fnname($argstring) {;} }";
+		return "if( !function_exists( '$fnname' ) ) { function $fnname($argstring) { $content } }";
 	}
-
+	
+	/**
+	 * Returns the code string that should be added to give functionality to mocked functions.
+	 */
+	private function mime_content() {
+		return <<<STR
+return PT_Mime::mime( func_get_args() ); 
+STR;
+	}
 }
 
 new PT_Mocker();
