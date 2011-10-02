@@ -17,6 +17,7 @@
 class PT_Mime {
 	static private $callbacks = Array();
 	static private $calls = Array();
+	static private $returns = Array();
 	
 	/**
 	 * Called by the mock functions.
@@ -28,20 +29,45 @@ class PT_Mime {
 	 */
 	static public function mime( $args ) {
 		$backtrace = debug_backtrace();
-		return "baha!";
+		$fnName = $backtrace[1]['function'];
+		self::$calls[ $fnName ][] = $args;
+
+		if( array_key_exists( $fnName, self::$callbacks ) )
+			return call_user_func( self::$callbacks[ $fnName ], $args );
+
+		if( array_key_exists( $fnName, self::$returns ) )
+			return self::$returns[ $fnName ];
+
+		return "";	
 	}
 
 	/**
 	 * Set the return value for miming the given function.
+	 *
+	 * @param String $fn Function name
+	 * @param Mixed $val Return Value
 	 */
-	static public function set_return( $fn ) {
+	static public function fset_return( $fn, $val ) {
+		self::$returns[ $fn ] = $val;
 	}
 
 	/**
 	 * Set the callback for miming the given function.
 	 *
-	 * Note: this will over-ride any return value.
+	 * All arguments will be passed as an array.
+	 * This will over-ride any return value.
+	 *
+	 * @param String $fn Function name
+	 * @param Mixed $cb Callback Function
 	 */
-	static public function set_callback( $fn ) {
+	static public function fset_callback( $fn, $cb ) {
+		self::$callbacks[ $fn ] = $cb;
+	}
+
+	/**
+	 * Return the number of times this function has been called.
+	 */
+	static public function fget_calls( $fn ) {
+		return self::$calls[ $fn ];
 	}
 }
