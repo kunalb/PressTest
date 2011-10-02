@@ -76,14 +76,41 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 	 * @group return
 	 */
 	public function testReturns() {
+		PT_Mime::fset_return( 'list_cats', 'testing' );
+		PT_Mime::fset_return( 'get_to_ping', 'testing2' );
+
+		$returned1 = list_cats( 'test', 'test1' );
+		$returned2 = get_to_ping( 1 );
+
+		$this->assertEquals( 'testing', $returned1 );
+		$this->assertEquals( 'testing2', $returned2 );
 	}
 
 	/**
 	 * @group callback
 	 */
 	public function testCallbacks() {
+		PT_Mime::fset_callback( 'have_posts', Array( $this, 'add' ) );
+		PT_Mime::fset_callback( 'the_post', Array( $this, 'passthrough' ) );
+
+		$this->assertEquals(
+			2+3,
+			have_posts( 2, 3 )
+		);
+
+		$this->assertEquals(
+			Array( 2, 3 ),
+			the_post( 2, 3 )
+		);
 	}
 
 	public function testOverride() {
+		PT_Mime::fset_return( 'wp_insert_user', '123' );
+		PT_Mime::fset_callback( 'wp_insert_user', Array( $this, 'passthrough' ) );
+
+		$this->assertEquals(
+			wp_insert_user( '456' ),
+			Array( '456' )
+		);
 	}
 }
