@@ -275,10 +275,11 @@ class PT_Parser implements Iterator {
 			echo $this->val();
 
 		$backtrace = debug_backtrace(false);
-		$id = md5( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] . "-$id" );
+		$id = ( $backtrace[0]['line'] . "_" . $backtrace[0]['file'] . "-$id" );
 	
-		if( !array_key_exists( $id, $this->inBlock ) ) 
+		if( !array_key_exists( $id, $this->inBlock ) ) {
 			$this->inBlock[ $id ] = false;
+		}
 
 		if( !array_key_exists( $id, $this->braceBlock ) )
 			$this->braceBlock[ $id ] = -1;
@@ -296,7 +297,6 @@ class PT_Parser implements Iterator {
 			if( PT_DEBUG_SHOW_BLOCKS )
 				echo "[[ " . $this->braceBlock[ $id ] . " ]]";
 		} 
-
 
 		if( $this->braceBlock[ $id ] == 0 && $this->inBlock[ $id ] ) {
 			$this->inBlock[ $id ] = false;
@@ -471,9 +471,8 @@ class PT_Parse_Method extends PT_Parse_Function {
 	protected $class;
 
 	public function __construct( $parser, $class ) {
-		parent::__construct( $parser );
-
 		$this->class = $class;
+		parent::__construct( $parser );
 	}
 
 	public function parse() {
@@ -493,7 +492,8 @@ class PT_Parse_Method extends PT_Parse_Function {
 
 		$this->name = $token->val;
 
-		while( $this->parser->block( '()', $this->class . $this->name . '()' ) ) {
+		$blockid = $this->class . $this->name . '()';
+		while( $this->parser->block( '()', $blockid ) ) {
 			$token = $this->parser->current();
 			if( $this->parser->key() == T_VARIABLE )
 				$this->arguments[] = new PT_Parse_Argument( $this->parser );

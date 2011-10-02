@@ -14,7 +14,7 @@ include_once dirname( dirname( __FILE__ ) ) . "/pt-parser.php";
 class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 	static private $classes;
 	static private $code;
-	static private $files = Array ( 'kb-admin.php', 'kb-at.php', 'query.php', 'kb-loop.php' );
+	static private $files = Array ( "capabilities.php", 'query.php', 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php'  );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/';
@@ -22,6 +22,7 @@ class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 		foreach( self::$files as $file ) {
 			include_once $sampleDir . $file;
 			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
+			self::$classes[ $file ] = Array();
 		}
 
 		$classes = get_declared_classes();
@@ -88,7 +89,7 @@ class PT_Parse_Class_Test extends PHPUnit_Framework_TestCase {
 			foreach( $eMethods as $j => $eMethod ) {
 				$this->assertEquals( $eMethod->getName(), $aMethods[ $j ]->get( 'name' ) );
 				$this->assertEquals( $eMethod->getDocComment(), $aMethods[ $j ]->get( 'docbloc' ) );
-				$this->assertEquals( $eMethod->isStatic(), $aMethods[ $j ]->get( 'static' ) );
+				$this->assertEquals( $eMethod->isStatic(), ($aMethods[ $j ]->get( 'static' ) != null ) );
 				$this->assertEquals( $eMethod->getNumberOfParameters(), count( $aMethods[ $j ]->get( 'arguments' ) ) );
 				$this->assertEquals( $eMethod->isFinal(), $aMethods[ $j ]->get( 'final' ) );
 				$this->assertEquals( $eMethod->isAbstract(), $aMethods[ $j ]->get( 'abstract' ) );

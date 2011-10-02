@@ -16,7 +16,7 @@ class PT_Parse_File_Test extends PHPUnit_Framework_TestCase {
 	static private $classes = Array();
 	static private $functions = Array();
 	static private $code = "";
-	static private $files = Array( 'query.php', 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php' );
+	static private $files = Array( "capabilities.php", 'query.php', 'kb-admin.php', 'kb-at.php', 'plugin.php', 'class-phpmailer.php', 'kb-loop.php'  );
 
 	static public function _setUpBeforeClass() {
 		$sampleDir = dirname( __FILE__ ) . '/samples/'; 
@@ -24,6 +24,8 @@ class PT_Parse_File_Test extends PHPUnit_Framework_TestCase {
 		foreach( self::$files as $file ) {
 			include_once $sampleDir . $file;
 			self::$code[ $file ] = file_get_contents( $sampleDir . $file );
+			self::$classes[ $file ] = Array();
+			self::$functions[ $file ] = Array();
 		}
 
 		$functions = get_defined_functions();
