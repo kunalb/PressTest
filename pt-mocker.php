@@ -161,6 +161,8 @@ class PT_Mocker {
 		$i = 500; //Throttle for debugging 
 		foreach( $files as $file ) {
 			$parsed = new PT_Parse_File( $file );
+			fwrite( $output, "\n/**#@+ @file: " . $file . " */\n" );
+
 			$newFunctions = $parsed->get( 'functions' );
 			foreach( $newFunctions as $fun ) {
 				fwrite( $output,  "\n" . $this->mock_function( $fun ) . "\n" );
@@ -171,6 +173,7 @@ class PT_Mocker {
 				fwrite( $output,  "\n" . $this->mock_class( $cl ) . "\n" );
 			}
 
+			fwrite( $output, "\n/**#@-*/\n" );
 			unset( $parsed );
 			
 			if( --$i < 0 )
