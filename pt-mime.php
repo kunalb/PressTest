@@ -110,13 +110,26 @@ class PT_Mime {
 	 * Return the number of times this function has been called.
 	 */
 	static public function fget_calls( $fn ) {
-		return self::$calls[ $fn ];
+		if( array_key_exists( $fn, self::$calls ) )
+			return self::$calls[ $fn ];
+		return false;	
 	}
 
 	/**
 	 * Return the number of times this function has been called.
 	 */
 	static public function cget_calls( $cl, $m ) {
-		return self::$calls[ $cl ][ $m ];
+		if( array_key_exists( $cl, self::$calls ) && array_key_exists( $m, self::$calls[ $cl ] ) )
+			return self::$calls[ $cl ][ $m ];
+		return false;	
+	}
+
+	/**
+	 * Clean up recorded data. Useful to empty the logged functions between tests.
+	 */
+	static public function clear() {
+		self::$callbacks = Array();
+		self::$calls = Array();
+		self::$returns = Array();
 	}
 }

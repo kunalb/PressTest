@@ -159,4 +159,14 @@ class PT_Mime_Test extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	/**
+	 * Tests cleaning functionality -- depends on tests being run.
+	 */
+	public function testClear() {
+		wp_spam_comment( 'test' );
+		PT_Mime::clear();
+		$callData = PT_Mime::fget_calls( 'wp_spam_comment' );
+		$this->assertEmpty( $callData );
+	}
+	
 }
