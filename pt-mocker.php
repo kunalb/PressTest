@@ -43,10 +43,25 @@ class PT_Mocker {
 	 */
 	public function create_mockers() {
 		if( @is_writable( PT_MOCK_DIR ) ) {
-			set_time_limit( 600 );
-			$filelist = $this->getPaths();
-			$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
+			@set_time_limit( 600 );
+
+			$this->mockConstants();
+
+			//$filelist = $this->getPaths();
+			//$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
 		}
+	}
+
+	private function mockConstants() {
+		$constants = get_defined_constants();
+		$grab = Array( 'ABSPATH', 'WP_PLUGIN_DIR', 'PT_MOCK_DIR', 'PT_ADMIN_DIR' );
+
+		$output = "<?php ";
+		foreach( $grab as $grabbed ) {
+			$output .= "\n if( !defined( '$grabbed' ) ) define( '$grabbed', '" . constant( $grabbed ) . "' ); ";
+		}
+
+		file_put_contents( PT_MOCK_DIR . '/constants.php', $output );
 	}
 
 	/**
