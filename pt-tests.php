@@ -125,6 +125,78 @@ class PT_Tests {
 			throw new Exception( "Invalid test type." );	
 	}
 
+	public function help_tests( $type ) {
+		if( is_callable( Array( $this, "help_$type" ) ) )
+			return call_user_func( Array( $this, "help_$type" ) );
+		else 
+			throw new Exception( "Invalid test type." );	
+	}
+
+	private function help_phpUnit() {
+		return <<<HELPTEXT
+		<p>Enter any command line arguments you would like to use in <code>Arguments</code> and hit <code>Run tests</code> to run the tests.</p>
+		<p>To see a description of the currently available command line arguments, run the tests with <code>--help</code> as part of the arguments.</p>
+		<p>Note: Depending on the test suite, it can take a very long time to run the tests.</p>
+		<p><strong>Available command line arguments</strong></p>
+<pre>
+  --log-junit         Log test execution in JUnit XML format to file.
+  --log-tap           Log test execution in TAP format to file.
+  --log-dbus          Log test execution to DBUS.
+  --log-json          Log test execution in JSON format.
+
+  --coverage-html     Generate code coverage report in HTML format.
+  --coverage-clover   Write code coverage data in Clover XML format.
+
+  --testdox-html      Write agile documentation in HTML format to file.
+  --testdox-text      Write agile documentation in Text format to file.
+
+  --filter                  Filter which tests to run.
+  --group ...               Only runs tests from the specified group(s).
+  --exclude-group ...       Exclude tests from the specified group(s).
+  --list-groups             List available test groups.
+
+  --loader                  TestSuiteLoader implementation to use.
+  --repeat                  Runs the test(s) repeatedly.
+
+  --tap                     Report test execution progress in TAP format.
+  --testdox                 Report test execution progress in TestDox format.
+
+  --colors                  Use colors in output.
+  --stderr                  Write to STDERR instead of STDOUT.
+  --stop-on-error           Stop execution upon first error.
+  --stop-on-failure         Stop execution upon first error or failure.
+  --stop-on-skipped         Stop execution upon first skipped test.
+  --stop-on-incomplete      Stop execution upon first incomplete test.
+  --strict                  Mark a test as incomplete if no assertions are made.
+  --verbose                 Output more verbose information.
+  --wait                    Waits for a keystroke after each test.
+
+  --skeleton-class          Generate Unit class for UnitTest in UnitTest.php.
+  --skeleton-test           Generate UnitTest class for Unit in Unit.php.
+
+  --process-isolation       Run each test in a separate PHP process.
+  --no-globals-backup       Do not backup and restore $GLOBALS for each test.
+  --static-backup           Backup and restore static attributes for each test.
+  --syntax-check            Try to check source files for syntax errors.
+
+  --bootstrap               A "bootstrap" PHP file that is run before the tests.
+  -c|--configuration        Read configuration from XML file.
+  --no-configuration        Ignore default configuration file (phpunit.xml).
+  --include-path            Prepend PHP's include_path with given path(s).
+  -d key[=value]            Sets a php.ini value.
+
+  --help                    Prints this usage information.
+  --version                 Prints the version and exits.
+
+  --debug                   Output debugging information.
+</pre>  
+HELPTEXT;
+	}
+
+	private function help_qUnit() {
+		return "";
+	}
+
 	/** 
 	 * Routes function to set up actual markup to display the test.
 	 * @param String Test Type
