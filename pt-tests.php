@@ -140,6 +140,8 @@ class PT_Tests {
 	 * Set up resources for running phpUnit tests.
 	 */
 	private function setup_phpUnit() {
+		wp_enqueue_script( 'phpUnit', PT_SCRIPTS_URL . '/phpunit.js', 'jquery' );
+		wp_enqueue_style( 'phpUnit', PT_STYLES_URL . '/phpunit.css' );
 	} 
 
 	/**
@@ -161,7 +163,21 @@ class PT_Tests {
 	 */
 	private function run_phpUnit() {
 		$iframe = PT_URL . "/pt-phpUnit.php?pt-tests=" . rawurlencode( WP_PLUGIN_DIR . '/' . $this->plugin_folder . 'ptests'  );
-		return "<iframe width = '100%' height = '500px' src = '$iframe'></iframe>";
+		$image = PT_IMAGES_URL . '/loader.gif';
+		return <<<CONTENTS
+		<script type='text/javascript'>
+			if( typeof window.pt == "undefined" )
+				window.pt = {};
+			window.pt.phpunit = '$iframe';	
+		</script>
+		<div class='pt-phpunit-controller'>
+			<input type='text' name='pt-phpunit-args' id='pt-phpunit-args' class='pt-phpunit-tester' />
+			<label for='pt-phpunit-args'>Arguments</label>
+			<input type='submit' name='pt-phpunit-runtests' id='pt-phpunit-runtests' class='button-primary pt-phpunit-tester' value='Run Tests' />
+			&nbsp;<img src='$image' id='pt-phpunit-loader' />
+		</div>
+		<div id='pt-phpunit-output'></div>
+CONTENTS;
 	}
 
 	/*

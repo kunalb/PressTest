@@ -27,10 +27,10 @@ define( 'PT_QUNIT_URL', PT_URL . '/qunit/qunit' );
 define( 'PT_IMAGES_URL', PT_URL . '/resources/images' );
 
 /** Scripts folder */
-define( 'PT_SCRIPTS_URL', PT_URL . '/resources/scripts' );
+define( 'PT_SCRIPTS_URL', PT_URL . '/resources/js' );
 
 /** Styles folder */
-define( 'PT_STYLES_URL', PT_URL . '/resources/styles' );
+define( 'PT_STYLES_URL', PT_URL . '/resources/css' );
 
 /** Plugin Homepage */
 define( 'PT_HOME', 'http://github.com/kunalb/PressTest/' );

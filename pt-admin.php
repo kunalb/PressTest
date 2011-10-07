@@ -48,6 +48,6 @@ class PT_Admin extends KB_Admin {
 	 * tests and displays the results.
 	 */
 	public function body() {
-		return"<h2>PressTest</h2>" . $this->tests->run_tests( $this->test_type );
+		return"<h2>PressTest | Testing " . dirname( rawurldecode($_GET[ 'pt_plugin' ]) ) . "</h2>" . $this->tests->run_tests( $this->test_type );
 	}
 }
