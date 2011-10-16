@@ -47,8 +47,4 @@ if( !class_exists( 'PHPUnit_TextUI_Command' ) )
 PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
-$_SERVER[ 'argv' ] = Array_merge( Array( 'phpunit/phpunit/phpUnit.php' ), preg_split( '/\s/', rawurldecode( $_GET[ 'pt-args' ] ) ), 
-                                  Array( rawurldecode( $_GET[ 'pt-tests' ] ) ) ); 
-echo "<pre>";
 PHPUnit_TextUI_Command::main(false);
-echo "</pre>";

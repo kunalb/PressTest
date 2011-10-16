@@ -23,6 +23,9 @@ class PT_Mocker {
 	public function __construct() {
 		add_action( 'PT_Activate', Array( $this, 'run' ) );
 		add_action( 'admin_notices', Array( $this, 'permission_warning' ) );
+
+		if( !file_exists( PT_MOCK_DIR . '/constants.php' ) || !file_exists( PT_MOCK_DIR . '/core.php' ) )
+			$this->run();
 	}
 
 	public function run() {
@@ -47,8 +50,8 @@ class PT_Mocker {
 
 			$this->mockConstants();
 
-			//$filelist = $this->getPaths();
-			//$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
+			$filelist = $this->getPaths();
+			$this->mock( $filelist[ 'core' ], PT_MOCK_DIR . '/core.php' );
 		}
 	}
 
